@@ -1,0 +1,23 @@
+{
+  "name": "clientdev",
+  "version": "0.0.1",
+  "description": "A PaaS to connect budding developers with clients in need.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gauravshrestha4/clientdev.git"
+  },
+  "author": "Shourya Mittal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gauravshrestha4/clientdev/issues"
+  },
+  "homepage": "https://github.com/Gauravshrestha4/clientdev#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.9.0"
+  }
+}

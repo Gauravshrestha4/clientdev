@@ -1,0 +1,34 @@
+{
+	"parser":"babel-eslint",
+	"env": {
+		"browser":true,
+		"node": true,
+		"es6": true
+	},
+	"parserOptions": {
+		"sourceType": "script"
+	},
+	"rules":{
+		"curly": [2,"all"],
+		"strict": ["error","global"],
+		"eqeqeq": ["error", "smart"],
+		"no-eval": "error",
+		"no-implied-eval": "error",
+		"no-loop-func": "error",
+		"prefer-const": "warn",
+		"no-var": "error",
+		"no-undef": "error",
+		"no-await-in-loop": "error",
+		"require-await": "warn",
+		"default-case": "warn",
+		"no-extend-native": "error",
+		"no-global-assign": "error",
+		"no-return-assign": "warn",
+		"no-shadow-restricted-names": "error",
+		"no-alert": "warn",
+		"no-empty-function": "error",
+		"no-floating-decimal": "error",
+		"no-throw-literal": "error",
+		"no-constant-condition": "warn"
+	}
+}
