@@ -1,11 +1,20 @@
-'use strict';
+// 'use strict';
 
-const monogoose = require('monogoose');
+/*
+	Define database schema here and make them as a single object 
+	differentiated by Schema names as keys.
+*/
 
-const sequelize = require('sequelize');
+const monogoose = require('mongoose');
+const Sequelize = require('sequelize');
+
+import {sequelize} from './connections';
 
 
-export Schema = {
+const Schema = {
+
+	// ===== MongoDB Schema's ==== //
+
 	Skills : new monogoose.Schema({
 		
 		developerID: {
@@ -21,11 +30,13 @@ export Schema = {
 
 	}),
 
+	// ==== MariaDB Schema's ==== //
+
 	Clients: sequelize.define('clients', {
 
 		companyName: {
 
-			type: sequelize.String,
+			type: Sequelize.STRING(512),
 			allowNull: false,
 			/*validate: {
 
@@ -34,7 +45,7 @@ export Schema = {
 
 		emailId: {
 
-			type: sequelize.String,
+			type: Sequelize.STRING(512),
 			allowNull: false,
 			primaryKey: true,
 			/*validate: {
@@ -44,7 +55,7 @@ export Schema = {
 
 		phone: {
 			
-			type: sequelize.Integer,
+			type: Sequelize.INTEGER,
 			allowNull: true,
 			/*validate: {
 
@@ -53,7 +64,7 @@ export Schema = {
 
 		description: {
 			
-			type: sequelize.Text,
+			type: Sequelize.TEXT,
 			allowNull: false,
 			/*validate: {
 
@@ -62,7 +73,7 @@ export Schema = {
 
 		picture: {
 
-			type: sequelize.String,
+			type: Sequelize.STRING(512),
 			allowNull: true,
 			/*validate: {
 
@@ -72,7 +83,7 @@ export Schema = {
 
 		address: {
 
-			type: sequelize.String,
+			type: Sequelize.STRING(512),
 			allowNull: true,
 			/*validate: {
 
@@ -81,7 +92,7 @@ export Schema = {
 
 		companyType: {
 
-			type: sequelize.String,
+			type: Sequelize.STRING(512),
 			allowNull: true,
 			/*validate: {
 
@@ -94,7 +105,7 @@ export Schema = {
 
 		name: {
 
-			type: sequelize.String,
+			type: Sequelize.STRING(512),
 			allowNull: false,
 			/*validate: {
 
@@ -103,8 +114,9 @@ export Schema = {
 
 		emailId: {
 
-			type: sequelize.String,
+			type: Sequelize.STRING(512),
 			allowNull: false,
+			primaryKey: true,
 			/*validate: {
 
 			}*/
@@ -112,7 +124,7 @@ export Schema = {
 
 		phone: {
 
-			type: sequelize.Integer,
+			type: Sequelize.INTEGER,
 			allowNull: true,
 			/*validate: {
 
@@ -121,7 +133,7 @@ export Schema = {
 
 		nationality: {
 
-			type: sequelize.Integer,
+			type: Sequelize.INTEGER,
 			allowNull: true,
 			/*validate: {
 
@@ -130,7 +142,7 @@ export Schema = {
 
 		skills: {
 
-			type: sequelize.String, //this is a mongo.id value that can be used to retrieve the skills array from MongoDB
+			type: Sequelize.STRING(512), //this is a mongo.id value that can be used to retrieve the skills array from MongoDB
 			allowNull: false,
 			/*validate: {
 
@@ -140,7 +152,7 @@ export Schema = {
 		workDomain: {
 
 			// this is the developers preferred work area
-			type: sequelize.String, // maybe this should be an array of string instead ?
+			type: Sequelize.STRING(512), // maybe this should be an array of string instead ?
 			allowNull: true,
 			/*validate: {
 
@@ -149,7 +161,7 @@ export Schema = {
 
 		picture: {
 
-			type: sequelize.String,
+			type: Sequelize.STRING(512),
 			allowNull: true,
 			/*validate: {
 
@@ -159,4 +171,4 @@ export Schema = {
 	}),
 };
 
-
+export default Schema;
