@@ -10,3 +10,7 @@ documents
 # My local TOOD list
 
 TODO
+
+# do not commit images
+
+views/img/*
