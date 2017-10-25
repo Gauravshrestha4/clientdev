@@ -1,0 +1,364 @@
+/* how it works section*/
+@media only screen and (min-width: 320px) and (max-width: 480px)
+{	
+	/*landing page*/
+	.heading
+	{
+		font-size: 14px;
+		margin-top: 0px;
+	}
+
+	.landingpage
+	{
+		height: 745px;
+	}
+
+	.maintext
+	{
+		padding-top: 11vw;
+		font-size: 6vw;
+	}
+
+	.maintext_sub
+	{
+		font-size: 3.5vw;
+		margin-top: -20px;
+	}
+
+	.clientimage
+	{
+		width: 100px;
+		height: 110px;
+	}
+
+	.laptopimage
+	{
+		width: 100%;
+		height: 180px;
+		margin-top: -20px;
+	}
+
+	.developerimage
+	{
+		width: 80%;
+		height: 180px;
+	}
+
+	/*how it works*/
+	.client
+	{
+		height:530px;
+	}
+
+	.developer
+	{
+		height:620px;
+	}
+
+	.clientsec
+	{	
+		border-top: 100px solid white;
+   		border-left: 100vw solid transparent;
+   	}
+
+   	.clientvideo
+	{
+		padding-top: 10px;
+		width: 250px;
+		height:220px;
+	}
+
+	.developervideo
+	{
+		margin-top: 15px;
+	}
+
+	.developerheading
+	{
+		margin-top: 10px;
+	}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 600px)
+{
+	/*landing page*/
+	.heading
+	{
+		font-size: 12px;
+		margin-top: 2px;
+	}
+
+	.landingpage
+	{
+		height: 900px;
+	}
+
+	.maintext
+	{
+		padding-top: 11vw;
+		font-size: 5.5vw;
+	}
+
+	.maintext_sub
+	{
+		font-size: 3.5vw;
+		margin-top: -20px;
+	}
+
+	.clientimage
+	{
+		width: 100px;
+		height: 150px;
+	}
+
+	.laptopimage
+	{
+		width: 100%;
+		height: 200px;
+	}
+
+	.developerimage
+	{
+		width: 80%;
+		height: 200px;
+	}
+
+	/*how it works*/
+	.client
+	{
+		height:530px;
+	}
+
+	.developer
+	{
+		height:620px;
+	}
+
+	.clientsec
+	{	
+		border-top: 100px solid white;
+   		border-left: 100vw solid transparent;
+   	}
+
+   	.clientvideo
+	{
+		padding-top: 10px;
+		width: 250px;
+		height:220px;
+	}
+
+	.developervideo
+	{
+		margin-top: 15px;
+	}
+
+	.developerheading
+	{
+		margin-top: 10px;
+	}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px)
+{
+	/*landing page*/
+	.heading
+	{
+		font-size: 12px;
+		margin-top:6px;
+	}
+
+	.landingpage
+	{
+		height: 430px;
+	}
+
+	.maintext
+	{
+		padding-top: 11vw;
+		font-size: 5.7vw;
+	}
+
+	.maintext_sub
+	{
+		font-size: 3.5vw;
+		margin-top: -30px;
+	}
+
+	.logo
+	{
+		margin-top: 7vw;
+	}
+
+	.clientimage
+	{
+		width: 100%;
+		height: 100px;
+	}
+
+	.laptopimage
+	{
+		width: 100%;
+		height: 110px;
+	}
+
+	.developerimage
+	{
+		width: 100%;
+		height: 70px;
+	}
+
+	/*how it works*/
+	.client
+	{
+		height:550px;
+	}
+
+	.developer
+	{
+		height:420px;
+	}
+
+	.clientsec
+	{	
+		border-top: 100px solid white;
+   		border-left: 100vw solid transparent;
+   	}
+
+   	.clientvideo
+	{
+		padding-top: 10px;
+		width: 200px;
+		height:220px;
+	}
+
+	.developervideo
+	{
+		margin-top: 15px;
+	}
+
+	.developerheading
+	{
+		margin-top: 10px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px)
+{
+	/*landing page*/
+	.heading
+	{
+		font-size: 12px;
+		margin-top:9px;
+	}
+
+	.landingpage
+	{
+		height: 530px;
+	}
+
+	.maintext
+	{
+		padding-top: 11vw;
+		font-size: 5.5vw;
+	}
+
+	.maintext_sub
+	{
+		font-size: 3vw;
+		margin-top: -40px;
+	}
+
+	.logo
+	{
+		margin-top: 7vw;
+	}
+	/*how it works*/
+	.client
+	{
+		height:250px;
+	}
+
+	.developer
+	{
+		height:380px;
+	}
+
+	.clientsec
+	{	
+		border-top: 100px solid white;
+   		border-left: 100vw solid transparent;
+   	}
+
+   	.clientvideo
+	{
+		padding-top: 10px;
+		width: 175px;
+		height:220px;
+	}
+
+	.developervideo
+	{
+		margin-top: 15px;
+		width: 175px;
+		height:220px;
+	}
+
+	.developerheading
+	{
+		margin-top: 10px;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1024px)
+{
+	.maintext
+	{
+		padding-top: 10vw;
+		font-size: 4vw;
+	}
+
+	.maintext_sub
+	{
+		font-size: 2.5vw;
+		margin-top: -40px;
+	}
+
+	.logo
+	{
+		margin-top: 6vw;
+	}
+
+	/*how it works*/
+	.client
+	{
+		height:250px;
+	}
+
+	.developer
+	{
+		height:370px;
+	}
+
+	.clientsec
+	{	
+		border-top: 100px solid white;
+   		border-left: 100vw solid transparent;
+   	}
+
+   	.clientvideo
+	{
+		padding-top: 10px;
+		width: 235px;
+		height:220px;
+	}
+
+	.developervideo
+	{
+		margin-top: 15px;
+	}
+
+	.developerheading
+	{
+		margin-top: 10px;
+	}
+}
