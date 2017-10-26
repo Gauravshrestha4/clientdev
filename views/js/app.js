@@ -7,7 +7,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
 	$stateProvider
 		.state('mainpage',{
 			url: '/mainpage',
-			templateUrl: './views/templates/mainpage.html',
+			templateUrl: '../templates/mainpage.html',
 			controller: 'mainpageController'
 		})
 })
