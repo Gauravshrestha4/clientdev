@@ -1,34 +1,42 @@
+// 'use strict';
 /*
 	Setup express app here
 */
-const express= require('express'),
-bodyparser=require('body-parser'),
-morgan=require('morgan'),
-nodemailer=require('nodemailer'),
-path=require('path'),
-app=express()
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS")
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    next()
-})
+const express = require('express'),
+	bodyparser = require('body-parser'),
+	morgan = require('morgan'),
+	nodemailer = require('nodemailer'),
+	path = require('path');
+
+const app=express();
+
+//setup view engine
+app.set('views', path.join(__dirname, '../' ,'views'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+//setup logging via morgan
+app.use(morgan('dev'));
+
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({
 	extended:true
-}))
-/*app.get('/',(req,res)=>{
-	res.send("Response OK");
-})*/
+}));
 
-app.use(express.static('./'));
-app.use(express.static('public'));
+//setup static files directory for stylesheets and javascripts
+app.use(express.static(path.join(__dirname, '../', 'views','public')));
+app.use(express.static(path.join(__dirname, '../', 'node_modules','angular')));
+app.use(express.static(path.join(__dirname, '../', 'node_modules', 'jquery')));
+
+
 app.get('/',(req,res)=>{
-	res.sendFile(path.join(__dirname,'./views/templates/mainpage.html'))
-})
-app.listen(8000,(req,res)=>{
-	conole.log("Application running on 8000")
-})
-//console.log('Application Started');
+	res.render('index');
+});
 
-console.log('Application Started');
+app.get('/mainpage*',(req,res) => {
+	res.render('templates/mainpage.html');
+});
+
+app.listen(8000,(req,res)=>{
+	console.log("Application running on 8000")
+});

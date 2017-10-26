@@ -14,3 +14,7 @@ TODO
 # do not commit images
 
 views/img/*
+
+# Do not commit log files
+
+*.log.*
