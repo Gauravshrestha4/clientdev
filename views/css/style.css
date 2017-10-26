@@ -1,0 +1,164 @@
+/*landing page*/
+.nav1
+{
+	background-color: white;
+	height: 85px;
+}
+
+.heading
+{
+	font-size: 26px;
+	margin-top: 11px;
+	margin-left: 50px;
+}
+
+.links li
+{
+	color: #ff8f00;
+	font-size: 18px;
+	margin-top: 11px;
+	margin-right: 20px;
+}
+
+.landingpage
+{
+	height: 552px;
+	background: linear-gradient(300deg, rgb(235, 80, 13) 0%, rgb(235, 80, 13) 8%, rgb(255, 143, 0) 78%, rgb(255, 143, 0) 100%);
+	margin-top: -47px;
+}
+
+.container1
+{
+	width: 75%;
+}
+
+.maintext
+{
+	padding-top: 9vw;
+	font-size: 3.5vw;
+}
+
+.maintext_sub
+{
+	font-size: 2vw;
+	margin-top: -40px;
+	color: #880e4f;
+}
+
+.card1
+{
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+.logo
+{
+	margin-top: 3vw;
+}
+
+.clientimage
+{
+	width: 100%;
+	height: 110px;
+}
+
+.clienttext
+{
+	font-size: 16px;
+}
+
+.laptopimage
+{
+	width: 100%;
+	height: 150px;
+}
+
+.developerimage
+{
+	width: 80%;
+	height: 130px;
+}
+
+/* how it works section*/
+
+.stepsdiv
+{
+	margin-top: 50px;
+}
+
+.steps
+{
+	font-size: 26px;
+	color: #ff8f00;
+}
+
+.divider1
+{
+	width: 60px;
+	margin-top: -20px;
+	color: #9e9e9e;
+}
+
+@import "compass/css3";
+
+
+.client
+{
+	margin-top: 10px;
+	height:230px;
+  	background:white;
+  	position:relative;
+}
+
+.clientheading
+{
+	margin-top: 25px;
+	color: #ff8f00;
+	font-size: 22px
+}
+
+.clientdescription
+{
+	color: #607d8b;
+	text-align: justify;
+}
+
+.clientvideo
+{
+	padding-top: 30px;
+}
+
+.developer
+{
+	height:320px;
+  	background:linear-gradient(300deg, rgb(235, 80, 13) 0%, rgb(235, 80, 13) 8%, rgb(255, 143, 0) 78%, rgb(255, 143, 0) 100%);
+  	overflow:hidden;
+  	position:relative;
+}
+
+.clientsec
+{
+	width: 0;
+   	height:0;
+   	border-top: 100px solid white;
+   	border-left: 100vw solid transparent;
+}
+
+.developervideo
+{
+	margin-top: -20px;
+}
+
+.developerheading
+{
+	color: white;
+	font-size: 22px;
+	margin-top: -10px;
+}
+
+.developerdescription
+{
+	color: white;
+	text-align: justify;
+}
