@@ -37,6 +37,7 @@ app.get('/mainpage*',(req,res) => {
 	res.render('templates/mainpage.html');
 });
 
+
 app.listen(8000,(req,res)=>{
 	console.log("Application running on 8000")
 });
