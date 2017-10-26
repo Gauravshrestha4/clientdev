@@ -6,10 +6,11 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
 	$locationProvider.html5Mode(true);
 	$stateProvider
 		.state('mainpage',{
-			url: '/mainpage',
+			url: '/',
 			templateUrl: '/mainpage.html',
 			controller: 'mainpageController'
 		})
+		
 })
 
 app.controller('mainpageController',function($scope,$rootScope,$state,$http,$window){
@@ -19,8 +20,8 @@ app.controller('mainpageController',function($scope,$rootScope,$state,$http,$win
 	$scope.linkClass="li";
 	angular.element($window).bind(
 	"scroll", function() {
-         console.log(window.pageYOffset);
-         if(window.pageYOffset >0) {
+         //console.log(window.pageYOffset);
+         if(window.pageYOffset >50) {
            $scope.navClass = 'small';
            $scope.headClass='heading_on_scroll';
            $scope.linkClass='li_on_scroll';
@@ -32,4 +33,7 @@ app.controller('mainpageController',function($scope,$rootScope,$state,$http,$win
          $scope.$apply();
    });
 	
+})
+app.controller('signupController',function($http,$state,$scope,$rootScope){
+	console.log("Signup controller called");
 })
