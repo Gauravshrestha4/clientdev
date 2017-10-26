@@ -10,11 +10,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
 			templateUrl: '/mainpage.html',
 			controller: 'mainpageController'
 		})
-		.state('signup',{
-			url:'/signup',
-			templateUrl:'/signup.html',
-			controller:'signupController'
-		})
+		
 })
 
 app.controller('mainpageController',function($scope,$rootScope,$state,$http,$window){
