@@ -25,8 +25,7 @@ app.use(bodyparser.urlencoded({
 
 //setup static files directory for stylesheets and javascripts
 app.use(express.static(path.join(__dirname, '../', 'views','public')));
-app.use(express.static(path.join(__dirname, '../', 'node_modules','angular')));
-app.use(express.static(path.join(__dirname, '../', 'node_modules', 'jquery')));
+
 
 
 app.get('/',(req,res)=>{

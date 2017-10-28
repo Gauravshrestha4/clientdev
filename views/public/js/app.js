@@ -18,22 +18,42 @@ app.controller('mainpageController',function($scope,$rootScope,$state,$http,$win
 	$scope.navClass="big";
 	$scope.headClass="heading";
 	$scope.linkClass="li";
+	$scope.headClasslink=".company_logo";
+	$scope.navClass = 'whiteColor';
+	$scope.docHeight=$window.innerHeight;
 	angular.element($window).bind(
 	"scroll", function() {
          //console.log(window.pageYOffset);
-         if(window.pageYOffset >50) {
-           $scope.navClass = 'small';
-           $scope.headClass='heading_on_scroll';
-           $scope.linkClass='li_on_scroll';
-         } else {
+         if(window.pageYOffset >50) 
+         {
+         	if(window.pageYOffset>$scope.docHeight)
+         	{
+         		$scope.navClass = 'baseColor';
+    			$scope.headClass='heading_after_land';
+    			$scope.linkClass='li_after_land';
+    			$scope.headClasslink="company_logo_on_scroll";
+
+         	}
+         	else
+         	{
+         		$scope.navClass = 'whiteColor';
+         		$scope.navClass = 'small';
+           		$scope.headClass='heading_on_scroll';
+           		$scope.linkClass='li_on_scroll';
+           		$scope.headClasslink="company_logo_on_scroll";
+         	}
+          
+         } 
+         else 
+         {
            $scope.navClass = 'big';
            $scope.headClass="heading";
            $scope.linkClass="li";
+           $scope.headClasslink="company_logo";
          }
          $scope.$apply();
+        
+         
    });
 	
-})
-app.controller('signupController',function($http,$state,$scope,$rootScope){
-	console.log("Signup controller called");
 })
