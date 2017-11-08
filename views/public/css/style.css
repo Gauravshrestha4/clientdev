@@ -267,3 +267,53 @@ footer
 	font-size: 50px;
 	font-weight: bold;
 }
+
+/*************************************CSS for Signup*********************************************************/
+
+.form_base, .signup
+{
+	background-color: #fbfbfb;
+	height: 100%;
+
+}
+
+.right_pane .heading
+{
+	font-size: 3vw;
+	color: #f26234;
+	font-weight: bold;
+
+}
+.right_pane .sub-heading
+{
+	font-size: 15px;
+	margin-top: -50px;
+}
+.signup_form
+{
+	height: 100%;
+	background-color:; 
+	
+}
+.client
+{
+	background-color: #bdbdbd;
+	border-right:4px solid #181f30;
+	color:#393d40;
+}
+.dev
+{
+	background-color: #bdbdbd;
+}
+.client-before-click
+{
+	background-color: white;
+}
+.dev-before-click
+{
+	background-color: white;
+}
+.company-logo
+{
+	padding-top: 20%;
+}

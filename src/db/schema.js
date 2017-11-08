@@ -10,7 +10,7 @@ const Sequelize = require('sequelize');
 
 import {sequelize} from './connections';
 
-
+mongoose.connect('mongodb://localhost/test');
 const Schema = {
 
 	// ===== MongoDB Schema's ==== //
