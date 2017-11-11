@@ -1,4 +1,6 @@
 /*--------------------------------------------------Css for navbar-----------------------------------------*/
+
+@import "compass/css3";
 html,body
 {
 	font-family: 'Pontano Sans', sans-serif;
@@ -13,6 +15,36 @@ html,body
 	width:100%;
 	transition:0.5s linear all;
 }
+.myNav
+{
+	padding-left: 20%;
+}
+.navButtons
+{
+	padding-left: 20%;
+}
+.signupButton
+{
+	background-color: #f26234;
+}
+.signupButton:hover
+{
+	background-color: white;
+	border:1px solid #f26234;
+	color:#f26234;
+}
+.signinButton
+{
+	background-color: white;
+	border:1px solid #f26234;
+	color:#f26234;
+}
+.signinButton:hover
+{
+	background-color: #f26234;
+	color:white;
+}
+
 .big
 {
 	height:90px;
@@ -146,7 +178,7 @@ html,body
 	height: 130px;
 }
 
-/* how it works section*/
+/************************************** how it works section**********************************************/
 
 .stepsdiv
 {
@@ -166,10 +198,6 @@ html,body
 	border:2px solid #f26234;
 	margin-top: -40px;
 }
-
-@import "compass/css3";
-
-
 .client
 {
 	margin-top: 10px;
@@ -229,13 +257,39 @@ html,body
 	color: #6d7a83;
 	
 }
-
-
+/**************************************************CSS for our services************************************************/
+.service-row
+{
+	padding-top: 3%;
+}
+.service-div
+{
+	text-align: center;
+	
+}
+.service-div:hover
+{
+	border-radius: 7px;
+	background-color: white;
+    box-shadow: 0 6px 20px 0 #eeeeee, 0 1px 30px 0 #eeeeee, 0 3px 10px -1px #eeeeee;
+	transition: 0.7s all;
+	border-top:5px solid #f26234;
+}
 .our_services
 {
 	background-color: #fbfbfb;
 	padding-top:10px;
 	padding-bottom: 50px;
+}
+.service_content
+{
+	padding-top: 70px;
+	padding-bottom: 50px;
+
+}
+.service_text
+{
+	padding-top: 30px;
 }
 .service_text p
 {
@@ -251,11 +305,19 @@ html,body
 /*--------------------------------------CSS for footer--------------------------------------------------*/
 footer
 {
-	height: 400px;
-	
-	background-color: #181f30;
+	height: 100%;
+  	background:#fbfbfb;
+  	overflow:hidden;
+  	position:relative;
+  	padding-bottom: 50px;
 }
-
+.footersec
+{
+	width: 0;
+   	height:0;
+   	border-top: 100px solid white;
+   	border-right: 100vw solid transparent;
+}
 .container_footer
 {
 	padding:30px 50px 50px 50px;
@@ -263,7 +325,7 @@ footer
 }
 .footer_left h5
 {
-	color: white;
+	color: #f26234;
 	font-size: 50px;
 	font-weight: bold;
 }
@@ -292,13 +354,17 @@ footer
 .signup_form
 {
 	height: 100%;
-	background-color:; 
-	
+	margin-top:30px;
+	padding-bottom:25%;
 }
+.client-form,.dev-form
+{
+	margin-top: 30px;
+}
+
 .client
 {
 	background-color: #bdbdbd;
-	border-right:4px solid #181f30;
 	color:#393d40;
 }
 .dev
@@ -316,4 +382,9 @@ footer
 .company-logo
 {
 	padding-top: 20%;
+}
+.company-logo img
+{
+	height:20vw;
+	width:20vw;
 }

@@ -77,6 +77,34 @@
 	{
 		margin-top: 10px;
 	}
+
+	/*****************for signup*******************************/
+	.company-logo
+	{
+		padding-top: 10%;
+		padding-left:25%;
+	}
+	.company-logo img
+	{
+		height:40vw;
+		width:40vw;
+	}
+	.right_pane
+	{
+		margin-top: 30px;
+	}
+	.right_pane .heading
+	{
+		font-size: 10vw;
+		color: #f26234;
+		font-weight: bold;
+
+	}
+	.right_pane .sub-heading
+	{
+		font-size: 15px;
+		margin-top: 0px;
+	}
 }
 
 @media only screen and (min-width: 480px) and (max-width: 600px)
@@ -155,6 +183,34 @@
 	.developerheading
 	{
 		margin-top: 10px;
+	}
+
+	/*****************for signup*******************************/
+	.company-logo
+	{
+		padding-top: 10%;
+		padding-left:25%;
+	}
+	.company-logo img
+	{
+		height:40vw;
+		width:40vw;
+	}
+
+	.right_pane
+	{
+		margin-top: 30px;
+	}
+	.right_pane .heading
+	{
+		font-size: 10vw;
+		color: #f26234;
+		font-weight: bold;
+
+	}
+	.right_pane .sub-heading
+	{
+		font-size: 15px;
 	}
 }
 
@@ -240,7 +296,36 @@
 	{
 		margin-top: 10px;
 	}
+
+	/*****************for signup*******************************/
+	.company-logo
+	{
+		padding-top: 20%;
+		padding-left:15%;
+	}
+	.company-logo img
+	{
+		height:20vw;
+		width:20vw;
+	}
+
+	.right_pane
+	{
+		margin-top: 30px;
+	}
+	.right_pane .heading
+	{
+		font-size: 5vw;
+		color: #f26234;
+		font-weight: bold;
+
+	}
+	.right_pane .sub-heading
+	{
+		font-size: 15px;
+	}
 }
+
 
 @media only screen and (min-width: 768px) and (max-width: 992px)
 {
@@ -307,6 +392,35 @@
 	{
 		margin-top: 10px;
 	}
+
+
+	/*****************for signup*******************************/
+	.company-logo
+	{
+		padding-top: 30%;
+		padding-left:25%;
+	}
+	.company-logo img
+	{
+		height:20vw;
+		width:20vw;
+	}
+
+	.right_pane
+	{
+		margin-top: 30px;
+	}
+	.right_pane .heading
+	{
+		font-size: 5vw;
+		color: #f26234;
+		font-weight: bold;
+
+	}
+	.right_pane .sub-heading
+	{
+		font-size: 15px;
+	}
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1024px)
@@ -360,5 +474,33 @@
 	.developerheading
 	{
 		margin-top: 10px;
+	}
+
+	/*****************for signup*******************************/
+	.company-logo
+	{
+		padding-top: 30%;
+		padding-left:25%;
+	}
+	.company-logo img
+	{
+		height:20vw;
+		width:20vw;
+	}
+
+	.right_pane
+	{
+		margin-top: 30px;
+	}
+	.right_pane .heading
+	{
+		font-size: 5vw;
+		color: #f26234;
+		font-weight: bold;
+
+	}
+	.right_pane .sub-heading
+	{
+		font-size: 15px;
 	}
 }

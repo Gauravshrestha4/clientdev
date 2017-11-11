@@ -28,16 +28,16 @@ app.use(express.static(path.join(__dirname, '../', 'views','public')));
 
 
 
-app.get('/',(req,res)=>{
+app.get('*',(req,res)=>{
 	res.render('index');
 });
-
+/*
 app.get('/mainpage*',(req,res) => {
 	res.render('templates/mainpage.html');
 });
 app.get('/signup',(req,res)=>{
 	res.render('templates/signup.html');
-})
+})*/
 
 app.listen(8000,(req,res)=>{
 	console.log("Application running on 8000")

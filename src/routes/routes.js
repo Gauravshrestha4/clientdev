@@ -1,7 +1,4 @@
 let router = require('express').Router();
-
-
-
-router.get('/signup', (req,res,next) => {
-	res.render('login',{});
-});
+let connection=require('../db/connections');
+let sequelize=connection.sequelize;
+import {Schema} from '../db/schema'
