@@ -170,7 +170,8 @@ const Schema = {
 
 	}),
 };
-Schema.Clients.sync();
-Schema.Developers.sync();
 
+// ======= Sync the schemas for MariaDB ======= //
+Schema.Developers.sync();
+Schema.Clients.sync();
 export default Schema;
