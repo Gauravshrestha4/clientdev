@@ -6,7 +6,8 @@ const express = require('express'),
 	bodyparser = require('body-parser'),
 	morgan = require('morgan'),
 	nodemailer = require('nodemailer'),
-	path = require('path');
+	path = require('path'),
+	routes = require('./routes/routes');
 
 const app=express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, '../', 'views','public')));
 
 app.use('*',require('./routes/routes.js'))
 
+app.use(routes);
 
 app.get('*',(req,res)=>{
 	res.render('index');

@@ -91,19 +91,21 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
      })
   }
     $scope.continue=function(){
-      $scope.step=2;
+      $scope.step=3;
     }
 
     $scope.dev_submit=function(){
      // console.log($scope.dev_name);
       $http({
-        method:"POST",
         url:'http://localhost:8000/dev/signup',
+        method:'POST',
+
         data:{
           name:$scope.dev_name,
           emailId:$scope.dev_email,
         }
       }).then((res)=>{
+
         console.log("data has been saved");
       })
 

@@ -143,7 +143,7 @@ const Schema = {
 		skills: {
 
 			type: Sequelize.STRING(512), //this is a mongo.id value that can be used to retrieve the skills array from MongoDB
-			allowNull: true, // I (shourya) have made this change, It should be true,coz we are not taking it at the time of signup
+			allowNull: true,
 			/*validate: {
 
 			}*/
@@ -170,6 +170,7 @@ const Schema = {
 
 	}),
 };
+
 // ======= Sync the schemas for MariaDB ======= //
 Schema.Developers.sync();
 Schema.Clients.sync();
