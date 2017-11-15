@@ -143,7 +143,7 @@ const Schema = {
 		skills: {
 
 			type: Sequelize.STRING(512), //this is a mongo.id value that can be used to retrieve the skills array from MongoDB
-			allowNull: false,
+			allowNull: true,
 			/*validate: {
 
 			}*/
@@ -170,5 +170,7 @@ const Schema = {
 
 	}),
 };
+Schema.Clients.sync();
+Schema.Developers.sync();
 
 export default Schema;

@@ -85,27 +85,26 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
        phone:$scope.phone,
        address:$scope.address,
        companyType:$scope.company_type,
-       description:
       }
      }).then((res)=>{
 
      })
   }
     $scope.continue=function(){
-      $scope.step=2;
+      $scope.step=3;
     }
 
     $scope.dev_submit=function(){
       console.log($scope.dev_name);
       $http({
-        url:'',
+        url:'http://localhost:8000/dev/signup',
         method:'POST',
         data:{
           name:$scope.dev_name,
           emailId:$scope.dev_email,
         }
       }).then((res)=>{
-        
+        console.log("Thanks");
       })
 
     }
