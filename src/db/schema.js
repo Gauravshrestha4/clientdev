@@ -5,7 +5,7 @@
 	differentiated by Schema names as keys.
 */
 
-const monogoose = require('mongoose');
+const mongoose = require('mongoose');
 const Sequelize = require('sequelize');
 
 import {sequelize} from './connections';
@@ -15,7 +15,7 @@ const Schema = {
 
 	// ===== MongoDB Schema's ==== //
 
-	Skills : new monogoose.Schema({
+	Skills : new mongoose.Schema({
 		
 		developerID: {
 		

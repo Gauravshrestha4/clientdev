@@ -1,10 +1,11 @@
 let router = require('express').Router();
 let connection=require('../db/connections');
 let sequelize=connection.sequelize;
-import {Schema} from '../db/schema'
+import Schema from '../db/schema'
 
 router.post('/dev/signup',(req,res)=>{
-	databody=req.body;
+	let databody=req.body;
+	console.log('\n\n\n\n\nData received',databody);
 	Schema.Developers.create({
 		name:databody.name,
 		emailId:databody.emailId,
