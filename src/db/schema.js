@@ -5,7 +5,7 @@
 	differentiated by Schema names as keys.
 */
 
-const monogoose = require('mongoose');
+const mongoose = require('mongoose');
 const Sequelize = require('sequelize');
 
 import {sequelize} from './connections';
@@ -15,7 +15,7 @@ const Schema = {
 
 	// ===== MongoDB Schema's ==== //
 
-	Skills : new monogoose.Schema({
+	Skills : new mongoose.Schema({
 		
 		developerID: {
 		
@@ -143,7 +143,7 @@ const Schema = {
 		skills: {
 
 			type: Sequelize.STRING(512), //this is a mongo.id value that can be used to retrieve the skills array from MongoDB
-			allowNull: false,
+			allowNull: true, // I (shourya) have made this change, It should be true,coz we are not taking it at the time of signup
 			/*validate: {
 
 			}*/
@@ -170,5 +170,7 @@ const Schema = {
 
 	}),
 };
-
+// ======= Sync the schemas for MariaDB ======= //
+Schema.Developers.sync();
+Schema.Clients.sync();
 export default Schema;
