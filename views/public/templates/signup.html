@@ -1,0 +1,133 @@
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/responsive.css">
+<section class="signup">
+	<div class="container">
+		<div class="row form_base">
+			<div class="col m4 s12 left_pane">
+				<div class="company-logo">
+					<a   ng-click="home()" href="#"><img src="../img/clientdev1.png"><a>
+				</div>
+			</div>
+			<div class="col offset-m1 m7 s12 right_pane">
+				<p class="heading">Create Free account</p>
+				<article class="sub-heading" ><span style="color:#393d40">Already have ClientDev account?</span> <span><a href="#" ui-sref="signin">Sign in</a></span></article>
+				<div class="signup_form">
+					<div class="row">
+				    <div class="col s12">
+				      <ul class="tabs tabs-fixed-width">
+				        <li class="tab col s3" ><a ng-click="click=1;style1=style;style2=null" href="" ng-style="style1"><span style="color:#393d40">Client</span></a></li>
+				        <li class="tab col s3" ><a ng-click="click=2;step=1; style1=null;style2=style" href="" ng-style="style2" ><span style="color:#393d40">Developer</span></a></li>
+				      </ul>
+				    </div>
+
+				    <div id="" ng-show="click==1" class="col s12 client-form">
+				    	<div class="row">
+						    <form class="col s12" name="client-signup-form" novalidate>
+						      <div class="row">
+						        <div class="input-field col s6">
+						          <i class="material-icons prefix">group</i>
+						          <input maxlength="30" id="company_name" type="text" class="validate" ng-model="company_name" required>
+						          <label for="company_name">Company Name*</label>
+						        </div>
+						        <div class="input-field col s6">
+						          <i class="material-icons prefix">business</i><input maxlength="20" id="company_type" type="text" class="validate" placeholder="E.g Startup/business etc." ng-model="company_type" required>
+						          <label for="company_type">Company Type*</label>
+						        </div>
+						        
+						      </div>
+						      <div class="row">
+						      	<div class="input-field col s6">
+						      		<i class="material-icons prefix">mail</i>
+						          <input maxlength="30" id="email" type="email" class="validate" placeholder="To be used as Username" ng-model="email" required>
+						          <label for="email">Email*</label>
+						        </div>
+						        <div class="input-field col s6">
+						        <i class="material-icons prefix">phone</i>
+						          <input maxlength="10" id="Phone" type="text" class="validate" ng-model="phone" required>
+						          <label for="Phone">Phone</label>
+						        </div>
+						        
+						      </div>
+						      <div class="row">
+						        <div class="input-field col s12">
+						        	<i class="material-icons prefix">person_pin_circle</i>
+						          <input maxlength="50" id="address" type="text" class="validate" ng-model="address" required>
+						          <label for="address">Address</label>
+						        </div>
+						      </div>
+						      <div class="row">
+						        <div class="input-field col s12">
+						        <i class="material-icons prefix">vpn_key</i>
+						          <input maxlength="8" id="password" type="password" class="validate" placeholder="Must be 6-8 characters long" ng-model="password" required>
+						          <label for="password">Password*</label>
+						        </div>
+						      </div>
+
+						      <div class="row">
+						        <div class="input-field col s12">
+						        <i class="material-icons prefix">vpn_key</i>
+						          <input maxlength="8" id="password" type="password" class="validate" ng-model="password" required>
+						          <label for="password">Confirm Password*</label>
+						        </div>
+						      </div>
+						      <p class="center" style="padding-bottom: 30px">
+							    <input type="checkbox" id="test5" required />
+							    <label for="test5"><a href="#">Agree to the ClientDev Terms & Conditions</a></label>
+							  </p>
+							  <p class="center col s12">
+						      <button class="waves-effect waves-light btn " ng-click="client_submit()" style="background-color: #f26234;width:50%" ng-disabled="client-signup-form.$invalid">Sign up</button>
+						      </p>
+						    </form>
+						  </div>
+        
+				    </div>
+
+
+				    <div id="" ng-show="click==2;"class="col s12 dev-form">
+				    	<div class="row" ng-show="step==1">
+				    		<p class="center dev_step_1">Step1 : Fill in the credentials</p>
+						    <form class="col s12" name="dev-signup-form" novalidate>
+						      <div class="row">
+						        <div class="input-field col s12">
+						          <i class="material-icons prefix">person</i>
+						          <input maxlength="20" id="dev_name" type="text" class="validate" ng-model="dev_name" required>
+						          <label for="dev_name">Name*</label>
+						        </div>
+						      </div>
+
+						      <div class="row">
+						      	<div class="input-field col s12">
+						      		<i class="material-icons prefix">mail</i>
+						          <input maxlength="30" id="email" type="email" class="validate" placeholder="To be used as Username" ng-model="dev_email" required>
+						          <label for="email">Email*</label>
+						        </div>
+						      </div> 
+						      <p class="center">
+							      <input type="checkbox" id="test6" ng-model="check" />
+							      <label for="test6"><a href="">I agree to ClientDev Terms and Conditions</a></label>
+							  </p>
+							  <p class="center col s12">
+						      <button class="waves-effect waves-light btn" ng-click="continue()" style="background-color: #f26234;width: 50%" ng-disabled="dev-signup-form.$invalid || !check">Continue</button>
+						      </p>
+
+						    </form>
+						  </div>
+						  <div class="" ng-show="step==2">
+						  	<p class="center dev_step_2">Step 2: Qualification Test</p>
+						  	<p class="dev_step_2_info center">You have to pass a Qulification Test to create an account on ClientDev</p><p class="center"><a ng-click="show_desc=1">More Info...</a></p>
+						  	<hr>
+						  	<div class="abt_q_test" ng-show="show_desc==1">
+						  		The Qualification Test would test your ability to handle the computer. It may test your basic programming skills. 
+						  		It is mandatory for a developer to clear this test in order to create an account on ClientDev. <br><br>
+						  		Do well in your Exam. All the Best!!
+						  	</div>
+						  	<p class="center col s12">
+						  	 <button class="waves-effect waves-light btn " ng-click="dev_submit()" style="background-color: #f26234;width: 50%">Take Test</button></p>
+						  </div>
+				    </div>
+				  </div>      
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

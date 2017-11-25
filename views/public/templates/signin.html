@@ -1,0 +1,77 @@
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/responsive.css">
+<section class="signin">
+	<div class="container">
+		<div class="row form_base">
+			<div class="col m4 s12 left_pane">
+				<div class="company-logo">
+					<a   ng-click="home()" href="#"><img src="../img/clientdev1.png"><a>
+				</div>
+			</div>
+			<div class="col offset-m1 m7 s12 right_pane">
+				<p class="heading">Sign In</p>
+				<article class="sub-heading" ><span style="color:#393d40">Don't have ClientDev account?</span> <span><a href="#" ui-sref="signup">Create free account</a></span></article>
+				<div class="signin_form">
+					<div class="row">
+				    <div class="col s12">
+				      <ul class="tabs tabs-fixed-width">
+				        <li class="tab col s3" ><a ng-click="click=1;style1=style;style2=null" href="" ng-style="style1"><span style="color:#393d40">Client</span></a></li>
+				        <li class="tab col s3" ><a ng-click="click=2; style1=null;style2=style" href="" ng-style="style2" ><span style="color:#393d40">Developer</span></a></li>
+				      </ul>
+				    </div>
+
+				    <div id="" ng-show="click==1" class="col s12 client-form">
+				    	<div class="row">
+						   <form class="col s12">
+						      <div class="row">
+						        <div class="input-field col s12">
+						          <i class="material-icons prefix">account_circle</i>
+						          <input id="icon_prefix" type="text" class="validate">
+						          <label for="icon_prefix">Client's Username</label>
+						        </div>
+						        <div class="input-field col s12">
+						          <i class="material-icons prefix">vpn_key</i>
+						          <input id="icon_pass" type="password" class="validate">
+						          <label for="icon_pass">Password</label>
+						        </div>
+						      </div>
+						      <p class="center" style="padding-bottom: 10px">
+							    <a href="#">Forgot Password?</a>
+							  </p>
+						      <p class="center" class="col s12">
+						  	 <button class="waves-effect waves-light btn center" ng-click="" style="background-color: #f26234;width:50%">Sign In</button></p>
+						    </form>
+						</div>
+				    </div>
+
+
+				    <div id="" ng-show="click==2;"class="col s12 dev-form">
+				    	<div class="row">
+						   <form class="col s12">
+						      <div class="row">
+						        <div class="input-field col s12">
+						          <i class="material-icons prefix">account_circle</i>
+						          <input id="icon_prefix" type="text" class="validate" ng-model="dev_username">
+						          <label for="icon_prefix">Developer's Username</label>
+						        </div>
+						        <div class="input-field col s12">
+						          <i class="material-icons prefix">vpn_key</i>
+						          <input id="icon_pass" type="password" class="validate" ng-model="dev_password">
+						          <label for="icon_pass">Password</label>
+						        </div>
+						      </div>
+						      <p class="center" style="padding-bottom: 10px">
+							    <a href="#">Forgot Password?</a>
+							  </p>
+						      <p class="center" class="col s12">
+						  	 <button class="waves-effect waves-light btn center" ng-click="dev_signin()" style="background-color: #f26234;width:50%">Sign In</button></p>
+						    </form>
+						</div>
+						  
+				    </div>
+				  </div>      
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

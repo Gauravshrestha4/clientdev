@@ -332,7 +332,7 @@ footer
 
 /*************************************CSS for Signup*********************************************************/
 
-.form_base, .signup
+.form_base, .signup,.signin
 {
 	background-color: #fbfbfb;
 	height: 100%;
@@ -351,7 +351,7 @@ footer
 	font-size: 15px;
 	margin-top: -50px;
 }
-.signup_form
+.signup_form,.signin_form
 {
 	height: 100%;
 	margin-top:30px;
@@ -387,4 +387,21 @@ footer
 {
 	height:20vw;
 	width:20vw;
+}
+.dev_step_1,.dev_step_2
+{
+	font-size: 2vw;
+	font-weight: bold;
+}
+.dev_step_2_info
+{
+	color:#6d7a83;
+}
+.abt_q_test
+{
+	height: 100px;
+	background-color:#fbfbfb;
+	transition: 0.3 all;
+	margin-bottom: 40px;
+	padding-left: 20px;
 }

@@ -7,13 +7,18 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
   $stateProvider
     .state('mainpage',{
       url: '/',
-      templateUrl: 'mainpage.html',
+      templateUrl: '/templates/mainpage.html',
       controller: 'mainpageController'
     })
     .state('signup', {
       url: '/signup',
-      templateUrl: 'signup.html',
+      templateUrl: '/templates/signup.html',
       controller: 'signupController'
+    })
+    .state('signin',{
+      url:'/signin',
+      templateUrl:'/templates/signin.html',
+      controller:'signinController'
     })
     
 })
@@ -91,7 +96,7 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
      })
   }
     $scope.continue=function(){
-      $scope.step=3;
+      $scope.step=2;
     }
 
     $scope.dev_submit=function(){
@@ -108,4 +113,24 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
       })
 
     }
-});
+})
+
+app.controller('signinController',function($scope,$rootScope,$http,$state)
+{
+  console.log("signinController called");
+  $scope.click=1;
+  $scope.style={'border':'2px solid #bdbdbd','color':'white'};
+  $scope.style1=$scope.style;
+  $scope.dev_signin=function(){
+    $http({
+      url:'http://localhost:8000/dev/signin',
+      method:'POST',
+      data:{
+        name:$scope.dev_username,
+        password:dev_password
+      }
+    }).then((res)=>{
+      console.log(res);
+    })
+  }
+})
