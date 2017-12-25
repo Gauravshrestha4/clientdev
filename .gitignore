@@ -15,6 +15,9 @@ TODO
 
 views/img/*
 
+views/public/img/*
+
+
 # Do not commit log files
 
 *.log.*

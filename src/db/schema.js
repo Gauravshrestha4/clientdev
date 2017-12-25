@@ -65,7 +65,8 @@ const Schema = {
 		description: {
 			
 			type: Sequelize.TEXT,
-			allowNull: false,
+			allowNull: true,
+			defaultValue: 'No Description available'
 			/*validate: {
 
 			}*/
@@ -75,6 +76,7 @@ const Schema = {
 
 			type: Sequelize.STRING(512),
 			allowNull: true,
+			defaultValue: 'No picture available'
 			/*validate: {
 
 			}*/

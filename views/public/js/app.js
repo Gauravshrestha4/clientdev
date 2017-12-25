@@ -1,4 +1,4 @@
-var app=angular.module('clientdev',['ui.router']);
+const app=angular.module('clientdev',['ui.router']);
 
 app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
 {
@@ -82,17 +82,17 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
     $scope.client_submit=function(){
      console.log($scope.company_name);
      $http({
-      url:'',
+      url:'http://localhost:8000/client/signup',
       method:'POST',
       data:{
-       comapanyName:$scope.company_name,
+       companyName:$scope.company_name,
        emailId:$scope.email,
        phone:$scope.phone,
        address:$scope.address,
        companyType:$scope.company_type,
       }
      }).then((res)=>{
-
+        console.log(res);
      })
   }
     $scope.continue=function(){

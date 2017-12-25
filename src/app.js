@@ -27,20 +27,12 @@ app.use(bodyparser.urlencoded({
 //setup static files directory for stylesheets and javascripts
 app.use(express.static(path.join(__dirname, '../', 'views','public')));
 
-app.use('*',require('./routes/routes.js'))
 
 app.use(routes);
 
 app.get('*',(req,res)=>{
 	res.render('index');
 });
-/*
-app.get('/mainpage*',(req,res) => {
-	res.render('templates/mainpage.html');
-});
-app.get('/signup',(req,res)=>{
-	res.render('templates/signup.html');
-})*/
 
 app.listen(8000,(req,res)=>{
 	console.log("Application running on 8000")
