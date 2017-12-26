@@ -17,6 +17,8 @@ views/img/*
 
 views/public/img/*
 
+*.jpg
+*.png
 
 # Do not commit log files
 
