@@ -64,7 +64,7 @@ const Schema = {
 
 		description: {
 			
-			type: Sequelize.TEXT,
+			type: Sequelize.STRING(512),
 			allowNull: true,
 			defaultValue: 'No Description available'
 			/*validate: {
@@ -100,6 +100,17 @@ const Schema = {
 
 			}*/
 		},
+		password:{
+			type:Sequelize.STRING,
+			allowNull:false
+
+			
+		},
+
+		confirmPassword:{
+			type:Sequelize.STRING,
+			allowNull:false
+		}
 
 	}),
 

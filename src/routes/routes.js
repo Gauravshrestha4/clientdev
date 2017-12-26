@@ -14,7 +14,7 @@ router.post('/dev/signup',(req,res)=>{
 		if(exists)
 		{
 			//console.log("emailId exists");
-			res.send("emailId exists");
+			res.status(409).send("Email ID : ${databody.emailId} already exists");
 		}
 		else if(!exists)
 		{
@@ -23,10 +23,15 @@ router.post('/dev/signup',(req,res)=>{
 				name:databody.name,
 				emailId:databody.emailId
 			}).then((response)=>{
-				res.send(response);
+				res.status(200).send("Signup Scuccessful");
+			}).catch((err)=>{
+				throw err;
 			})
 		}
 
+	})
+	.catch((err)=>{
+		res.status(500).send("Sorry We cannot process your request right now");
 	})
 });
 
@@ -50,7 +55,9 @@ router.post('/client/signup', (req,res) => {
 				emailId: data.emailId,
 				companyType: data.companyType,
 				address: data.address,
-				phone: data.phone 
+				phone: data.phone,
+				password:data.password,
+				confirmPassword:data.confirmPassword,
 			})
 			.then((client) => {
 				res.status(200).send('Signup successful');
@@ -63,7 +70,7 @@ router.post('/client/signup', (req,res) => {
 	})
 	.catch((err) => {
 		console.error(`Error in creating client: ${err}`);
-		res.status(500).send('Sorry we are unable to prcess your request right now!');
+		res.status(500).send('Sorry we are unable to process your request right now!');
 	})
 });
 

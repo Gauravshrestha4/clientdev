@@ -5981,7 +5981,7 @@ label {
   color: #d1d1d1;
 }
 
-/* Text inputs 
+/*Text inputs */
 input:not([type]),
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
@@ -5997,14 +5997,14 @@ input[type=search]:not(.browser-default),
 textarea.materialize-textarea {
   background-color: transparent;
   border: none;
-  border: 1px solid #9e9e9e;
+  border-bottom: 1px solid #9e9e9e;
   border-radius: 0;
   outline: none;
   height: 3rem;
   width: 100%;
   font-size: 1rem;
   margin: 0 0 20px 0;
-  padding: 5px;
+  padding: 0px;
   -webkit-box-shadow: none;
           box-shadow: none;
   -webkit-box-sizing: content-box;
@@ -6012,7 +6012,7 @@ textarea.materialize-textarea {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-*/
+
 input:not([type]):disabled, input:not([type])[readonly="readonly"],
 input[type=text]:not(.browser-default):disabled,
 input[type=text]:not(.browser-default)[readonly="readonly"],

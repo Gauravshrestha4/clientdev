@@ -99,6 +99,8 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
        phone:$scope.phone,
        address:$scope.address,
        companyType:$scope.company_type,
+       password:$scope.password,
+       confirmPassword:$scope.confirmPassword,
       }
      }).then((res)=>{
         console.log(res);
@@ -124,6 +126,28 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
       })
 
     }
+    $scope.check_fields=function(){
+      
+      if(($scope.company_name==null)|| ($scope.email==null) ||($scope.phone==null)||($scope.address==null)||($scope.company_type==null)||($scope.password=null)||($scope.confirmPassword==null))
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    $scope.check_dev_fields=function(){
+      if(($scope.dev_name==null)||($scope.dev_email==null))
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    
 })
 
 app.controller('signinController',function($scope,$rootScope,$http,$state)
