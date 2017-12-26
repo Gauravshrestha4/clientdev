@@ -1,16 +1,17 @@
 <nav class="nav1" ng-class="navClass">
   <div class="nav-wrapper">
-      <a href="!#" class="brand-logo company_logo" ng-class="headClasslink"><span class="heading" ng-class="headClass">ClientDev</span></a>
+      <a href="!#" class="brand-logo company_logo" ng-class="headClasslink"><span class="heading" ng-class="headClass">ClientDev</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse" style="color:red"><i class="material-icons">menu</i></a>
-    <div class="myNav">
-      <ul class="hide-on-med-and-down valign-wrapper links">
-        <li ng-class="linkClass" class="li"><i class="material-icons left" >home</i>Home</li>
-        <li ng-class="linkClass" class="li"><i class="material-icons left">language</i>Our Services</li>
-        <li ng-class="linkClass" class="li"><i class="material-icons left">person_outline</i>Our Clients</li>
-        <li ng-class="linkClass" class="li"><i class="material-icons left">timeline</i>How it works</li>
+    <div class="">
+      <ul class="right hide-on-med-and-down valign-wrapper links">
+        <li ng-class="linkClass" class="li"><a ui-sref="clientDashboard" ><i class="material-icons left" >home</i>Home</a></li>
+        <li ng-class="linkClass" class="li"><a href="#services"><i class="material-icons left">language</i>Our Services</a></li>
+        
+        <li ng-class="linkClass" class="li"><a ui-sref="howItWorks"><i class="material-icons left">timeline</i>How it works<a/></li>
         <span class="navButtons">
-          <li ng-class="linkClass" class="li "><a ui-sref="signup" class="waves-effect waves-light btn signupButton">Sign up</a></li>
-          <li ng-class="linkClass" class="li "><button ui-sref="signin" class="waves-effect waves-light btn signinButton">Sign in</button></li>
+        <li ng-class="linkClass" class="li"><a href="#clients"><i class="material-icons left">person_outline</i>Our Clients</a></li>
+          <li ng-class="linkClass" class="li "><a ui-sref="signup"><i class="material-icons left">last_page</i><span style="font-weight: bold">Sign up</span></a></li>
+          <li ng-class="linkClass" class="li "><a ui-sref="signin"> <i class="material-icons left">keyboard_arrow_right</i><span style="font-weight: bold">Sign in</span></a></li>
         </span>
         
       </ul>
@@ -20,7 +21,7 @@
 </nav>
 <div class="sideNav">
   <ul class="side-nav" id="mobile-demo">
-    <li><i class="material-icons left">home</i>Home</li>
+    <li><a ui-sref="clientDashboard"><i class="material-icons left">home</i>Home</a></li>
     <li><i class="material-icons left">language</i>Our Services</li>
     <li><i class="material-icons left">person_outline</i>Our Clients</li>
     <li><i class="material-icons left">timeline</i>How it works</li>
@@ -31,45 +32,67 @@
 
 
 <!-- landing page section-->
-<div class="landingpage">
-  <p class="maintext center-align" style="color: white;">Welcome to CleintDev!!</p>
-  <p class="maintext_sub center-align">Development Platform Development Platform</p>
-  <div class="container container1">
-    <div class="row logo">
-      <div class="col offset-m1 m2 offset-s1 s11">
-          <div class="card card1">
-            <div class="card-image">
-              <img src="img/logo1.png" class="clientimage">
-            </div>
-            <div class="card-content">
-              <p class="center-align clienttext" style="color: #880e4f;">Client</p>
-            </div>
-          </div>
+<div class="landingpage" id="home">
+  <div class="row main_div">
+    <div class=" container container2">
+      <div class="col m8 s12">
+        <p class="p main_heading">Want to get your project done!</p>
+        <p class="p main_subheading">Turn your imagination into reality, hire freelancers within your budget</p>
       </div>
-
-      <div class="col offset-m2 m3 offset-s1 s11" >
-          <div class="card card1">
-            <div class="card-image">
-              <img src="img/logo2.png" class="laptopimage">
-            </div>
-          </div>
-      </div>
-
-      <div class="col offset-m2 m2 offset-s1 s11">
-          <div class="card card1">
-            <div class="card-image">
-              <img src="img/logo6.png" class="developerimage">
-            </div>
-            <div class="card-content">
-              <p class="center-align clienttext" style="color: #880e4f;">Developer</p>
-            </div>
-          </div>
+      <div class="col m4 s12">
+       
       </div>
     </div>
   </div>
 </div>
+
+<!---Get Started in minutes-->
+<section class="getStarted" id="getStarted">
+  <div class="stepsdiv center-align">
+    <p class="steps center-align">Get Started in minutes</p>
+    <hr class="divider1">
+  </div>
+  <div class="row getStartedRow">
+    <div class="container getStartedContainer">
+      <div class="col s12 m4 center stepone">
+        <div class="step1Img">
+          <img src="img/register.png">
+        </div>
+        <div class="numBack">
+          <p class="p stepStyle">1</p>
+        </div>
+        <div class="step1Desc">
+          <p class="p">Create your ClientDev account and manage your comapny's profile.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m4 center stepone">
+        <div class="step1Img">
+          <img src="img/test.png">
+        </div>
+        <div class="numBack">
+          <p class="p stepStyle" >2</p>
+        </div>
+        <div class="step1Desc">
+          <p class="p">Post your project by completing form describing what your need and set the E-Test for freelancer. </p>
+        </div>
+      </div>
+      <div class="col s12 m4 center stepone">
+        <div class="step1Img">
+          <img src="img/users.png">
+        </div>
+        <div class="numBack">
+          <p class="p stepStyle" >3</p>
+        </div>
+        <div class="step1Desc">
+          <p class="p">Select the best person and they will get your work done.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <!--Our Services Section-->
-<section class="our_services">
+<section class="our_services" id="services">
   
 <div class="stepsdiv center-align">
   <p class="steps center-align">Our Services</p>
@@ -80,32 +103,32 @@
     <div class="row service-row">
       <div class="col m4 s12 service-div">
         <div class="service_content">
-          <div>
-            <img src="img/client.png" height="80" width="80">
+          <div class="clientServiceImg">
+            <img src="img/clientService.png">
           </div>
           <div class="service_text">
             <h4>Client Service</h4>
-            <p> Lorep ipsumLorep ipsumLorep ipsum Lorep ipsumLorep ipsumLorep ipsumLorep ipsumLorep ipsumLorep ipsumLorep ipsumLorep ipsum</p>
+            <p> We provide clients a platfrom to hire developers to get their jobs done, within thier budget limit. Hire telaneted freelancers and pay as much you want.</p>
           </div>
         </div>
       </div>
 
       <div class="col m4 s12 service-div">
         <div class="service_content">
-          <div>
-            <img src="img/developer.png" height="80" width="80">
+          <div class="developerService">
+            <img src="img/developerService.png" >
           </div>
           <div class="service_text">
             <h4>Developer's Corner</h4>
-            <p> Lorep ipsumLorep ipsumLorep ipsum Lorep ipsumLorep ipsumLorep ipsumLorep ipsumLorep ipsumLorep ipsumLorep ipsumLorep ipsum</p>
+            <p> Need Work? We provide developers a plaform to get their hands on real time projects. Find your favorite job and get paid.  </p>
           </div>
         </div>
       </div>
 
       <div class="col m4 s12 service-div">
         <div class="service_content">
-          <div>
-            <img src="img/secure.png" height="80" width="80">
+          <div class="secureService">
+            <img src="img/secureServices.png" >
           </div>
           <div class="service_text">
             <h4>Secure Service</h4>
@@ -117,48 +140,11 @@
   </div>
 </section>
 
-<!-- how it works section-->
-<section class="how_it_works">
-<div class="stepsdiv center-align">
-  <p class="steps center-align">How it works?</p>
-  <hr class="divider1">
-</div>
 
-<div class="client"style="background-color: white;border:none">
-  <div class="container container1">
-    <div class="row">
-      <div class="col m7 offset-s1 s11">
-        <p class="clientheading">Clients</p>
-        <p class="clientdescription">Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.Client are very important.<br><a href="">Read More..</a></p>
-      </div>
-
-      <div class="col offset-m1 offset-s1">
-        <iframe class="clientvideo" width="320" height="220" src="//www.youtube.com/embed/58-atNakMWw" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="developer">
-    <div class="clientsec"></div>
-    <div class="container container1">
-      <div class="row">
-        <div class="col m4 offset-s1 s10">
-          <iframe class="developervideo" width="320" height="220" src="//www.youtube.com/embed/58-atNakMWw" frameborder="0" allowfullscreen></iframe>
-        </div>
-
-        <div class="col offset-m1 m6 offset-s1 s11">
-          <p class="developerheading">Developers</p>
-          <p class="developerdescription">Developers are genius. Developers are genius.Developers are genius.Developers are genius.Developers are genius.Developers are genius.Developers are genius.Developers are genius.Developers are genius.Developers are genius.Developers are genius.Developers are genius.Developers are genius.<br><a href="">Read More..</a></p>
-        </div>
-      </div>
-    </div>
-</div>
-</section>
 
 
 <!--Our Clients -->
-<section class="our_clients">
+<section class="our_clients" id="clients">
   
 
 <div class="stepsdiv center-align">
@@ -216,7 +202,7 @@
             </div>
 
             <div class="col offset-m1 m7 s12">
-
+              
             </div>
           </div>
       </div>

@@ -1,0 +1,177 @@
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/responsive.css">
+<nav class="nav1" ng-class="navClass">
+  <div class="nav-wrapper">
+      <a href="!#" class="brand-logo company_logo" ng-class="headClasslink"><span class="heading" ng-class="headClass">ClientDev</span></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse" style="color:red"><i class="material-icons">menu</i></a>
+    <div class="">
+      <ul class="right hide-on-med-and-down valign-wrapper links">
+        <li ng-class="linkClass" class="li"><a href="#home"><i class="material-icons left" >home</i>Home</a></li>
+        <li ng-class="linkClass" class="li"><a href="#services"><i class="material-icons left">language</i>Our Services</a></li>
+        
+        <li ng-class="linkClass" class="li"><a ui-sref="howItWorks"><i class="material-icons left">timeline</i>How it works<a/></li>
+        <span class="navButtons">
+        <li ng-class="linkClass" class="li"><a href="#clients"><i class="material-icons left">person_outline</i>Our Clients</a></li>
+          <li ng-class="linkClass" class="li "><a ui-sref="signup" class="waves-effect waves-light "><span style="font-weight: bold">Sign up</span></a></li>
+          <li ng-class="linkClass" class="li "><a ui-sref="signin" class="waves-effect waves-light "><span style="font-weight: bold">Sign in</span></a></li>
+        </span>
+        
+      </ul>
+    </div>
+      
+  </div>
+</nav>
+
+<section class="header">
+  <div class="container howItWorks-container">
+    <div class="row">
+      <div class="headerText">
+        <h2>How It Works</h2>
+        <p>An overview of hiring and get hired process!</p>
+        <hr class="divider2">
+      </div>
+    </div>
+    <div class="row option_row center">
+      <div class="col s4 offset-m1 m3  optionClient" ng-click="set=1;style1=style;style2=null;style3=null" ng-style="style1">
+        <p>If I want to hire</p>
+      </div>
+      <div class="col s4 offset-m1 m3 option_dev" ng-click="set=2;style1=null;style2=style;style3=null" ng-style="style2">
+        <p>If I'm a Developer</p>
+      </div>
+      <div class="col s4 offset-m1 m3  option_faq" ng-click="set=3;style1=null;style2=null;style3=style" ng-style="style3">
+        <p>FAQ</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+<section class="If_client" ng-show="set==1">
+  <section class="whatWork">
+    <div class="row">
+      <div class="container howItWorks-container">
+        <div class="col s12 m6">
+          <p class="p whatWorkheading">What type of work can I get done?<p>
+          <p class="descP"> What makes your organization perfect? An innovative developer with great thinking skills. Hire freelancers for any type of projects including Web Development, Robotics, Android app developement </p>
+        </div>
+        <div class="col s12 m6 center">
+          <div class="whatWorkImg">
+            <img src="img/whatwork.png" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="howToPost">
+    <div class="row">
+      <div class="container howItWorks-container">
+        <div class="col s12 m6">
+          <div class="howToImg center">
+            <img src="img/howTo.png">
+          </div>
+        </div>
+        <div class="col s12 m6 howTo">
+           <p class="p howToheading">How can I get my work done?<p>
+           <ol>
+             <li>Create your account</li>
+             <p class="descP">Create your ClientDev account for free and manage your comapany's profile.</p>
+             <li>Post your project</li>
+             <p class="descP">Turn your dream into reality. Post your project, declare the perks for developer which could be anything viz. money, electronic accessories, books etc. Browse and set <a href=""><span style="font-weight: bold">E-Test</span></a>.</p>
+             <li>Select perfect developer</li>
+             <p>
+               <ul class="browser-default">
+                 <li class="descP">Choose your developer(s) from E-Test qualified developers.</li>
+                 <li class="descP">Award your project and developer off to work.</li>
+                 <li class="descP">Discuss your requirements.</li>
+               </ul>
+             </p>
+             <li>Pay off the rewards when you are satisfied</li>
+             <p class="descP">Once you're satisfied with the results, pay off rewards to the developer.</p>
+           </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="howMuch">
+    <div class="row">
+      <div class="container howItWorks-container">
+        <div class="col s12 m6">
+          <p class="p howMuchheading">What do I need to pay?<p>
+          <p class="descP">"Money is what can get you everything". But we dont believe in this saying. Keep the control in your hand and get your work done on your cost. Just Post the project and set the perks as per your budget. You can set anything as a perk you want like Money reward, Electronic accessories, Shopping Vouchers, Movie tickets etc. </p>
+        </div>
+        <div class="col s12 m6 center">
+          <div class="howMuchImg">
+            <img src="img/howMuch.png" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="haveAProject">
+    <div class="row haveAprojectRow">
+      <div class="container howItWorks-container">
+        <div class="col s12 m8">
+          <h4>Have a project ?? Get it done now !</h4>
+        </div>
+        <div class="col s12 m4 center">
+          <a ui-sref="" class="waves-effect waves-light btn PostButton">Post Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="if_dev" ng-show="set==2">
+  <section class="howItWorks_developers">
+  <div class="row">
+    <div class="container  howItWorks-container">
+      <div class="col s12 m6">
+        <p class="p howItWorkDevheading">I am a freelancer ! How should I start ?</p>
+        <p>
+          <ol>
+            <li>Give Qualification Test</li>
+            <p class="descP">At the time of signup with ClientDev, you have to pass a <a href=""><span style="font-weight: bold">Q-Test</span></a> which would assess your certain abilities such as programming and general computer knowledge. Only after clearing the Q-Test you will be able to create your account.</p>
+            <li>Manage your Profile and browse projects</li>
+            <p class="descP">After successfull signup with ClientDev, manage your profile by adding your skills and other information. Browse projects of your interest and try to pass <a href=""><span style="font-weight: bold">E-Test</span></a> set up by the Clients. Clear E-Test and increase your chances of getting hired.</p>
+            <li>Perform Well, Get your rewards !</li>
+            <p class="descP">If you get hired, execute your tasks well and impress Cleint with your work. Get rewards if any. Get your ClientDev Certi for sure.</p>
+          </ol>
+        </p>
+      </div>
+      <div class="col s12 m6">
+        <div class="devImg center">
+          <img src="img/whatDeveloper.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+<section class="faq" ng-show="set==3">
+  
+</section>
+<!--<footer>
+    <div class="footersec"></div>
+    <div class="footer_tint">
+      <div class="container_footer">
+          <div class="row">
+            <div class="col m4 s12 footer_left">
+             <h5>
+               <span><img src="img/clientDev.png" height="60" width="60"></span>ClientDev
+             </h5>
+             <p style="color:#6d7a83">ClientDev is a platform that provides small startups, business a freedom to get their work done at very low cost.Also, helps budding developers to find some exciting work to get experience.</p>
+             <div class="divider"></div><br>
+             <div class="social_links">
+               
+             </div>
+            </div>
+
+            <div class="col offset-m1 m7 s12">
+
+            </div>
+          </div>
+      </div>
+    </div>
+
+</footer>-->

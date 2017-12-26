@@ -20,7 +20,16 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
       templateUrl:'/templates/signin.html',
       controller:'signinController'
     })
-    
+    .state('howItWorks',{
+      url:'/how-it-works',
+      templateUrl:'templates/how_it_works.html',
+      controller:'howItWorksController'
+    })
+    .state('clientDashboard',{
+      url:'/client',
+      templateUrl:'templates/clientDashboard.html',
+      controller:'clientDashboardController'
+    })
 })
 
 app.controller('mainpageController',function($scope,$rootScope,$state,$http,$window){
@@ -135,4 +144,54 @@ app.controller('signinController',function($scope,$rootScope,$http,$state)
       console.log(res);
     })
   }
+})
+app.controller('howItWorksController',function($scope,$rootScope,$state,$http,$window){
+  $scope.set=1;
+  $scope.style={'backgroundColor':'#f26234','color':'white'};
+  $scope.style1=$scope.style;
+  console.log("howItWorks");
+    $scope.navClass="big";
+  $scope.headClass="heading";
+  $scope.linkClass="li";
+  $scope.headClasslink=".company_logo";
+  $scope.navClass = 'whiteColor';
+  $scope.docHeight=$window.innerHeight;
+  angular.element($window).bind(
+  "scroll", function() 
+  {
+         //console.log(window.pageYOffset);
+         if(window.pageYOffset >50) 
+         {
+          if(window.pageYOffset>$scope.docHeight)
+          {
+            $scope.navClass = 'baseColor';
+          $scope.headClass='heading_after_land';
+          $scope.linkClass='li_after_land';
+          $scope.headClasslink="company_logo_on_scroll";
+
+          }
+          else
+          {
+            $scope.navClass = 'whiteColor';
+            $scope.navClass = 'small';
+              $scope.headClass='heading_on_scroll';
+              $scope.linkClass='li_on_scroll';
+              $scope.headClasslink="company_logo_on_scroll";
+          }
+          
+         } 
+         else 
+         {
+           $scope.navClass = 'big';
+           $scope.headClass="heading";
+           $scope.linkClass="li";
+           $scope.headClasslink="company_logo";
+         }
+         $scope.$apply();
+        console.log("mainpageController called"); 
+   });
+})
+
+app.controller('clientDashboardController',function($state,$scope,$rootScope,$http){
+  console.log("Welcome Client");
 })

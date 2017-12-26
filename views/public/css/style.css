@@ -1,9 +1,61 @@
+
+/* ********************************************CSS for Text inputs ********************************************/
+
+input:not([type]),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea.materialize-textarea {
+  background-color: transparent;
+  border: 1px solid #f2f2f2;
+  border-radius: 0;
+  outline: none;
+  height: 2rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 20px 0;
+  padding-left: 10px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border: 1px solid #f26234;
+  
+}
+
+
 /*--------------------------------------------------Css for navbar-----------------------------------------*/
 
 @import "compass/css3";
 html,body
 {
 	font-family: 'Pontano Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 .nav1
 {
@@ -15,26 +67,35 @@ html,body
 	width:100%;
 	transition:0.5s linear all;
 }
+.sidenav
+{
+	background-color: #f26234;
+}
 .sideNav ul
 {
 	padding-top:80px;
 	padding-left:30px;
 	padding-bottom: 30px;
 }
-.sideNav ul li
+.sideNav ul li a
 {
 	font-size: 22px;
 	color: #f26234;
 	padding-top: 20px;
 }
 
-.myNav
+.sideNav ul li:hover
 {
-	padding-left: 20%;
+	color:#f26234;
 }
-.navButtons
+nav ul a
 {
-	padding-left: 20%;
+	color: #f26234;
+}
+nav ul a:hover
+{
+	background-color: transparent;
+	color:;
 }
 .signupButton
 {
@@ -68,7 +129,7 @@ html,body
 }
 .baseColor
 {
-	background-color:#fbfbfb;
+	background-color:white;
 	height: 60px;
 	transition:0.5s linear all;
 
@@ -133,75 +194,238 @@ html,body
 .landingpage
 {
 	height: 100%;
+	height: 654px;
 	padding-bottom: 10vw;
 	background:#f26234;
+	background:linear-gradient(120deg,#f26234 60%,#f4754c 40%);
 }
 
 .container1
 {
 	width: 75%;
 }
-
-.maintext
+.container2
 {
-	padding-top: 9vw;
-	font-size: 3.5vw;
+	width:80%;
+}
+.main_div
+{
+	padding-top: 15%;
 }
 
-.maintext_sub
+.p {
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    
+}
+.main_heading
+{
+	color:white;font-size:50px;font-weight: bold;
+}
+.main_subheading
+{
+	color:white;
+	font-weight: bold;
+	font-size: 20px;
+}
+/**************************************Get started********************************************************/
+.getStarted
+{
+	padding-bottom: 100px;
+}
+.getStartedContainer
+{
+	width: 75%;
+}
+.getStartedRow{
+	padding-top: 100px;
+}
+.numBack
+{
+	background-color: #fbfbfb;
+	color:#6d7a83;
+	width:100px;
+	height:100px;
+	margin-left: 30%;
+	border-radius: 100%;
+	padding-bottom: 20px;
+}
+.stepStyle
+{
+	font-weight: bold;font-size: 70px;
+}
+.numBack:hover
+{
+	background-color: ;
+	color:#f26234;
+	background-color: rgba(236, 237, 239, 0.9);
+}
+.step1Img
+{
+	width:100%;
+	height: 100%;
+	padding-bottom: 30px;
+}
+.step1Img img
+{
+	height:8vw;
+}
+.step1Desc
+{
+	padding-top: 30px;
+	color:#6d7a83;
+}
+/************************************** how it works section**********************************************/
+.header
+{
+	height:450px;
+	width:100%;
+	background-color: #fbfbfb;
+	background-size:cover;
+}
+.headerText{
+	padding-top:130px;
+	text-align: center;
+}
+.headerText h2
+{
+	font-size: 50px;
+	font-weight: bold;
+	color:#f26234;
+	
+}
+.option_row
+{
+	margin-top:100px;height:100px;
+}
+.optionClient,.option_dev,.option_faq
+{
+	border:2px solid #f26234;
+	height:100px;
+	background-color: white;
+
+}
+.optionClient p,.option_dev p,.option_faq p
 {
 	font-size: 2vw;
-	margin-top: -40px;
-	color: #880e4f;
+	
 }
-
-.card1
+.headerText p
 {
-	background-color: transparent;
-	border: none;
-	box-shadow: none;
+	font-size: 20px;
 }
-
-.logo
+.whatWork
 {
-	margin-top: 3vw;
+	margin-top: 130px;
+	width:100%;
+	height: 100%;
+	padding-bottom:100px; 
 }
-
-.clientimage
+.whatWorkheading,.howMuchheading,.howToheading,.howItWorkDevheading
 {
-	width: 100%;
-	height: 110px;
+	font-size:30px;
+	font-weight: bold;
 }
-
-.clienttext
-{
-	font-size: 16px;
-
-}
-
-.laptopimage
-{
-	width: 100%;
-	height: 150px;
-}
-
-.developerimage
+.howItWorks-container
 {
 	width: 80%;
-	height: 130px;
+}
+.howItWorks_clients
+{
+	height:100%;
+}
+.howItWorks_developers
+{
+	height: 100%;
+
+}
+.whatWorkImg
+{
+	width:100%;
+	height: 100%;
+}
+.whatWorkImg img
+{
+	height: 15vw;
+}
+.haveAProject
+{
+	height:200px;
+	background-color: #fbfbfb;
+}
+.haveAprojectRow
+{
+	padding-top: 5vw;
+}
+.howToPost
+{
+	background-color: #fbfbfb;
+	height: 100%;
+	width: 100%;
+	padding-top: 100px;
+	padding-bottom: 50px;
+}
+.howToImg
+{
+	width:100%;
+	height: 100%;
+}
+.howToImg img
+{
+	height: 20vw;
+}
+.howTo
+{
+	padding-left: 150px;
+}
+.howTo ol li, .howItWorks_developers ol li
+{
+	font-size: 20px;
+	font-weight: bold;
+}
+.howTo ol ul li
+{
+	font-weight: lighter;
+	font-size: 16px;
+}
+.howMuch
+{
+	width: 100%;
+	height:100%;
+	padding-top: 100px;
+	padding-bottom: 50px;
+}
+.howMuchImg,.devImg
+{
+	width: 100%
+	height:100%;
+}
+.howMuchImg img,.devImg img
+{
+	height: 20vw;
 }
 
-/************************************** how it works section**********************************************/
-
-.stepsdiv
+.PostButton
 {
-	margin-top: 50px;
+	background-color: #f26234;
+	width: 70%;
+}
+.howItWorks_developers
+{
+	padding-top: 100px;
+	padding-bottom: 50px;
+}
+.descP
+{
+	color:#6d7a83;
 }
 
 .steps
 {
 	font-size: 40px;
-	
 	font-family: 'Pontano Sans', sans-serif;
 }
 
@@ -211,63 +435,10 @@ html,body
 	border:2px solid #f26234;
 	margin-top: -40px;
 }
-.client
+.divider2
 {
-	margin-top: 10px;
-	height:230px;
-  	background:white;
-  	position:relative;
-}
-
-.clientheading
-{
-	margin-top: 25px;
-	font-size: 22px
-}
-
-.clientdescription
-{
-	color: #6d7a83;
-	
-}
-
-.clientvideo
-{
-	padding-top: 30px;
-}
-
-.developer
-{
-	height: 100%;
-  	background:#fbfbfb;
-  	overflow:hidden;
-  	position:relative;
-  	padding-bottom: 50px;
-}
-
-.clientsec
-{
-	width: 0;
-   	height:0;
-   	border-top: 100px solid white;
-   	border-left: 100vw solid transparent;
-}
-
-.developervideo
-{
-	margin-top: -20px;
-}
-
-.developerheading
-{
-	
-	font-size: 22px;
-	margin-top: -10px;
-}
-
-.developerdescription
-{
-	color: #6d7a83;
+	width: 60px;
+	border:2px solid #f26234;
 	
 }
 /**************************************************CSS for our services************************************************/
@@ -292,7 +463,7 @@ html,body
 {
 	background-color: #fbfbfb;
 	padding-top:10px;
-	padding-bottom: 50px;
+	padding-bottom: 70px;
 }
 .service_content
 {
@@ -314,7 +485,15 @@ html,body
  	padding-top: 10px;
  	padding-bottom: 100px;
  }
-
+.clientServiceImg,.developerService,.secureService
+{
+	width:100%;
+	height:100%;
+}
+.clientServiceImg img,.developerService img,.secureService img
+{
+	height:8vw;
+}
 /*--------------------------------------CSS for footer--------------------------------------------------*/
 footer
 {
@@ -417,4 +596,55 @@ footer
 	transition: 0.3 all;
 	margin-bottom: 40px;
 	padding-left: 20px;
+}
+/*******************************Client Dashboard *****************************************************/
+.dashboardLogo
+{
+	font-size: 1.5rem;
+	text-align: center;
+}
+.clientDashboard
+{
+	padding-left: 320px;
+	padding-top: 20px;
+	background-color: #fbfbfb;
+}
+.sidenav ul li a, .sidenav ul li a i
+{
+	color:#f26234;
+	font-size: 1rem;
+}
+.userInfo a 
+{
+	color:black;
+	font-size: 1rem;
+}
+.card-title
+{
+	color:#6d7a83;
+	font-weight: bold;
+}
+.jobPostForm
+{
+	padding-top: 50px;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+.jobPostForm p
+{
+	color:#6d7a83;
+	padding-top: 20px;
+	font-weight: bold;
+}
+
+.postjobButton button
+{
+	background-color: #f26234;
+	color:white;
+	margin-left: 30px;
+}
+
+.postjobButton button:hover
+{
+	background-color: #f26234;
 }
