@@ -7,6 +7,7 @@
 
 const mongoose = require('mongoose');
 const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt');
 
 import {sequelize} from './connections';
 
@@ -38,9 +39,9 @@ const Schema = {
 
 			type: Sequelize.STRING(512),
 			allowNull: false,
-			/*validate: {
-
-			}*/
+			validate: {
+				notEmpty: true,
+			}
 		},
 
 		emailId: {
@@ -48,9 +49,10 @@ const Schema = {
 			type: Sequelize.STRING(512),
 			allowNull: false,
 			primaryKey: true,
-			/*validate: {
-
-			}*/
+			validate: {
+				isEmail: true,
+				notEmpty: true
+			}
 		},
 
 		phone: {
@@ -100,11 +102,10 @@ const Schema = {
 
 			}*/
 		},
+		
 		password:{
 			type:Sequelize.STRING,
 			allowNull:false
-
-			
 		},
 
 		confirmPassword:{
@@ -112,6 +113,39 @@ const Schema = {
 			allowNull:false
 		}
 
+	}, {
+		hooks: {
+			beforeCreate: (client) => {
+				return new Promise((resolve, reject) => {
+					client.emailId = client.emailId.toLowerCase();
+
+					if(client.password !== client.confirmPassword){
+						reject(new Error('Passwords do not match'));
+					}
+					else{
+						bcrypt.hash(client.password, 18)
+						.then((res) => {
+							client.password = res;	
+							resolve(client);
+						})
+						.catch((err) =>{
+							reject(err);
+						})
+					}
+				});
+			}
+		},
+
+		instanceMethods: {
+			authenticate: (value) => {
+				if( bcrypt.compareSync(value, this.passwordDigest) ){
+					return this;
+				} 
+				else{
+					return false;
+				}
+			}
+		}
 	}),
 
 	Developers: sequelize.define('developers', {
