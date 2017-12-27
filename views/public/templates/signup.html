@@ -59,7 +59,9 @@
 						      <div class="row">
 						        <div class="input-field col s12">
 						        <i class="material-icons prefix">vpn_key</i>
-						          <input maxlength="8" id="password" type="password" class="validate" placeholder="Must be 6-8 characters long" ng-model="password" required>
+						          <!--<input maxlength="8" id="password" type="password" class="validate" placeholder="Must be 6-8 characters long" ng-model="password" required>
+						          <label for="password">Password*</label>-->
+						          <input maxlength="8" id="password" type="password" class="validate" ng-model="password" required>
 						          <label for="password">Password*</label>
 						        </div>
 						      </div>
@@ -67,20 +69,23 @@
 						      <div class="row">
 						        <div class="input-field col s12">
 						        <i class="material-icons prefix">vpn_key</i>
-						          <input maxlength="8" id="password" type="password" class="validate" ng-model="confirmPassword" required>
-						          <label for="password">Confirm Password*</label>
+						          <input maxlength="8" id="confirmpassword" type="password" class="validate" ng-model="confirmPassword" required>
+						          <label for="confirmpassword">Confirm Password*</label>
 						        </div>
 						      </div>
-						      <p class="center" style="padding-bottom: 30px">
-							    <input type="checkbox" id="test5" required ng-model="checked" />
+						      <p class="center" style="padding-bottom: 0px">
+							    <input type="checkbox" id="test5" ng-model="checked" />
 							    <label for="test5"><a href="#">Agree to the ClientDev Terms & Conditions</a></label>
 							  </p>
 							  <p class="center col s12">
-						      <button class="waves-effect waves-light btn" style="background-color: #f26234;width:50%" ng-disabled="client-signup-form.$invalid||check_fields()||!checked">Sign up</button>
+						      <button class="waves-effect waves-light btn" style="background-color: #f26234;width:50%" ng-disabled="client-signup-form.$invalid||check_fields()||!checked||check_password()">Sign up</button>
 						      </p>
 						    </form>
 						  </div>
-        
+						  <div class="chip" ng-show="show==1">
+						    {{err}}
+						    <i class="close material-icons">close</i>
+						  </div>
 				    </div>
 
 
@@ -107,6 +112,7 @@
 							      <input type="checkbox" id="test6" ng-model="check" required/>
 							      <label for="test6"><a href="">I agree to ClientDev Terms and Conditions</a></label>
 							  </p>
+							  <p class="center" ng-model="errMsg"></p>
 							  <p class="center col s12">
 						      <button class="waves-effect waves-light btn" style="background-color: #f26234;width: 50%" ng-disabled="dev-signup-form.$invalid||check_dev_fields()||!check">Continue</button>
 						      </p>

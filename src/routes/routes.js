@@ -4,7 +4,7 @@ const sequelize=connection.sequelize;
 import Schema from '../db/schema';
 const Clients = Schema.Clients;
 
-router.post('/dev/signup',(req,res)=>{
+router.post('/dev/checkEmail',(req,res)=>{
 	const databody=req.body;
 	Schema.Developers.find({
 		where:{
@@ -13,25 +13,24 @@ router.post('/dev/signup',(req,res)=>{
 	}).then((exists)=>{
 		if(exists)
 		{
-			//console.log("emailId exists");
-			res.status(409).send("Email ID : ${databody.emailId} already exists");
+			res.status(409).send(`Email ID: ${data.emailId} already in use`);
 		}
-		else if(!exists)
+		else
 		{
-			//console.log("emailId dosnt exists");
-			Schema.Developers.create({
-				name:databody.name,
-				emailId:databody.emailId
-			}).then((response)=>{
-				res.status(200).send("Signup Scuccessful");
-			}).catch((err)=>{
-				throw err;
-			})
+			res.status(200).send('Email ID is correct');
 		}
-
 	})
-	.catch((err)=>{
-		res.status(500).send("Sorry We cannot process your request right now");
+})
+
+router.post('/dev/signup',(req,res)=>{
+	const databody=req.body;
+	Schema.Developers.create({
+		name:databody.name,
+		emailId:databody.emailId
+	}).then((response)=>{
+			res.status(200).send('Signup Scuccessful');
+	}).catch((err)=>{
+		throw err;
 	})
 });
 
@@ -74,6 +73,9 @@ router.post('/client/signup', (req,res) => {
 	})
 });
 
+
+
+
 router.post('/dev/signin',(req,res)=>{
 	const databody=req.body;
 	console.log(databody.emailId)
@@ -91,6 +93,11 @@ router.post('/dev/signin',(req,res)=>{
 			res.send("Username or Password not valid");
 		}
 		
-	});
+	})
+	.catch((err)=>{
+		res.status(500).send("Sorry, We are unable to process your request right now");
+	})
 });
+
+
 module.exports=router;

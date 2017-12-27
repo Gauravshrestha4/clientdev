@@ -103,11 +103,43 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
        confirmPassword:$scope.confirmPassword,
       }
      }).then((res)=>{
-        console.log(res);
+        $scope.company_name=null;
+        $scope.email=null;
+        $scope.phone=null;
+        $scope.address=null;
+        $scope.company_type=null;
+        $scope.password=null;
+        $scope.confirmPassword=null;
+       console.log(res.status);
+       Materialize.toast(res.data,5000,'deep-orange darken-3');
+       $state.go('clientDashboard');
      })
   }
     $scope.continue=function(){
-      $scope.step=2;
+      $http({
+        url:'http://localhost:8000/dev/checkEmail',
+        method:'POST',
+        data:{
+          emailId:$scope.dev_email,
+        }
+      })
+      .then((res)=>{
+        $scope.dev_email=null;
+        $scope.dev_name=null;
+        console.log(res);
+        $scope.status=res.status;
+        console.log($scope.status);
+        if(res.status==200)
+        {
+          $scope.step=2; 
+        }
+        else if(res.status==409)
+        {
+          console.log(res);
+          $scope.errMsg=res.data;
+        }
+        
+      }) 
     }
 
     $scope.dev_submit=function(){
@@ -128,7 +160,7 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
     }
     $scope.check_fields=function(){
       
-      if(($scope.company_name==null)|| ($scope.email==null) ||($scope.phone==null)||($scope.address==null)||($scope.company_type==null)||($scope.password=null)||($scope.confirmPassword==null))
+      if(($scope.company_name==null)|| ($scope.email==null) ||($scope.phone==null)||($scope.address==null)||($scope.company_type==null)||($scope.password==null)||($scope.confirmPassword==null))
       {
         return true;
       }
@@ -144,6 +176,20 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
       }
       else
       {
+        return false;
+      }
+    }
+
+    $scope.check_password=function(){
+      if($scope.password!=$scope.confirmPassword)
+      {
+         $scope.show=1;
+         $scope.err="Password and confirm Password fields doesn't match";
+         return true;  
+      }
+      else
+      {
+
         return false;
       }
     }
@@ -169,6 +215,10 @@ app.controller('signinController',function($scope,$rootScope,$http,$state)
     })
   }
 })
+
+
+
+
 app.controller('howItWorksController',function($scope,$rootScope,$state,$http,$window){
   $scope.set=1;
   $scope.style={'backgroundColor':'#f26234','color':'white'};
