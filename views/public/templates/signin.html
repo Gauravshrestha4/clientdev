@@ -22,16 +22,16 @@
 
 				    <div id="" ng-show="click==1" class="col s12 client-form">
 				    	<div class="row">
-						   <form class="col s12">
+						   <form class="col s12" name="client-signup-form" novalidate ng-submit="client_signin()">
 						      <div class="row">
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">account_circle</i>
-						          <input id="icon_prefix" type="text" class="validate">
+						          <input id="icon_prefix" type="text" class="validate" ng-model="clientUsername" placeholder="Your e-mail" required>
 						          <label for="icon_prefix">Client's Username</label>
 						        </div>
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">vpn_key</i>
-						          <input id="icon_pass" type="password" class="validate">
+						          <input id="icon_pass" type="password" class="validate" ng-model="clientPassword" required>
 						          <label for="icon_pass">Password</label>
 						        </div>
 						      </div>
@@ -39,7 +39,7 @@
 							    <a href="#">Forgot Password?</a>
 							  </p>
 						      <p class="center" class="col s12">
-						  	 <button class="waves-effect waves-light btn center" ng-click="" style="background-color: #f26234;width:50%">Sign In</button></p>
+						  	 <button class="waves-effect waves-light btn center" ng-click="" style="background-color: #f26234;width:50%" ng-disabled="client-signup-form.$invalid||checkClientFields()">Sign In</button></p>
 						    </form>
 						</div>
 				    </div>
@@ -47,11 +47,11 @@
 
 				    <div id="" ng-show="click==2;"class="col s12 dev-form">
 				    	<div class="row">
-						   <form class="col s12">
+						   <form class="col s12" name="dev-signin-form" novalidate ng-submit="dev_signin()">
 						      <div class="row">
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">account_circle</i>
-						          <input id="icon_prefix" type="text" class="validate" ng-model="dev_username">
+						          <input id="icon_prefix" type="text" class="validate" ng-model="dev_username" placeholder="Your e-mail">
 						          <label for="icon_prefix">Developer's Username</label>
 						        </div>
 						        <div class="input-field col s12">
@@ -64,7 +64,7 @@
 							    <a href="#">Forgot Password?</a>
 							  </p>
 						      <p class="center" class="col s12">
-						  	 <button class="waves-effect waves-light btn center" ng-click="dev_signin()" style="background-color: #f26234;width:50%">Sign In</button></p>
+						  	 <button class="waves-effect waves-light btn center" style="background-color: #f26234;width:50%" ng-disabled="dev-signin-form.$invalid||checkDevFields()">Sign In</button></p>
 						    </form>
 						</div>
 						  

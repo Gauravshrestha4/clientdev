@@ -6,6 +6,7 @@ const Clients = Schema.Clients;
 
 router.post('/dev/checkEmail',(req,res)=>{
 	const databody=req.body;
+	console.log("Test "+databody.emailId);
 	Schema.Developers.find({
 		where:{
 			emailId:databody.emailId
@@ -13,7 +14,7 @@ router.post('/dev/checkEmail',(req,res)=>{
 	}).then((exists)=>{
 		if(exists)
 		{
-			res.status(409).send(`Email ID: ${data.emailId} already in use`);
+			res.status(409).send(`Email ID: ${databody.emailId} already in use`);
 		}
 		else
 		{
@@ -24,15 +25,33 @@ router.post('/dev/checkEmail',(req,res)=>{
 
 router.post('/dev/signup',(req,res)=>{
 	const databody=req.body;
-	Schema.Developers.create({
-		name:databody.name,
-		emailId:databody.emailId
+	console.log(databody.name);
+	Schema.Developers.find({
+		where:{
+			emailId:databody.emailId
+		}
 	}).then((response)=>{
-			res.status(200).send('Signup Scuccessful');
-	}).catch((err)=>{
-		throw err;
+		if(response)
+		{
+			res.status(409).send(`Email ID: ${databody.emailId} already in use`);
+		}
+		else
+		{
+			Schema.Developers.create({
+				name:databody.name,
+				emailId:databody.emailId,
+			})
+			.then((dev)=>{
+				res.status(200).send('Signup Scuccessful');
+			})
+		}
+	})
+	.catch((err)=>{
+		res.status(500).send('Sorry we are unable to process your request right now!');
+		//throw err;
 	})
 });
+
 
 
 router.post('/client/signup', (req,res) => {

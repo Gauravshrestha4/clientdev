@@ -96,19 +96,19 @@ textarea.materialize-textarea:focus:not([readonly]) {
   			<div class="col s12 m12 l8">
   				<div class="card">
   					<div class="card white">
-  						<form>
+  						<form name="post-job-form" novalidate ng-submit="postJob()">
 				            <div class="card-content ">
 				              	<span class="card-title">Post your Job</span>
 				              	<div class="divider"></div>
 					           	<div class="jobPostForm">
 					              	<p>Name your Job Posting</p>
-					              	<input  placeholder="Example : E-commerce website" id="first_name" type="text" class="validate input">
+					              	<input  placeholder="Example : E-commerce website" id="first_name" type="text" class="validate input" ng-model="jobName">
 
 					              	<p>Tell us what you want to be done?</p>
-					              	<input placeholder="Example : I need a full statck developer for my website project" id="first_name" type="text" class="validate input">
+					              	<input placeholder="Example : I need a full statck developer for my website project" id="first_name" type="text" class="validate input" ng-model="tellUs">
 
 					              	<p>What kind of Work you want to be done?</p>
-									<select class="browser-default">
+									<select class="browser-default" ng-model="technology">
 										<option value="" disabled selected>Choose your option</option>
 										<option value="1">Web Development</option>
 										<option value="2">Web Designing</option>
@@ -116,10 +116,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
 									</select>
 
 									<p>Describe the work to be done</p>
-									<textarea id="textarea1" placeholder="Example: The E-commerce website is for the sale of clothes online. The freelancer must be able to understand the needs of the platform and must take actions according to it." class="materialize-textarea"></textarea>
+									<textarea id="textarea1" placeholder="Example: The E-commerce website is for the sale of clothes online. The freelancer must be able to understand the needs of the platform and must take actions according to it." class="materialize-textarea" ng-model="description"></textarea>
 
 									<p>What is the expectd time period of the job?</p>
-									<select class="browser-default">
+									<select class="browser-default" ng-model="timePeriod">
 										<option value="" disabled selected>Choose your option</option>
 										<option value="1">0-15 days</option>
 										<option value="2">1 month</option>
@@ -129,7 +129,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 									</select>
 									
 									<p>What is the perk for the freelancer (all in INR) </p>
-									<input placeholder="Exmaple: Rs. 5000" id="first_name" type="text" class="validate input">
+									<input placeholder="Exmaple: Rs. 5000" id="first_name" type="text" class="validate input" ng-model="perks">
 					            </div>
 				            </div>
 				            <div class="card-action postjobButton">

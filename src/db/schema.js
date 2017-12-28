@@ -180,6 +180,11 @@ const Schema = {
 
 			}*/
 		},
+		status:{
+			type:Sequelize.STRING(512),
+			allowNull:true,
+			defaultValue: 'true'
+		}
 
 	}),
 };

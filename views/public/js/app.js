@@ -81,7 +81,7 @@ app.controller('mainpageController',function($scope,$rootScope,$state,$http,$win
 app.controller('signupController', function($scope,$rootScope,$state,$http,$window){
   $scope.click=1;
   $scope.step=1;
-  $scope.style={'border':'2px solid #bdbdbd','color':'white'};
+  $scope.style={'border':'2px solid #f26234','color':'white'};
   $scope.style1=$scope.style;
 
     $scope.home=function(){
@@ -116,6 +116,7 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
      })
   }
     $scope.continue=function(){
+      console.log($scope.dev_email);
       $http({
         url:'http://localhost:8000/dev/checkEmail',
         method:'POST',
@@ -124,9 +125,7 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         }
       })
       .then((res)=>{
-        $scope.dev_email=null;
-        $scope.dev_name=null;
-        console.log(res);
+        console.log(res.data);
         $scope.status=res.status;
         console.log($scope.status);
         if(res.status==200)
@@ -143,11 +142,11 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
     }
 
     $scope.dev_submit=function(){
-     // console.log($scope.dev_name);
+    console.log($scope.dev_name);
+    console.log($scope.dev_email);
       $http({
         url:'http://localhost:8000/dev/signup',
         method:'POST',
-
         data:{
           name:$scope.dev_name,
           emailId:$scope.dev_email,
@@ -200,19 +199,61 @@ app.controller('signinController',function($scope,$rootScope,$http,$state)
 {
   console.log("signinController called");
   $scope.click=1;
-  $scope.style={'border':'2px solid #bdbdbd','color':'white'};
+  $scope.style={'border':'2px solid #f26234','color':'white'};
   $scope.style1=$scope.style;
+
+  $scope.home=function(){
+      $state.go('mainpage');
+  }
+
+  $scope.client_signin=function(){
+
+    $http({
+      url:'http://localhost:8000/',
+      method:'POST',
+      data:{
+        name:$scope.clientUsername,
+        password:$scope.clientPassword,
+      }
+      
+    })
+    .then((res)=>{
+      console.log(res)
+    })
+  }
+
   $scope.dev_signin=function(){
     $http({
       url:'http://localhost:8000/dev/signin',
       method:'POST',
       data:{
         name:$scope.dev_username,
-        password:dev_password
+        password:dev_password,
       }
     }).then((res)=>{
       console.log(res);
     })
+  }
+
+  $scope.checkClientFields=function(){
+    if(($scope.clientUsername==null) || ($scope.clientPassword==null))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  $scope.checkDevFields=function(){
+    if(($scope.dev_username==null)||(dev_password==null))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 })
 
@@ -268,4 +309,7 @@ app.controller('howItWorksController',function($scope,$rootScope,$state,$http,$w
 
 app.controller('clientDashboardController',function($state,$scope,$rootScope,$http){
   console.log("Welcome Client");
+  $scope.postJob=function(){
+    console.log($scope.jobName);
+  }
 })
