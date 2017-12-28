@@ -12,38 +12,17 @@
 	{
 		height: 745px;
 	}
-
-	.maintext
+	.main_heading
 	{
-		padding-top: 11vw;
-		font-size: 6vw;
+		color:white;font-size:2rem;font-weight: bold;
+		padding-top: 50px;
 	}
-
-	.maintext_sub
+	.main_subheading
 	{
-		font-size: 3.5vw;
-		margin-top: -20px;
+		color:white;
+		font-weight: bold;
+		font-size: 1rem;
 	}
-
-	.clientimage
-	{
-		width: 100px;
-		height: 110px;
-	}
-
-	.laptopimage
-	{
-		width: 100%;
-		height: 180px;
-		margin-top: -20px;
-	}
-
-	.developerimage
-	{
-		width: 80%;
-		height: 180px;
-	}
-
 	/*how it works*/
 	.client
 	{
@@ -89,7 +68,7 @@
 	}
 	.steps
 	{
-		font-size: 35px;
+		font-size: 2.2rem;
 		
 	}
 	.divider1
@@ -105,7 +84,7 @@
 	}
 	.stepStyle
 	{
-		font-weight: bold;font-size: 50px;
+		font-size: 1.5rem;
 	}
 	.stepone
 	{
@@ -177,35 +156,16 @@
 	{
 		height: 900px;
 	}
-
-	.maintext
+	.main_heading
 	{
-		padding-top: 11vw;
-		font-size: 5.5vw;
+		color:white;font-size:2rem;font-weight: bold;
+		padding-top: 50px;
 	}
-
-	.maintext_sub
+	.main_subheading
 	{
-		font-size: 3.5vw;
-		margin-top: -20px;
-	}
-
-	.clientimage
-	{
-		width: 100px;
-		height: 150px;
-	}
-
-	.laptopimage
-	{
-		width: 100%;
-		height: 200px;
-	}
-
-	.developerimage
-	{
-		width: 80%;
-		height: 200px;
+		color:white;
+		font-weight: bold;
+		font-size: 1rem;
 	}
 
 	.clientServiceImg img,.developerService img,.secureService img
@@ -231,7 +191,7 @@
 	}
 	.stepStyle
 	{
-		font-weight: bold;font-size: 60px;
+		font-size: 1.5rem;
 	}
 	.stepone
 	{
@@ -299,41 +259,23 @@
 	{
 		height: 430px;
 	}
-
-	.maintext
+	.main_heading
 	{
-		padding-top: 11vw;
-		font-size: 5.7vw;
+		color:white;font-size:3rem;font-weight: bold;
+		padding-top: 50px;
 	}
-
-	.maintext_sub
+	.main_subheading
 	{
-		font-size: 3.5vw;
-		margin-top: -30px;
+		color:white;
+		font-weight: bold;
+		font-size: 1.2rem;
 	}
-
+	
 	.logo
 	{
 		margin-top: 7vw;
 	}
 
-	.clientimage
-	{
-		width: 100%;
-		height: 100px;
-	}
-
-	.laptopimage
-	{
-		width: 100%;
-		height: 110px;
-	}
-
-	.developerimage
-	{
-		width: 100%;
-		height: 70px;
-	}
 	.clientServiceImg img,.developerService img,.secureService img
 	{
 		height:15vw;
@@ -356,7 +298,7 @@
 	}
 	.stepStyle
 	{
-		font-weight: bold;font-size: 50px;
+		font-size: 1.8rem;
 	}
 	.stepone
 	{
@@ -427,18 +369,18 @@
 		height: 530px;
 	}
 
-	.maintext
+	.main_heading
 	{
-		padding-top: 11vw;
-		font-size: 5.5vw;
+		color:white;font-size:3rem;font-weight: bold;
+		padding-top: 50px;
 	}
-
-	.maintext_sub
+	.main_subheading
 	{
-		font-size: 3vw;
-		margin-top: -40px;
+		color:white;
+		font-weight: bold;
+		font-size: 1.2rem;
 	}
-
+	
 	.logo
 	{
 		margin-top: 7vw;
@@ -486,7 +428,7 @@
 	}
 	.stepStyle
 	{
-		font-weight: bold;font-size: 60px;
+		font-size: 1.8rem;
 	}
 	.stepone
 	{

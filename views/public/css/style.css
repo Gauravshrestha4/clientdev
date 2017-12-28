@@ -31,7 +31,7 @@ html,body
 }
 .sideNav ul li a
 {
-	font-size: 22px;
+	font-size: 1.2rem;
 	color: #f26234;
 	padding-top: 20px;
 }
@@ -175,13 +175,13 @@ nav ul a:hover
 }
 .main_heading
 {
-	color:white;font-size:50px;font-weight: bold;
+	color:white;font-size:3rem;font-weight: bold;
 }
 .main_subheading
 {
 	color:white;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 1rem;
 }
 /**************************************Get started********************************************************/
 .getStarted
@@ -207,7 +207,7 @@ nav ul a:hover
 }
 .stepStyle
 {
-	font-weight: bold;font-size: 70px;
+	;font-size: 1.8rem;
 }
 .numBack:hover
 {
@@ -377,7 +377,7 @@ nav ul a:hover
 
 .steps
 {
-	font-size: 40px;
+	font-size: 2.5rem;
 	font-family: 'Pontano Sans', sans-serif;
 }
 
@@ -416,6 +416,10 @@ nav ul a:hover
 	background-color: #fbfbfb;
 	padding-top:10px;
 	padding-bottom: 70px;
+}
+.serviceHead
+{
+	font-size:1.8rem;
 }
 .service_content
 {
