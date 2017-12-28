@@ -25,6 +25,7 @@ router.post('/dev/checkEmail',(req,res)=>{
 
 router.post('/dev/signup',(req,res)=>{
 	const databody=req.body;
+
 	console.log(databody.name);
 	Schema.Developers.find({
 		where:{
@@ -56,7 +57,8 @@ router.post('/dev/signup',(req,res)=>{
 
 router.post('/client/signup', (req,res) => {
 	const data = req.body;
-	console.log(data);
+	console.log('Client Signup Data: ', data);
+	console.log('\n\nData headers: ', req.headers);
 	Clients.find({
 		where:{
 			emailId: data.emailId
@@ -90,6 +92,37 @@ router.post('/client/signup', (req,res) => {
 		console.error(`Error in creating client: ${err}`);
 		res.status(500).send('Sorry we are unable to process your request right now!');
 	})
+});
+
+router.post('/client/signin',(req,res) => {
+	const data = req.body;
+	console.log('Got',data);
+	// console.log('Headers: ', req.headers);
+	Clients.find({
+		where:{
+			emailId: data.emailId
+		}
+	})
+	.then((client) => {
+		if(client){
+			// console.log(client);
+			if(client.authenticate(data.password)){
+				res.status(200).send('Welcome')
+			}
+			else{
+				res.status(401).send('Invalid User Id and Password combination');
+			}
+		}
+		else{
+			res.status(400).send('Email ID not registered. Please register before logging in');
+		}
+	})
+	.catch((err) => {
+		console.log('Err: ',err);
+		res.status(500).send('Sorry we are unable to process your request right now!');
+	})
+
+
 });
 
 

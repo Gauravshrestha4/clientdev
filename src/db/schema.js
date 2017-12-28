@@ -126,6 +126,7 @@ const Schema = {
 						bcrypt.hash(client.password, 18)
 						.then((res) => {
 							client.password = res;	
+							console.log('Hashed',res);
 							resolve(client);
 						})
 						.catch((err) =>{
@@ -135,17 +136,6 @@ const Schema = {
 				});
 			}
 		},
-
-		instanceMethods: {
-			authenticate: (value) => {
-				if( bcrypt.compareSync(value, this.passwordDigest) ){
-					return this;
-				} 
-				else{
-					return false;
-				}
-			}
-		}
 	}),
 
 	Developers: sequelize.define('developers', {
@@ -221,6 +211,11 @@ const Schema = {
 		}
 
 	}),
+};
+
+//instance method. Can't use arrow functions because of lexical scoping. 'this' won't work
+Schema.Clients.prototype.authenticate = function(value){
+	return bcrypt.compareSync(value, this.password);
 };
 
 // ======= Sync the schemas for MariaDB ======= //

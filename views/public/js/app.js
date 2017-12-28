@@ -128,11 +128,11 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         console.log(res.data);
         $scope.status=res.status;
         console.log($scope.status);
-        if(res.status==200)
+        if(res.status === 200)
         {
           $scope.step=2; 
         }
-        else if(res.status==409)
+        else if(res.status === 409)
         {
           console.log(res);
           $scope.errMsg=res.data;
@@ -152,8 +152,10 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
           emailId:$scope.dev_email,
         }
       }).then((res)=>{
-
-        console.log("data has been saved");
+        console.log("data has been saved: ",res.status);
+      })
+      .catch((err) => {
+        console.log('Err: ', err);
       })
 
     }
@@ -180,7 +182,7 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
     }
 
     $scope.check_password=function(){
-      if($scope.password!=$scope.confirmPassword)
+      if($scope.password!==$scope.confirmPassword)
       {
          $scope.show=1;
          $scope.err="Password and confirm Password fields doesn't match";
@@ -209,16 +211,16 @@ app.controller('signinController',function($scope,$rootScope,$http,$state)
   $scope.client_signin=function(){
 
     $http({
-      url:'http://localhost:8000/',
+      url:'http://localhost:8000/client/signin',
       method:'POST',
       data:{
-        name:$scope.clientUsername,
+        emailId:$scope.clientUsername,
         password:$scope.clientPassword,
       }
       
     })
     .then((res)=>{
-      console.log(res)
+      console.log(res);
     })
   }
 
@@ -227,8 +229,8 @@ app.controller('signinController',function($scope,$rootScope,$http,$state)
       url:'http://localhost:8000/dev/signin',
       method:'POST',
       data:{
-        name:$scope.dev_username,
-        password:dev_password,
+        emailId:$scope.dev_username,
+        password:$scope.dev_password,
       }
     }).then((res)=>{
       console.log(res);
