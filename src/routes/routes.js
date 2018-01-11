@@ -80,6 +80,11 @@ router.post('/client/signup', (req,res) => {
 				confirmPassword:data.confirmPassword,
 			})
 			.then((client) => {
+				/*
+					set client session here -> req.session.client = client
+					select which properties of clients you want to kepp.
+					Preferrable don't keep password
+				*/
 				res.status(200).send('Signup successful');
 			})
 			.catch((err) => {
@@ -104,9 +109,18 @@ router.post('/client/signin',(req,res) => {
 		}
 	})
 	.then((client) => {
+
+		/*
+			check here if session is being maintained like
+			if(req.session.client) then render client dashboard
+			else
+			redirect to login
+		*/
+
 		if(client){
 			// console.log(client);
 			if(client.authenticate(data.password)){
+				//add user to session here -> req.session.client = clinet
 				res.status(200).send('Welcome')
 			}
 			else{

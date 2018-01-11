@@ -7,6 +7,9 @@ const express = require('express'),
 	morgan = require('morgan'),
 	nodemailer = require('nodemailer'),
 	path = require('path'),
+	session = require('express-session'),
+	mongoose = require('mongoose'),
+	MongoStore = require('connect-mongo')(session),
 	routes = require('./routes/routes');
 
 const app=express();
@@ -19,10 +22,23 @@ app.set('view engine', 'html');
 //setup logging via morgan
 app.use(morgan('dev'));
 
+//setup bodyparser for parsing form data
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({
 	extended:true
 }));
+
+//setup express-session
+
+app.use(session({
+	name: 'clientdev-session',
+	secret: 'superdupersecret',
+	saveUninitialized: true,
+	resave: true,
+	store: new MongoStore({
+		mongooseConnection: mongoose.connection
+	})
+}))
 
 //setup static files directory for stylesheets and javascripts
 app.use(express.static(path.join(__dirname, '../', 'views','public')));
@@ -31,6 +47,7 @@ app.use(express.static(path.join(__dirname, '../', 'views','public')));
 app.use(routes);
 
 app.get('*',(req,res)=>{
+	console.log(req.session);
 	res.render('index');
 });
 

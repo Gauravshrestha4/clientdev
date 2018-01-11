@@ -11,7 +11,7 @@ const bcrypt = require('bcrypt');
 
 import {sequelize} from './connections';
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/clientdev');
 const Schema = {
 
 	// ===== MongoDB Schema's ==== //
