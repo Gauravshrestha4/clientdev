@@ -26,9 +26,24 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
       controller:'howItWorksController'
     })
     .state('clientDashboard',{
-      url:'/client',
+      url:'',
       templateUrl:'templates/clientDashboard.html',
       controller:'clientDashboardController'
+    })
+    .state('clientDashboard.jobPost',{
+      url:'/post-job',
+      templateUrl:'templates/jobPost.html',
+      controller:'jobPostController'
+    })
+    .state('clientDashboard.stat',{
+      url:'/stats',
+      templateUrl:'templates/previousStat.html',
+      controller:'statController'
+    })
+    .state('clientDashboard.updateProfile',{
+      url:'/update-profile',
+      templateUrl:'templates/clientProfile.html',
+      controller:'clientProfileController'
     })
 })
 
@@ -112,7 +127,7 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         $scope.confirmPassword=null;
        console.log(res.status);
        Materialize.toast(res.data,5000,'deep-orange darken-3');
-       $state.go('clientDashboard');
+       $state.go('signin');
      })
   }
     $scope.continue=function(){
@@ -220,7 +235,12 @@ app.controller('signinController',function($scope,$rootScope,$http,$state)
       
     })
     .then((res)=>{
-      console.log(res);
+      //console.log(res.data.emailId);
+     // $localStorage.companyId=res.data.emailId;
+      $state.go('clientDashboard.jobPost');
+      //$rootScope.companyname=res.data.companyName;
+      //console.log($rootScope.dcompanyId);
+      //console.log( $rootScope.dcompanyname);
     })
   }
 
@@ -310,8 +330,29 @@ app.controller('howItWorksController',function($scope,$rootScope,$state,$http,$w
 })
 
 app.controller('clientDashboardController',function($state,$scope,$rootScope,$http){
-  console.log("Welcome Client");
-  $scope.postJob=function(){
-    console.log($scope.jobName);
+  $http({
+    url:'http://localhost:8000/client/clientCredentials',
+    method:'GET',
+  }).then((res)=>{
+      $scope.clientData=res.data;
+      $scope.companyname=$scope.clientData.companyName;
+      $scope.companyemail=$scope.clientData.emailId;
+      /***********************code for client picture left***********************/
+  })
+});
+
+app.controller('jobPostController',function($state,$http,$rootScope,$scope){
+  console.log('jobPostController called');
+  $scope.giveSubcategory=function(technology){
+    console.log(technology);
+ 
+      /******code for displaying checkboxes on dropdown select******/
   }
+})
+app.controller('statController',function($state,$rootScope,$http){
+  console.log('statController called');
+})
+
+app.controller('clientProfileController',function($state,$rootScope,$scope,$http){
+  console.log("clientProfileController called");
 })

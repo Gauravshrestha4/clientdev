@@ -26,7 +26,7 @@ router.post('/dev/checkEmail',(req,res)=>{
 router.post('/dev/signup',(req,res)=>{
 	const databody=req.body;
 
-	console.log(databody.name);
+	//console.log(databody.name);
 	Schema.Developers.find({
 		where:{
 			emailId:databody.emailId
@@ -96,7 +96,7 @@ router.post('/client/signup', (req,res) => {
 
 router.post('/client/signin',(req,res) => {
 	const data = req.body;
-	console.log('Got',data);
+	//console.log('Got',data);
 	// console.log('Headers: ', req.headers);
 	Clients.find({
 		where:{
@@ -105,9 +105,9 @@ router.post('/client/signin',(req,res) => {
 	})
 	.then((client) => {
 		if(client){
-			// console.log(client);
+			
 			if(client.authenticate(data.password)){
-				res.status(200).send('Welcome')
+				res.status(200).json({companyName:client.companyName,emailId:client.emailId});
 			}
 			else{
 				res.status(401).send('Invalid User Id and Password combination');
@@ -152,4 +152,20 @@ router.post('/dev/signin',(req,res)=>{
 });
 
 
+
+/***********************Routes for Client Dashboard***********************************/
+router.get('/client/clientCredentials',(req,res)=>{
+	const databody=req.body;
+	Schema.Clients.find({
+		where:{
+			emailId:databody.emailId,
+		}
+	})
+	.then((client)=>{
+		res.status(200).json({companyName:client.companyName,emailId:client.emailId,phone:client.phone,description:client.description,picture:client.picture,address:client.address,companyType:client.companyType});
+	})
+	.catch((err)=>{
+		res.status(500).send("Sorry, We are unable to process your request right now!");
+	})
+})
 module.exports=router;

@@ -18,7 +18,7 @@ input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default),
 textarea.materialize-textarea {
   background-color: transparent;
-  border: 1px solid #f2f2f2;
+  border: 1px solid #c1c1c1;
   border-radius: 0;
   outline: none;
   height: 2rem;
@@ -51,118 +51,61 @@ textarea.materialize-textarea:focus:not([readonly]) {
   
 }
 </style>
-<div class="hide-on-small-only sidenav">
+<div class="hide-on-small-only dash-sidenav">
 	<ul id="slide-out" class="side-nav fixed">
-		<p class="dashboardLogo"><a href="" ui-sref="mainpage">ClientDev</a></p>
+		<p style="text-align: center" ><a href="" ui-sref="mainpage"><span class="dashboardLogo"><img src="./img/clientDev.png" height="30" width="30">ClientDev</span></a></p>
 		<div class="divider"></div>
 	    <li>
 		    <div class="user-view userInfo">
 		      <a href="#!user"><img class="circle" src=""></a>
-		      <a href="#!name"><span class=" name" style="color:#6d7a83" >John Doe</span></a>
-		      <a href="#!email"><span class=" email" style="color:#6d7a83">jdandturk@gmail.com</span></a>
+		      <a href="#!name"><span class=" name" style="color:#6d7a83" >{{companyname}}</span></a>
+		      <a href="#!email"><span class=" email" style="color:#6d7a83">{{companyemail}}</span></a>
 		    </div>
 	    </li>
-	    <li><a  class="waves-effect" href="#!"><i class="fa fa-rocket" aria-hidden="true"></i>Post a Job</a></li>
-	    <li><a  class="waves-effect" href="#!"><i class="fa fa-area-chart" aria-hidden="true"></i>Previous Stats</a></li>
-	    <li><a  class="waves-effect" href="#!"><i class="fa fa-credit-card" aria-hidden="true"></i>Billing</a></li>
+	    <li><a  class="waves-effect" href="" ui-sref="clientDashboard.jobPost"><i class="fa fa-rocket" aria-hidden="true"></i>Post a Job</a></li>
+	    <li><a  class="waves-effect" href="" ui-sref="clientDashboard.stat"><i class="fa fa-area-chart" aria-hidden="true"></i>Previous Stats</a></li>
+	    <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-credit-card" aria-hidden="true"></i>Billing</a></li>
 	    <li><a class="subheader">Account settings</a></li>
-	    <li><a  class="waves-effect" href="#!"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Update profile</a></li>
-	    <li><a  class="waves-effect" href="#!"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>  
+	    <li><a  class="waves-effect" href="" ui-sref="clientDashboard.updateProfile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Update My Info</a></li>
+	    <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>  
  	</ul>
+
 </div>
 
 
-<section class="clientDashboard">
-	<nav class="hide-on-large-only">
-    <div class="nav-wrapper">
+<section class="clientDashboard ">
+	<nav class="hide-on-large-only" style="background-color: #f26234;margin-top:-20px">
+    <div class="nav-wrapperdash-sidenav">
       <a href="#!" class="brand-logo">ClientDev</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-      </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <p style="text-align: center" ><a href="" ui-sref="mainpage"><span class="dashboardLogo"><img src="./img/clientDev.png" height="30" width="30">ClientDev</span></a></p>
+        <div class="divider"></div>
+        <li>
+          <div class="user-view userInfo">
+            <a href="#!user"><img class="circle" src=""></a>
+            <a href="#!name"><span class=" name" style="color:#6d7a83" >{{companyname}}</span></a>
+            <a href="#!email"><span class=" email" style="color:#6d7a83">{{companyemail}}</span></a>
+          </div>
+        </li>
+        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.jobPost"><i class="fa fa-rocket" aria-hidden="true"></i>Post a Job</a></li>
+        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.stat"><i class="fa fa-area-chart" aria-hidden="true"></i>Previous Stats</a></li>
+        <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-credit-card" aria-hidden="true"></i>Billing</a></li>
+        <li><a class="subheader">Account settings</a></li>
+        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.updateProfile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Update My Info</a></li>
+        <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li> 
       </ul>
     </div>
   </nav>
-  <div class="postJob">
-  		<div class="row">
-  			<div class="col s12 m12 l8">
-  				<div class="card">
-  					<div class="card white">
-  						<form name="post-job-form" novalidate ng-submit="postJob()">
-				            <div class="card-content ">
-				              	<span class="card-title">Post your Job</span>
-				              	<div class="divider"></div>
-					           	<div class="jobPostForm">
-					              	<p>Name your Job Posting</p>
-					              	<input  placeholder="Example : E-commerce website" id="first_name" type="text" class="validate input" ng-model="jobName">
 
-					              	<p>Tell us what you want to be done?</p>
-					              	<input placeholder="Example : I need a full statck developer for my website project" id="first_name" type="text" class="validate input" ng-model="tellUs">
+  <div ui-view></div>
 
-					              	<p>What kind of Work you want to be done?</p>
-									<select class="browser-default" ng-model="technology">
-										<option value="" disabled selected>Choose your option</option>
-										<option value="1">Web Development</option>
-										<option value="2">Web Designing</option>
-										<option value="3">Graphic Designers</option>
-									</select>
-
-									<p>Describe the work to be done</p>
-									<textarea id="textarea1" placeholder="Example: The E-commerce website is for the sale of clothes online. The freelancer must be able to understand the needs of the platform and must take actions according to it." class="materialize-textarea" ng-model="description"></textarea>
-
-									<p>What is the expectd time period of the job?</p>
-									<select class="browser-default" ng-model="timePeriod">
-										<option value="" disabled selected>Choose your option</option>
-										<option value="1">0-15 days</option>
-										<option value="2">1 month</option>
-										<option value="3">3 months</option>
-										<option value="3">6 months</option>
-										<option value="3">1 year</option>
-									</select>
-									
-									<p>What is the perk for the freelancer (all in INR) </p>
-									<input placeholder="Exmaple: Rs. 5000" id="first_name" type="text" class="validate input" ng-model="perks">
-					            </div>
-				            </div>
-				            <div class="card-action postjobButton">
-				             	 <button class="waves-effect waves-light btn">Post</button>
-			              		<button class="waves-effect waves-light btn">Cancel</button>
-				            </div>
-				        </form>
-			        </div>
-  				</div>
-  			</div>
-  			<div class="col s12 m12 l4">
-  				<div class="card">
-  					<div class="card white">
-			            <div class="card-content white-text">
-			              <span class="card-title">How it works</span>
-			              <div class="divider">
-			              	
-			              </div>
-			              <p>I am a very simple card. I am good at containing small bits of information.
-			              I am convenient because I require little markup to use effectively.</p>
-			            </div>
-			            <div class="card-action">
-			             
-			            </div>
-			          </div>
-  				</div>
-  			</div>
-  		</div>
-  </div>
 </section>
 
 <script type="text/javascript">
   $(document).ready(function(){
+
     $(".button-collapse").sideNav();
+     $('.collapsible').collapsible();
   })
 </script>

@@ -1,0 +1,100 @@
+ <div class="postJob">
+      <div class="row">
+        <div class="col s12 m12 l8">
+          <div class="card">
+              <form name="post-job-form" novalidate>
+                    <div class="card-content ">
+                        <span class="card-title">Job Description</span>
+                        <div class="divider"></div>
+                      <div class="jobPostForm">
+                          <p>Name your Job Posting</p>
+                          <input  placeholder="Example : E-commerce website" id="first_name" type="text" class="validate input" ng-model="jobName" required>
+
+                          <p>Tell us what you want to be done?</p>
+                          <input placeholder="Example : I need a full statck developer for my website project" id="first_name" type="text" class="validate input" ng-model="tellUs" required>
+
+                          <p>What kind of Work you want to be done?</p>
+                  <select class="browser-default" ng-model="technology" ng-change="giveSubcategory(technology)" required>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Web Designing">Web Designing</option>
+                    <option value="Graphic Designing">Graphic Designing</option>
+                  </select>
+                  <p>Describe the work to be done</p>
+                  <textarea id="textarea1" placeholder="Example: The E-commerce website is for the sale of clothes online. The freelancer must be able to understand the needs of the platform and must take actions according to it." class="materialize-textarea" ng-model="description" required></textarea>
+
+                  <p>Upload samples and other helpful material</p>
+                  <div class="sampleUpload">
+                    <div class="file-field input-field">
+                      <div class="btn" style="background-color: transparent;border:2px solid #f26234;color:#f26234">
+                        <span>File</span>
+                        <input type="file" multiple>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                      </div>
+                    </div>
+                  </div>
+
+                  <p>What is the expected time period of the job?</p>
+                  <select class="browser-default" ng-model="timePeriod" required>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">0-15 days</option>
+                    <option value="2">1 month</option>
+                    <option value="3">3 months</option>
+                    <option value="3">6 months</option>
+                    <option value="3">1 year</option>
+                  </select>
+
+                  <p>What is the level of experience required for a developer for this job?</p>
+                  <select class="browser-default" ng-model="experienceLevel" required>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Beginner</option>
+                    <option value="2">Intermediate</option>
+                    <option value="3">Expert</option>
+                    
+                  </select>
+
+                  <p>What is the perk for the freelancer (all in INR) </p>
+                  <input placeholder="Exmaple:5000" id="first_name" type="text" class="validate input" ng-model="perks" required>
+                      </div>
+                    </div>
+                    <div class="card-action postjobButton">
+                      <button type="submit" class="waves-effect waves-light btn" ng-disabled="post-job-form.$invalid">Post Job</button>
+                        <button type="reset" class="waves-effect waves-light btn">Cancel</button>
+                    </div>
+                </form>
+          </div>
+        </div>
+        <div class="col s12 m12 l4">
+          <div class="card">
+              <div class="card-content ">
+                  <span class="card-title">How it works?</span>
+                  <div class="divider"></div>
+              </div>
+          </div>
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">filter_drama</i>Describe what needs to be done.<i class="material-icons right">arrow_drop_down</i></div>
+              <div class="collapsible-body"><span>Fill the form to describe what is the work that needs to be done. Also, specify the time period and perks for the developers.</span></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="fa fa-file-code-o" aria-hidden="true"></i>Set the E-Test for developers.<i class="material-icons right">arrow_drop_down</i></div>
+              <div class="collapsible-body"><span>Set the Employability test (E-Test) for the developers. Developers will have to pass this test for getting the project.</span></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">whatshot</i>Select best person from shortlisted developers.<i class="material-icons right">arrow_drop_down</i></div>
+              <div class="collapsible-body"><span>Select the best person for your work from the developers who have successfully passed the E-Test.</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+    $(".button-collapse").sideNav();
+     $('.collapsible').collapsible();
+  })
+</script>

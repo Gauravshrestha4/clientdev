@@ -19,10 +19,7 @@ html,body
 	width:100%;
 	transition:0.5s linear all;
 }
-.sidenav
-{
-	background-color: #f26234;
-}
+
 .sideNav ul
 {
 	padding-top:80px;
@@ -207,7 +204,7 @@ nav ul a:hover
 }
 .stepStyle
 {
-	;font-size: 1.8rem;
+	font-size: 1.8rem;
 }
 .numBack:hover
 {
@@ -558,6 +555,8 @@ footer
 {
 	font-size: 1.5rem;
 	text-align: center;
+	color:#f26234;
+	font-weight: bold;
 }
 .clientDashboard
 {
@@ -565,7 +564,13 @@ footer
 	padding-top: 20px;
 	background-color: #fbfbfb;
 }
-.sidenav ul li a, .sidenav ul li a i
+.dash-sidenav
+{
+	background-color: #fbfbfb;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+.dash-sidenav ul li a, .dash-sidenav ul li a i
 {
 	color:#f26234;
 	font-size: 1rem;
@@ -592,6 +597,10 @@ footer
 	padding-top: 20px;
 	font-weight: bold;
 }
+.postJob
+{
+	padding-bottom: 20px;
+}
 
 .postjobButton button
 {
@@ -600,11 +609,28 @@ footer
 	margin-left: 30px;
 }
 
-.postjobButton button:hover
-{
-	background-color: #f26234;
-}
 .chip
 {
 	margin-left: 25%;
+}
+.collapsible-header
+{
+	font-weight: bold;
+}
+.clientProfile
+{
+	padding-bottom: 20px;
+}
+.accountDetailForm,.companyDetailsForm
+{
+	
+	padding-top: 0px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.accountDetailForm p,.companyDetailsForm p
+{
+	color:#6d7a83;
+	font-weight: bold;
+	padding-top: 0px;
 }

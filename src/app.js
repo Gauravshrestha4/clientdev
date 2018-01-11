@@ -7,8 +7,7 @@ const express = require('express'),
 	morgan = require('morgan'),
 	nodemailer = require('nodemailer'),
 	path = require('path'),
-	routes = require('./routes/routes');
-
+	routes = require('./routes/routes'),
 const app=express();
 
 //setup view engine
