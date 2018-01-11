@@ -106,34 +106,23 @@ const Schema = {
 		password:{
 			type:Sequelize.STRING,
 			allowNull:false
-		},
-
-		confirmPassword:{
-			type:Sequelize.STRING,
-			allowNull:false
 		}
 
 	}, {
 		hooks: {
 			beforeCreate: (client) => {
-				return new Promise((resolve, reject) => {
+					
 					client.emailId = client.emailId.toLowerCase();
 
-					if(client.password !== client.confirmPassword){
-						reject(new Error('Passwords do not match'));
-					}
-					else{
-						bcrypt.hash(client.password, 18)
+						return bcrypt.hash(client.password, 5)
 						.then((res) => {
 							client.password = res;	
 							console.log('Hashed',res);
-							resolve(client);
+							return client;
 						})
 						.catch((err) =>{
-							reject(err);
+							throw err;
 						})
-					}
-				});
 			}
 		},
 	}),

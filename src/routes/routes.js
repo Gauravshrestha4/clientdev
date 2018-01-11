@@ -57,8 +57,10 @@ router.post('/dev/signup',(req,res)=>{
 
 router.post('/client/signup', (req,res) => {
 	const data = req.body;
-	console.log('Client Signup Data: ', data);
-	console.log('\n\nData headers: ', req.headers);
+	// console.log('Received: ',data);
+	// console.log('\n\nHeaders: ',req.headers);
+	console.log('Session: ',req.session);
+
 	Clients.find({
 		where:{
 			emailId: data.emailId
@@ -69,6 +71,10 @@ router.post('/client/signup', (req,res) => {
 			console.log('User already exist');
 			res.status(409).send(`Email ID : ${data.emailId} already in use`);
 		}
+		else if(req.body.password !== req.body.confirmPassword){
+			console.log('Passwords do not match');
+			res.status(409).send(`Passwords do not match`);
+		}
 		else{
 			return Clients.create({
 				companyName: data.companyName,
@@ -77,14 +83,9 @@ router.post('/client/signup', (req,res) => {
 				address: data.address,
 				phone: data.phone,
 				password:data.password,
-				confirmPassword:data.confirmPassword,
 			})
 			.then((client) => {
-				/*
-					set client session here -> req.session.client = client
-					select which properties of clients you want to kepp.
-					Preferrable don't keep password
-				*/
+				req.session.client = client;
 				res.status(200).send('Signup successful');
 			})
 			.catch((err) => {

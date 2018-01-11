@@ -34,6 +34,9 @@ app.use(session({
 	secret: 'superdupersecret',
 	saveUninitialized: true,
 	resave: true,
+	cookie:{
+		expires: 600000
+	},
 	store: new MongoStore({
 		mongooseConnection: mongoose.connection
 	})
@@ -46,7 +49,6 @@ app.use(express.static(path.join(__dirname, '../', 'views','public')));
 app.use(routes);
 
 app.get('*',(req,res)=>{
-	console.log(req.session);
 	res.render('index');
 });
 
