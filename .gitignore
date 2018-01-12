@@ -23,3 +23,6 @@ views/public/img/*
 # Do not commit log files
 
 *.log.*
+
+# Personal testing folder
+test

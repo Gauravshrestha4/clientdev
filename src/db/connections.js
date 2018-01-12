@@ -7,11 +7,11 @@
 
 const Sequelize = require('sequelize');
 
-export const sequelize = new Sequelize('clientdev','root', 'mittalsm', {
+export const sequelize = new Sequelize('clientdev','root', 'password', {
 	
 	host: 'localhost', //will need to be changed when deployed - using process.env variable
 	dialect: 'mysql',
-	logging: true
+	logging: false
 });
 
 // test connection to DB
