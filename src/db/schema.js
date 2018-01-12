@@ -31,6 +31,59 @@ const Schema = {
 
 	}),
 
+	Projects:new mongoose.Schema({
+
+		projectID:{
+			type:String,
+			required:[true,'Need a project ID to store data']
+		},
+
+		name:{
+			type:String,
+			required:true
+		},
+
+		profileRequired:{
+			type:String,
+			required:true,
+			default:"Not Alloted"
+		},
+
+		category:{
+			type:String,
+			required:[true,"Need to store the type of Project like Web dev, Software dev etc!"]
+		},
+
+		description:{
+			type:String,
+			required:true,
+			default:"No description available"
+		},
+
+		timePeriod:{
+			type:String,
+			required:true,
+			default:"Not Alloted"
+		},
+		attachments:{
+			type:[String],
+			required:true,
+			default:"None"
+		},
+
+		perks:{
+			type:String,
+			required:false,
+			default:"No Alloted"
+		},
+
+		skills:{
+			type:[String],
+			required:[true,"Need to store the skills required for the project"],
+			default:"Not Alloted"
+		},
+	}),
+
 	// ==== MariaDB Schema's ==== //
 
 	Clients: sequelize.define('clients', {
