@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const connection=require('../db/connections');
 const sequelize=connection.sequelize;
+
 import Schema from '../db/schema';
 const Clients = Schema.Clients;
+
+import {checkSession} from '../utils/middlewares';
 
 router.post('/dev/checkEmail',(req,res)=>{
 	const databody=req.body;
@@ -44,6 +47,9 @@ router.post('/dev/signup',(req,res)=>{
 			})
 			.then((dev)=>{
 				res.status(200).send('Signup Scuccessful');
+				req.session.dev = {
+					emailId: dev.emailId
+				}
 			})
 		}
 	})
@@ -59,8 +65,6 @@ router.post('/client/signup', (req,res) => {
 	const data = req.body;
 	// console.log('Received: ',data);
 	// console.log('\n\nHeaders: ',req.headers);
-	console.log('Session: ',req.session);
-
 	Clients.find({
 		where:{
 			emailId: data.emailId
@@ -85,7 +89,10 @@ router.post('/client/signup', (req,res) => {
 				password:data.password,
 			})
 			.then((client) => {
-				req.session.client = client;
+				req.session.client = {
+					emailId: client.emailId
+				};
+				
 				res.status(200).send('Signup successful');
 			})
 			.catch((err) => {
@@ -100,7 +107,18 @@ router.post('/client/signup', (req,res) => {
 	})
 });
 
-router.post('/client/signin',(req,res) => {
+
+router.get('/authenticate/client',checkSession('client'),(err,req,res,next)=>{
+	if(err){
+		console.error('Error in checking session: ',err);
+		res.status(500).send('Session not found');
+	}
+	else{
+		res.status(400).send('Empty session object');
+	}
+});
+
+router.post('/client/signin', (req,res) => {
 	const data = req.body;
 	//console.log('Got',data);
 	// console.log('Headers: ', req.headers);
@@ -110,19 +128,14 @@ router.post('/client/signin',(req,res) => {
 		}
 	})
 	.then((client) => {
-
-		/*
-			check here if session is being maintained like
-			if(req.session.client) then render client dashboard
-			else
-			redirect to login
-		*/
-
 		if(client){
 			
 			if(client.authenticate(data.password)){
-				//add user to session here -> req.session.client = clinet
-				res.status(200).send('Welcome')
+				
+				req.session.client = {
+					emailid: client.emaliId
+				};
+				res.status(200).send('Welcome');
 			}
 			else{
 				res.status(401).send('Invalid User Id and Password combination');
@@ -147,24 +160,23 @@ router.post('/dev/signin',(req,res)=>{
 	const databody=req.body;
 	console.log(databody.emailId)
 	Schema.Developers.find({
-		where:{
-			emailId:databody.emailId
-		}
-	}).then((response)=>{
-		if(response)
-		{
-			res.send(response);
-		}
-		else
-		{
-			res.send("Username or Password not valid");
-		}
-		
+			where:{
+				emailId:databody.emailId
+			}
+		})
+		.then((response)=>{
+			if(response){
+				res.send(response);
+			}
+			else{
+				res.send("Username or Password not valid");
+			}		
 	})
 	.catch((err)=>{
 		res.status(500).send("Sorry, We are unable to process your request right now");
 	})
 });
+
 
 
 
