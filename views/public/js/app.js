@@ -232,7 +232,7 @@ app.controller('signinController',function($scope,$rootScope,$http,$state)
         emailId:$scope.clientUsername,
         password:$scope.clientPassword,
       }
-      
+       
     })
     .then((res)=>{
       //console.log(res.data.emailId);

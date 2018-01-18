@@ -183,4 +183,8 @@ router.get('/client/clientCredentials',(req,res)=>{
 		res.status(500).send("Sorry, We are unable to process your request right now!");
 	})
 })
+
+router.post('/client/postjob',(req,res)=>{
+	const databody=req.body;
+})
 module.exports=router;
