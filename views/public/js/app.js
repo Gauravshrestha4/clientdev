@@ -49,7 +49,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
 
 app.service('authenticate', ["$http", function($http) {
   this.client = function(){
-    return $http.get('/authenticate/client')
+    return $http.get('http://localhost:8000/authenticate/client')
     .then(function(data) {
       if(data.status !== 200){
         return false;
@@ -64,16 +64,25 @@ app.service('authenticate', ["$http", function($http) {
   }
 }]);
 
-app.controller('mainpageController',function($scope,$rootScope,$state,$http,$window){
+app.controller('mainpageController',function($scope,$rootScope,$state,$http,$window,authenticate){
+  authenticate.client()
+  .then((data)=>{
+    if(data)
+    {
+      $state.go('clientDashboard.jobPost');
+    }
+  })
+  .catch((err)=>{
+    console.log("Session has not been created for this user");
+  })
+
   $scope.navClass="big";
   $scope.headClass="heading";
   $scope.linkClass="li";
   $scope.headClasslink=".company_logo";
   $scope.navClass = 'whiteColor';
   $scope.docHeight=$window.innerHeight;
-  angular.element($window).bind(
-  "scroll", function() 
-  {
+  angular.element($window).bind("scroll", function() {
          //console.log(window.pageYOffset);
          if(window.pageYOffset >50) 
          {
@@ -373,7 +382,7 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
   authenticate.client()
   .then(function(check) {
     if(check){
-      console.log('Restoring session');
+      console.log('Restoring session'+check);
     }
   })
   .catch(function(err) {
