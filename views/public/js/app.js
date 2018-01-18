@@ -1,4 +1,4 @@
-const app=angular.module('clientdev',['ui.router']);
+const app=angular.module('clientdev',['ui.router','ngCookies']);
 
 app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
 {
@@ -46,6 +46,23 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider)
       controller:'clientProfileController'
     })
 })
+
+app.service('authenticate', ["$http", function($http) {
+  this.client = function(){
+    return $http.get('/authenticate/client')
+    .then(function(data) {
+      if(data.status !== 200){
+        return false;
+      }
+      else{
+        return true;
+      }
+    })
+    .catch(function(err) {
+      throw err;
+    })
+  }
+}]);
 
 app.controller('mainpageController',function($scope,$rootScope,$state,$http,$window){
   $scope.navClass="big";
@@ -212,12 +229,22 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
     
 })
 
-app.controller('signinController',function($scope,$rootScope,$http,$state)
+app.controller('signinController',function($scope,$rootScope,$http,$state, authenticate)
 {
   console.log("signinController called");
   $scope.click=1;
   $scope.style={'border':'2px solid #f26234','color':'white'};
   $scope.style1=$scope.style;
+
+  authenticate.client()
+  .then(function(data){
+    if(data){
+      $state.go('clientDashboard.jobPost');
+    }
+  })
+  .catch(function(err){
+    // console.log(err);
+  })
 
   $scope.home=function(){
       $state.go('mainpage');
@@ -341,18 +368,32 @@ app.controller('clientDashboardController',function($state,$scope,$rootScope,$ht
   })
 });
 
-app.controller('jobPostController',function($state,$http,$rootScope,$scope){
+app.controller('jobPostController',function($state,$http,$rootScope,$scope, authenticate){
+  
+  authenticate.client()
+  .then(function(check) {
+    if(check){
+      console.log('Restoring session');
+    }
+  })
+  .catch(function(err) {
+    $state.go('signin');
+  });
+
   console.log('jobPostController called');
+
   $scope.giveSubcategory=function(technology){
     console.log(technology);
  
       /******code for displaying checkboxes on dropdown select******/
   }
-})
+});
+
+
 app.controller('statController',function($state,$rootScope,$http){
   console.log('statController called');
-})
+});
 
 app.controller('clientProfileController',function($state,$rootScope,$scope,$http){
   console.log("clientProfileController called");
-})
+});

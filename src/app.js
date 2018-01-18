@@ -27,18 +27,24 @@ app.use(bodyparser.urlencoded({
 	extended:true
 }));
 
+//cookie parser
+// app.use(cookieParser('signingsecret'));
+
 //setup express-session
 
 app.use(session({
-	name: 'clientdev-session',
+	name: 'id',
 	secret: 'superdupersecret',
 	saveUninitialized: true,
 	resave: true,
+	secure: false, //change to true when on HTTPS
 	cookie:{
+		httpOnly: true,
 		expires: 600000
 	},
 	store: new MongoStore({
-		mongooseConnection: mongoose.connection
+		mongooseConnection: mongoose.connection,
+		ttl: (1*60*60)
 	})
 }))
 
