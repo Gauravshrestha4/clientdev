@@ -52,9 +52,11 @@ app.service('authenticate', ["$http", function($http) {
     return $http.get('http://localhost:8000/authenticate/client')
     .then(function(data) {
       if(data.status !== 200){
+        console.log(data);
         return false;
       }
       else{
+        console.log(data);
         return true;
       }
     })
@@ -65,6 +67,7 @@ app.service('authenticate', ["$http", function($http) {
 }]);
 
 app.controller('mainpageController',function($scope,$rootScope,$state,$http,$window,authenticate){
+
   authenticate.client()
   .then((data)=>{
     if(data)
@@ -375,6 +378,14 @@ app.controller('clientDashboardController',function($state,$scope,$rootScope,$ht
       $scope.companyemail=$scope.clientData.emailId;
       /***********************code for client picture left***********************/
   })
+  $scope.signout=function(){
+    $http({
+      url:'http://localhost:8000/client/signout',
+      method:'GET'
+    }).then((res)=>{
+      $state.go('mainpage');
+    })
+  }
 });
 
 app.controller('jobPostController',function($state,$http,$rootScope,$scope, authenticate){

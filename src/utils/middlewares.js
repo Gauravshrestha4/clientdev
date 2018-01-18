@@ -7,11 +7,11 @@
 
 export const checkSession = (user) => {
 	return (req,res,next) => {
-		// console.log('\n\n\nCookies: ', req.session.cookie);
+		 console.log('\n\n\nCookies: ', req.session.cookie);
 		console.log('\n\nSessions: ',req.session);
 		if ( user === 'client' ){
 			if( req.session.client.emailId ){
-				console.log('\n\nClient: ',req.session.client);
+				console.log('\n\nClient: ',req.session.client.emailId);
 				console.log('\n\nSID: ',req.session.id);
 				res.sendStatus(200);
 			} else {

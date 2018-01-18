@@ -131,7 +131,7 @@ router.post('/client/signin', (req,res) => {
 		if(client){
 			
 			if(client.authenticate(data.password)){
-				
+				console.log("my client "+client);
 				req.session.client = {
 					emailid: client.emaliId
 				};
@@ -198,5 +198,11 @@ router.get('/client/clientCredentials',(req,res)=>{
 
 router.post('/client/postjob',(req,res)=>{
 	const databody=req.body;
+})
+
+router.get('/client/signout',(req,res)=>{
+	req.session.destroy();
+	console.log("Session destroyed");
+	res.sendStatus(200);
 })
 module.exports=router;
