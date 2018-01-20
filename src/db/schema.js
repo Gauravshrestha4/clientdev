@@ -82,6 +82,11 @@ const Schema = {
 			required:[true,"Need to store the skills required for the project"],
 			default:"Not Alloted"
 		},
+		status:{
+			type:String,
+			default:"Live",
+			required:false,
+		}
 	}),
 
 	// ==== MariaDB Schema's ==== //
@@ -110,7 +115,7 @@ const Schema = {
 
 		phone: {
 			
-			type: Sequelize.INTEGER,
+			type: Sequelize.STRING(512),
 			allowNull: true,
 			/*validate: {
 

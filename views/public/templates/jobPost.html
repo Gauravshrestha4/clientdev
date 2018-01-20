@@ -31,7 +31,7 @@
                         <input type="file" multiple>
                       </div>
                       <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files" ng-model="attachment">
                       </div>
                     </div>
                   </div>
@@ -39,19 +39,19 @@
                   <p>What is the expected time period of the job?</p>
                   <select class="browser-default" ng-model="timePeriod" required>
                     <option value="" disabled selected>Choose your option</option>
-                    <option value="1">0-15 days</option>
-                    <option value="2">1 month</option>
-                    <option value="3">3 months</option>
-                    <option value="3">6 months</option>
-                    <option value="3">1 year</option>
+                    <option value="0-15 days">0-15 days</option>
+                    <option value="1 month">1 month</option>
+                    <option value="3 months">3 months</option>
+                    <option value="6 months">6 months</option>
+                    <option value="1 year">1 year</option>
                   </select>
 
                   <p>What is the level of experience required for a developer for this job?</p>
                   <select class="browser-default" ng-model="experienceLevel" required>
                     <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Beginner</option>
-                    <option value="2">Intermediate</option>
-                    <option value="3">Expert</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Expert">Expert</option>
                     
                   </select>
 

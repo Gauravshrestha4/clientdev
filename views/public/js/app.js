@@ -369,12 +369,11 @@ app.controller('howItWorksController',function($scope,$rootScope,$state,$http,$w
 
 app.controller('clientDashboardController',function($state,$scope,$rootScope,$http){
   $http({
-    url:'http://localhost:8000/client/clientDetails',
+    url:'http://localhost:8000/client/details',
     method:'GET',
   }).then((res)=>{
       $scope.clientData=res.data;
-      $scope.companyname=$scope.clientData.companyName;
-      $scope.companyemail=$scope.clientData.emailId;
+      $rootScope.companyemail=$scope.clientData.emailId;
       /***********************code for client picture left***********************/
   })
   $scope.signout=function(){
@@ -422,7 +421,7 @@ app.controller('statController',function($state,$rootScope,$http){
 });
 
 app.controller('clientProfileController',function($state,$rootScope,$scope,$http,authenticate){
- // console.log("clientProfileController called");
+  console.log("clientProfileController called");
   authenticate.client()
   .then(function(check) {
     if(check){
@@ -435,7 +434,11 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
         $scope.company=$scope.clientProfile.companyName;
        
         $scope.username=$scope.clientProfile.emailId;
-         console.log($scope.username); 
+        $scope.companyPhone=$scope.clientProfile.phone;
+        $scope.type=$scope.clientProfile.companyType;
+        $scope.desc=$scope.clientProfile.description;
+        $scope.addr=$scope.clientProfile.address;
+         //console.log($scope.username); 
       }) 
       .catch((err)=>{
 
@@ -455,18 +458,34 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
         companyName:$scope.company,
       }
     })
-    .then((res)=>{
-      console.log('data updated');
-      $http({
+    .then((response)=>{
+      Materialize.toast('Account details successfully updated',3000,'deep-orange darken-3');
+      /*$http({
         url:'http://localhost:8000/client/clientDetails',
         method:'GET',
       })
       .then((response)=>{
         $scope.company=response.data.companyName;
-      })
+      })*/
     })
     .catch((err)=>{
       console.log("Details cant be updated");
+    })
+  }
+
+  $scope.updateCompanyDetails=function(){
+    $http({
+      url:'http://localhost:8000/client/update-companyDetails',
+      method:'POST',
+      data:{
+        phone:$scope.companyPhone,
+        companyType:$scope.type,
+        description:$scope.desc,
+        address:$scope.addr,
+      }
+    })
+    .then((response)=>{
+      Materialize.toast('Company details successfully updated',3000,'deep-orange darken-3');
     })
   }
 

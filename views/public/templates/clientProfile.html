@@ -7,7 +7,7 @@
 			            <span class="card-title">Account Details</span>
 			            <div class="divider"> </div>
 			            <div class="accountDetailForm">
-			            	<form name="client-account-form" novalidate ng-submit="updateAccountDetails()">
+			            	<form name="client-account-form" ng-submit="updateAccountDetails();"  novalidate>
 			            		<div class="row">
 			            			
 			            			<div class="input-field col s12 m12 l12">
@@ -18,14 +18,15 @@
 			            				<p>Username or Email</p>
 						          		<input placeholder="" id="" type="email" class="validate" ng-model="username" disabled>
 						        	</div>
+			            		</div>
+			            		<div class="divider"></div>
+			            		<div class=" postjobButton">
+			            			<button type="submit" class="waves-effect waves-light btn" ng-disabled="client-account-form.$invalid">Update</button>	
 			            		</div> 
 			            	</form>
 			            </div>
 			        </div>
-			         <div class="card-action postjobButton">
-                      	<button type="submit" class="waves-effect waves-light btn" ng-disabled="client-account-form.$invalid">Update</button>
-                      	
-                    </div>
+			         
 				</div>
 			</div>
 		</div>
@@ -37,37 +38,41 @@
 			            <span class="card-title">Company Details</span>
 			            <div class="divider"> </div>
 			            <div class="companyDetailsForm">
-			            	<form name="client-companydetail-form" novalidate>
+			            	<form name="client-companydetail-form" ng-submit="updateCompanyDetails()" novalidate>
 			            		<div class="row">
 							        <div class="input-field col s12 m12 l6">
 							       		<p>Contact No.</p>
-							          	<input placeholder=""  type="tel" class="validate">
+							          	<input placeholder=""  type="tel" class="validate" ng-model="companyPhone" required>
 							          
 							        </div>
 							        <div class="input-field col s12 m12 l6">
 							          <p>Company Type</p>
-							          <input id="last_name" type="text" class="validate" disabled>
+							          <input id="" type="text" class="validate" disabled ng-model="type" required>
   
 							        </div>
 							      </div>
 							      <div class="row">
 							      	<div class="input-field col s12">
 							      		<p>Company Description</p>
-							      		<textarea id="" class="materialize-textarea"  required></textarea>
+							      		<textarea id="" class="materialize-textarea"  required ng-model="desc"></textarea>
 							      	</div>
 							      	<div class="input-field col s12">
 							          <p>Address</p>
-							          <input id="last_name" type="text" class="validate">
+							          <input id="" type="text" class="validate" ng-model="addr" required>
   
 							        </div>
 							      </div>
+							      <div class="divider">
+							      	
+							      </div>
+							      <div class=" postjobButton">
+				                      	<button type="submit" class="waves-effect waves-light btn" ng-disabled="client-account-form.$invalid">Update</button>
+				                      	
+				                    </div>
 			            	</form>
 			            </div>
 			        </div>
-			        <div class="card-action postjobButton">
-                      	<button type="submit" class="waves-effect waves-light btn" ng-disabled="client-account-form.$invalid">Update</button>
-                      	
-                    </div>
+			        
 				</div>
 			</div>
 		</div>

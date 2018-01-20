@@ -211,22 +211,39 @@ router.get('/client/signout',(req,res)=>{
 })
 
 router.post('/client/update-accountDetails',(req,res)=>{
-	const databody=req.databody;
-	Schema.Clients.find({
+	const databody=req.body;
+	Schema.Clients.update({
+		companyName:databody.companyName,
+	},
+	{
 		where:{
-			emailId:"shikharmittal@gmail.com"/*req.session.emailId*/,
+			emailId:'shikharmittal@gmail.com'
 		}
 	})
-	.then((client)=>{
-		Schema.Clients.update({
-			companyName:databody.companyName,
-		})
-		.then((updates)=>{
-			res.status(200).json({companyName:client.companyName,emailId:client.emailId,phone:client.phone,description:client.description,picture:client.picture,address:client.address,companyType:client.companyType})
-		})
+	.then((data)=>{
+		res.send(data);
 	})
-	.catch((err)=>{
-		res.send("User doesnt exists");
+})
+
+router.post('/client/update-companyDetails',(req,res)=>{
+	const databody=req.body;
+	console.log(databody);
+	Schema.Clients.update(
+	{
+		phone:databody.phone,
+		companyType:databody.companyType,
+		description:databody.description,
+		address:databody.address,
+	},
+	{
+		where:
+		{
+			emailId:'shikharmittal@gmail.com'/*req.session.emailId*/,
+		}
+	})
+	.then((update)=>{
+		console.log("Update "+update);
+		res.send(update);
 	})
 })
 
