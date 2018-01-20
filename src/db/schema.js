@@ -35,7 +35,7 @@ const Schema = {
 
 		projectID:{
 			type:String,
-			required:[true,'Need a project ID to store data']
+			required:[false,'Need a project ID to store data']/*it would be unique*/
 		},
 
 		name:{
@@ -67,7 +67,7 @@ const Schema = {
 		},
 		attachments:{
 			type:[String],
-			required:true,
+			required:false,
 			default:"None"
 		},
 

@@ -10,7 +10,8 @@ const express = require('express'),
 	session = require('express-session'),
 	mongoose = require('mongoose'),
 	MongoStore = require('connect-mongo')(session),
-	routes = require('./routes/routes');
+	clients = require('./routes/clients'),
+	developers=require('./routes/developers');
 const app=express();
 
 //setup view engine
@@ -52,7 +53,8 @@ app.use(session({
 app.use(express.static(path.join(__dirname, '../', 'views','public')));
 
 
-app.use(routes);
+app.use(clients);
+app.use(developers);
 
 app.get('*',(req,res)=>{
 	res.render('index');

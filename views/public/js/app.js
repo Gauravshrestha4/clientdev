@@ -399,6 +399,12 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
     $state.go('signin');
   });
 
+  $scope.postJob=function(){
+    $http({
+      url:'http://localhost:8000/client/post-job'
+    })
+  }
+
   $scope.giveSubcategory=function(technology){
     console.log(technology);
  
