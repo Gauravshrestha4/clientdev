@@ -181,11 +181,13 @@ router.post('/dev/signin',(req,res)=>{
 
 
 /***********************Routes for Client Dashboard***********************************/
-router.get('/client/clientCredentials',(req,res)=>{
-	const databody=req.body;
+
+
+router.get('/client/details',(req,res)=>{
+	//const databody=req.body;
 	Schema.Clients.find({
 		where:{
-			emailId:databody.emailId,
+			emailId:"shikharmittal@gmail.com"/*req.session.client.emailId*/,
 		}
 	})
 	.then((client)=>{
@@ -197,7 +199,9 @@ router.get('/client/clientCredentials',(req,res)=>{
 })
 
 router.post('/client/postjob',(req,res)=>{
-	const databody=req.body;
+	//const databody=req.body;
+
+
 })
 
 router.get('/client/signout',(req,res)=>{
@@ -205,4 +209,25 @@ router.get('/client/signout',(req,res)=>{
 	console.log("Session destroyed");
 	res.sendStatus(200);
 })
+
+router.post('/client/update-accountDetails',(req,res)=>{
+	const databody=req.databody;
+	Schema.Clients.find({
+		where:{
+			emailId:"shikharmittal@gmail.com"/*req.session.emailId*/,
+		}
+	})
+	.then((client)=>{
+		Schema.Clients.update({
+			companyName:databody.companyName,
+		})
+		.then((updates)=>{
+			res.status(200).json({companyName:client.companyName,emailId:client.emailId,phone:client.phone,description:client.description,picture:client.picture,address:client.address,companyType:client.companyType})
+		})
+	})
+	.catch((err)=>{
+		res.send("User doesnt exists");
+	})
+})
+
 module.exports=router;

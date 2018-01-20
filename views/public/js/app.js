@@ -52,11 +52,11 @@ app.service('authenticate', ["$http", function($http) {
     return $http.get('http://localhost:8000/authenticate/client')
     .then(function(data) {
       if(data.status !== 200){
-        console.log(data);
+        //console.log(data);
         return false;
       }
       else{
-        console.log(data);
+        //console.log(data);
         return true;
       }
     })
@@ -275,7 +275,6 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
     })
     .then((res)=>{
       //console.log(res.data.emailId);
-     // $localStorage.companyId=res.data.emailId;
       $state.go('clientDashboard.jobPost');
       //$rootScope.companyname=res.data.companyName;
       //console.log($rootScope.dcompanyId);
@@ -370,7 +369,7 @@ app.controller('howItWorksController',function($scope,$rootScope,$state,$http,$w
 
 app.controller('clientDashboardController',function($state,$scope,$rootScope,$http){
   $http({
-    url:'http://localhost:8000/client/clientCredentials',
+    url:'http://localhost:8000/client/clientDetails',
     method:'GET',
   }).then((res)=>{
       $scope.clientData=res.data;
@@ -390,6 +389,7 @@ app.controller('clientDashboardController',function($state,$scope,$rootScope,$ht
 
 app.controller('jobPostController',function($state,$http,$rootScope,$scope, authenticate){
   
+  console.log('jobPostController called');
   authenticate.client()
   .then(function(check) {
     if(check){
@@ -399,8 +399,6 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
   .catch(function(err) {
     $state.go('signin');
   });
-
-  console.log('jobPostController called');
 
   $scope.giveSubcategory=function(technology){
     console.log(technology);
@@ -412,8 +410,64 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
 
 app.controller('statController',function($state,$rootScope,$http){
   console.log('statController called');
+  authenticate.client()
+  .then(function(check) {
+    if(check){
+      console.log('Restoring session'+check);
+    }
+  })
+  .catch(function(err) {
+    $state.go('signin');
+  });
 });
 
-app.controller('clientProfileController',function($state,$rootScope,$scope,$http){
-  console.log("clientProfileController called");
+app.controller('clientProfileController',function($state,$rootScope,$scope,$http,authenticate){
+ // console.log("clientProfileController called");
+  authenticate.client()
+  .then(function(check) {
+    if(check){
+      $http({
+        url:'http://localhost:8000/client/details',
+        method:'GET',
+      })
+      .then((res)=>{
+        $scope.clientProfile=res.data;
+        $scope.company=$scope.clientProfile.companyName;
+       
+        $scope.username=$scope.clientProfile.emailId;
+         console.log($scope.username); 
+      }) 
+      .catch((err)=>{
+
+      })
+
+    }
+  })
+  .catch(function(err) {
+    $state.go('signin');
+  });
+
+  $scope.updateAccountDetails=function(){
+    $http({
+      url:'http://localhost:8000/client/update-accountDetails',
+      method:'POST',
+      data:{
+        companyName:$scope.company,
+      }
+    })
+    .then((res)=>{
+      console.log('data updated');
+      $http({
+        url:'http://localhost:8000/client/clientDetails',
+        method:'GET',
+      })
+      .then((response)=>{
+        $scope.company=response.data.companyName;
+      })
+    })
+    .catch((err)=>{
+      console.log("Details cant be updated");
+    })
+  }
+
 });

@@ -167,7 +167,7 @@ const Schema = {
 					
 					client.emailId = client.emailId.toLowerCase();
 
-						return bcrypt.hash(client.password, 5)
+						return bcrypt.hash(client.password, 3)
 						.then((res) => {
 							client.password = res;	
 							console.log('Hashed',res);

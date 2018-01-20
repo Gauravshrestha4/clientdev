@@ -7,16 +7,16 @@
 			            <span class="card-title">Account Details</span>
 			            <div class="divider"> </div>
 			            <div class="accountDetailForm">
-			            	<form name="client-account-form" novalidate>
+			            	<form name="client-account-form" novalidate ng-submit="updateAccountDetails()">
 			            		<div class="row">
 			            			
 			            			<div class="input-field col s12 m12 l12">
 			            				<p>Company Name</p>
-						          		<input placeholder="" id="" type="text" class="validate">
+						          		<input placeholder="" id="" type="text" class="validate" ng-model="company">
 						        	</div>
 			            			<div class="input-field col s12 m12 l12">
 			            				<p>Username or Email</p>
-						          		<input placeholder="" id="" type="email" class="validate">
+						          		<input placeholder="" id="" type="email" class="validate" ng-model="username" disabled>
 						        	</div>
 			            		</div> 
 			            	</form>
