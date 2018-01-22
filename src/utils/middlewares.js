@@ -7,8 +7,8 @@
 
 export const checkSession = (user) => {
 	return (req,res,next) => {
-		 console.log('\n\n\nCookies: ', req.session.cookie);
-		console.log('\n\nSessions: ',req.session);
+		 //console.log('\n\n\nCookies: ', req.session.cookie);
+		//console.log('\n\nSessions: ',req.session);
 		if ( user === 'client' ){
 			if( req.session.client.emailId ){
 				console.log('\n\nClient: ',req.session.client.emailId);

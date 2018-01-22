@@ -83,7 +83,7 @@ const Schema = {
 
 		skills:{
 			type:[String],
-			required:[false,"Need to store the skills required for the project"],/*to be changed to "true" after implementation of UI*/
+			required:[true,"Need to store the skills required for the project"],/*to be changed to "true" after implementation of UI*/
 			default:"Not Alloted"
 		},
 		status:{
@@ -155,7 +155,18 @@ const Schema = {
 
 			}*/
 		},
-
+		city:{
+			type:Sequelize.STRING(512),
+			allowNull:true,
+		},
+		state:{
+			type:Sequelize.STRING(512),
+			allowNull:true,
+		},
+		zipCode:{
+			type:Sequelize.STRING(512),
+			allowNull:true,
+		},
 		companyType: {
 
 			type: Sequelize.STRING(512),

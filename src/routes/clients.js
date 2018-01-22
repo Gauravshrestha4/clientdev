@@ -61,7 +61,6 @@ router.post('/client/signup', (req,res) => {
 
 router.get('/authenticate/client',checkSession('client'),(err,req,res,next)=>{
 	if(err){
-		console.error('Error in checking session: ',err);
 		res.status(500).send('Session not found');
 	}
 	else{
@@ -71,8 +70,6 @@ router.get('/authenticate/client',checkSession('client'),(err,req,res,next)=>{
 
 router.post('/client/signin', (req,res) => {
 	const data = req.body;
-	//console.log('Got',data);
-	// console.log('Headers: ', req.headers);
 	Clients.find({
 		where:{
 			emailId: data.emailId
@@ -82,9 +79,8 @@ router.post('/client/signin', (req,res) => {
 		if(client){
 			
 			if(client.authenticate(data.password)){
-				console.log("my client "+client);
 				req.session.client = {
-					emailid: client.emaliId
+					emailId: client.emailId
 				};
 				res.status(200).send('Welcome');
 			}
@@ -109,10 +105,9 @@ router.post('/client/signin', (req,res) => {
 
 
 router.get('/client/details',(req,res)=>{
-	//const databody=req.body;
 	Schema.Clients.find({
 		where:{
-			emailId:"shikharmittal@gmail.com"/*req.session.client.emailId*/,
+			emailId:req.session.client.emailId,
 		}
 	})
 	.then((client)=>{
@@ -159,7 +154,7 @@ router.post('/client/update-accountDetails',(req,res)=>{
 	},
 	{
 		where:{
-			emailId:'shikharmittal@gmail.com'
+			emailId:req.session.client.emailId,
 		}
 	})
 	.then((data)=>{
@@ -180,7 +175,7 @@ router.post('/client/update-companyDetails',(req,res)=>{
 	{
 		where:
 		{
-			emailId:'shikharmittal@gmail.com'/*req.session.emailId*/,
+			emailId:req.session.client.emailId,
 		}
 	})
 	.then((update)=>{

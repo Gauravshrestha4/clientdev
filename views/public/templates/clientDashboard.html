@@ -61,19 +61,23 @@ textarea.materialize-textarea:focus:not([readonly]) {
 		      <a href="#!email"><span class=" email" style="color:#6d7a83;padding-top: 20px;">{{companyemail}}</span></a>
 		    </div>
 	    </li>
-	    <li><a  class="waves-effect" href="" ui-sref="clientDashboard.jobPost"><i class="fa fa-rocket" aria-hidden="true"></i>Post a Job</a></li>
-	    <li><a  class="waves-effect" href="" ui-sref="clientDashboard.stat"><i class="fa fa-area-chart" aria-hidden="true"></i>Previous Stats</a></li>
-	    <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-credit-card" aria-hidden="true"></i>Billing</a></li>
-	    <li><a class="subheader">Account settings</a></li>
-	    <li><a  class="waves-effect" href="" ui-sref="clientDashboard.updateProfile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Update My Info</a></li>
-	    <li><a  class="waves-effect" href="" ng-click="signout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>  
+        <div class="divider"></div>
+      <div style="padding-top: 50px;">
+        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.jobPost"><i class="fa fa-rocket" aria-hidden="true"></i>Post a Job</a></li>
+        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.stat"><i class="fa fa-area-chart" aria-hidden="true"></i>Previous Stats</a></li>
+        <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-credit-card" aria-hidden="true"></i>Billing</a></li>
+        <li><a class="subheader">Account settings</a></li>
+        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.updateProfile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Update My Info</a></li>
+        <li><a  class="waves-effect" href="" ng-click="signout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>
+      </div>
+	      
  	</ul>
 
 </div>
 
 
 <section class="clientDashboard ">
-	<nav class="hide-on-large-only" style="background-color: #f26234;margin-top:-20px">
+	<nav class="hide-on-large-only dash-sidenav" style="background-color: #f26234;margin-top:-20px">
     <div class="nav-wrapperdash-sidenav">
       <a href="#!" class="brand-logo">ClientDev</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -83,16 +87,19 @@ textarea.materialize-textarea:focus:not([readonly]) {
         <li>
           <div class="user-view userInfo">
             <a href="#!user"><img class="circle" src=""></a>
-            <a href="#!name"><span class=" name" style="color:#6d7a83" >{{companyname}}</span></a>
             <a href="#!email"><span class=" email" style="color:#6d7a83">{{companyemail}}</span></a>
           </div>
         </li>
-        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.jobPost"><i class="fa fa-rocket" aria-hidden="true"></i>Post a Job</a></li>
-        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.stat"><i class="fa fa-area-chart" aria-hidden="true"></i>Previous Stats</a></li>
-        <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-credit-card" aria-hidden="true"></i>Billing</a></li>
-        <li><a class="subheader">Account settings</a></li>
-        <li><a  class="waves-effect" href="" ui-sref="clientDashboard.updateProfile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Update My Info</a></li>
-        <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li> 
+        <div class="divider"></div>
+        <div style="padding-top: 50px;">
+          <li><a  class="waves-effect" href="" ui-sref="clientDashboard.jobPost"><i class="fa fa-rocket" aria-hidden="true"></i>Post a Job</a></li>
+          <li><a  class="waves-effect" href="" ui-sref="clientDashboard.stat"><i class="fa fa-area-chart" aria-hidden="true"></i>Previous Stats</a></li>
+          <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-credit-card" aria-hidden="true"></i>Billing</a></li>
+          <li><a class="subheader">Account settings</a></li>
+          <li><a  class="waves-effect" href="" ui-sref="clientDashboard.updateProfile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Update My Info</a></li>
+          <li><a  class="waves-effect" href="" ui-sref=""><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li> 
+        </div>
+        
       </ul>
     </div>
   </nav>

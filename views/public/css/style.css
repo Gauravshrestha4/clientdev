@@ -665,3 +665,7 @@ footer
 	font-size: 1rem;
 	text-align: center;
 }
+select:focus
+{
+	border:3px solid #f26234;
+}

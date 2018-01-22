@@ -52,11 +52,11 @@ app.service('authenticate', ["$http", function($http) {
     return $http.get('http://localhost:8000/authenticate/client')
     .then(function(data) {
       if(data.status !== 200){
-        //console.log(data);
+        console.log(data);
         return false;
       }
       else{
-        //console.log(data);
+        console.log(data);
         return true;
       }
     })
@@ -145,6 +145,9 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
        companyType:$scope.company_type,
        password:$scope.password,
        confirmPassword:$scope.confirmPassword,
+       state:$scope.state,
+       city:$scope.city,
+       zipCode:$scope.zip,
       }
      }).then((res)=>{
         $scope.company_name=null;
@@ -154,6 +157,9 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         $scope.company_type=null;
         $scope.password=null;
         $scope.confirmPassword=null;
+        $scope.state=null;
+        $scope.city=null;
+        $scope.zip=null;
        console.log(res.status);
        Materialize.toast(res.data,5000,'deep-orange darken-3');
        $state.go('signin');
@@ -277,6 +283,8 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
       if(res.status!=200)
       {
         $scope.err=err;
+        $scope.clientUsername=null;
+        $scope.clientPassword=null;
       }
       else
       {
@@ -285,6 +293,8 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
       
     })
     .catch((err)=>{
+      $scope.clientUsername=null;
+      $scope.clientPassword=null;
       $scope.error=1;
       console.log(err.data);
       $scope.err=err.data;
