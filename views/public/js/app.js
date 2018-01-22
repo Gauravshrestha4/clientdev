@@ -248,7 +248,7 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
   $scope.style={'border':'2px solid #f26234','color':'white'};
   $scope.style1=$scope.style;
 
-  authenticate.client()
+  /*authenticate.client()
   .then(function(data){
     if(data){
       $state.go('clientDashboard.jobPost');
@@ -256,7 +256,7 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
   })
   .catch(function(err){
     // console.log(err);
-  })
+  })*/
 
   $scope.home=function(){
       $state.go('mainpage');
@@ -390,7 +390,7 @@ app.controller('clientDashboardController',function($state,$scope,$rootScope,$ht
 app.controller('jobPostController',function($state,$http,$rootScope,$scope, authenticate){
   
   console.log('jobPostController called');
-  authenticate.client()
+  /*authenticate.client()
   .then(function(check) {
     if(check){
       console.log('Restoring session'+check);
@@ -398,7 +398,7 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
   })
   .catch(function(err) {
     $state.go('signin');
-  });
+  });*/
 
   $scope.giveSubcategory=function(technology){
     console.log(technology);
@@ -408,9 +408,9 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
 });
 
 
-app.controller('statController',function($state,$rootScope,$http){
+app.controller('statController',function($state,$rootScope,$http,$scope){
   console.log('statController called');
-  authenticate.client()
+  /*authenticate.client()
   .then(function(check) {
     if(check){
       console.log('Restoring session'+check);
@@ -418,12 +418,31 @@ app.controller('statController',function($state,$rootScope,$http){
   })
   .catch(function(err) {
     $state.go('signin');
-  });
+  });*/
+
+  $scope.statoption=1;
+  $scope.projcompdiv=function(){
+    $scope.statoption=2;
+  }
+
+  $scope.backToStat=function()
+  {
+    $scope.statoption=1;
+  }
+
+  $scope.projrundiv=function(){
+    $scope.statoption=3;
+  }
+
+  $scope.invoicesdiv=function()
+  {
+    $scope.statoption=4;
+  }
 });
 
 app.controller('clientProfileController',function($state,$rootScope,$scope,$http,authenticate){
  // console.log("clientProfileController called");
-  authenticate.client()
+  /*authenticate.client()
   .then(function(check) {
     if(check){
       $http({
@@ -445,7 +464,7 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
   })
   .catch(function(err) {
     $state.go('signin');
-  });
+  });*/
 
   $scope.updateAccountDetails=function(){
     $http({

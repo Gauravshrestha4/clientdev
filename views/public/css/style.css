@@ -634,3 +634,131 @@ footer
 	font-weight: bold;
 	padding-top: 0px;
 }
+
+/*******************************Client Dashboard stats section*****************************************/
+
+.container3
+{
+	width: 90%;
+}
+
+.statsdiv .card
+{
+	color: white;
+	width: 90%;
+}
+
+.statsdiv .projcompcard
+{
+	background-color: #e84c3d;
+	opacity: 0.9;
+}
+
+.statsdiv .info_btn1, .info_btn1:hover
+{
+	color: #e84c3d;
+	background-color: white;
+	font-weight: bold;
+	margin-bottom: 5%;
+}
+
+.statsdiv .projruncard
+{
+	background-color: #1abc9c;
+	opacity: 0.8;
+}
+
+.statsdiv .info_btn2, .info_btn2:hover
+{
+	color: #1abc9c;
+	background-color: white;
+	font-weight: bold;
+	margin-bottom: 5%;
+}
+
+.statsdiv .invoiceduecard
+{
+	background-color: #3598db;
+	opacity: 0.8;
+}
+
+.statsdiv .info_btn3, .info_btn3:hover
+{
+	color: #3598db;
+	background-color: white;
+	font-weight: bold;
+	margin-bottom: 5%;
+}
+
+.statsdiv .notificationcard
+{
+	background-color: #9a59b5;
+	opacity: 0.8;
+}
+
+.statsdiv .info_btn4, .info_btn4:hover
+{
+	color:  #9a59b5;
+	background-color: white;
+	font-weight: bold;
+	margin-bottom: 5%;
+}
+
+.activitycount
+{
+	font-size: 3.5rem;
+	font-weight: bolder;
+}
+
+.activity
+{
+	padding-bottom: 20px;
+	font-size: 1.2rem;
+}
+
+.info_btn, .info_btn:hover
+{
+	
+}
+
+.back_btn, .back_btn:hover
+{
+	background-color: white;
+	border: 1px solid #f26234;
+	color: #f26234;
+}
+
+.activitydata
+{
+	margin-top: 5%;
+	margin-left: 3%;
+	margin-right: 5%;
+}
+
+.collapsible-header
+{
+	color: #f26234
+}
+
+.projectdata
+{
+	font-size: 16px;
+	font-weight: bolder;
+	color:#37474f;
+}
+
+.projectdata1
+{
+	font-size: 14px;
+}
+
+.find_btn, .find_btn:hover
+{
+	background-color: #f26234;
+	color: white;
+}
+
+.invoiceduediv
+{
+	margin-top: 4%;
+}
