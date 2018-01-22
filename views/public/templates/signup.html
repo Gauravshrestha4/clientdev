@@ -52,7 +52,7 @@
 						      <div class="row">
 						        <div class="input-field col s12">
 						        	<i class="material-icons prefix">person_pin_circle</i>
-						          <input maxlength="50" id="address" type="text" class="validate" ng-model="address" required>
+						          <input maxlength="100" id="address" type="text" class="validate" ng-model="address" required>
 						          <label for="address">Address</label>
 						        </div>
 						      </div>
@@ -141,3 +141,9 @@
 		</div>
 	</div>
 </section>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$("input:text:visible:first").focus();
+	});
+</script>

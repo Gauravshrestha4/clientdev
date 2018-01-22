@@ -184,6 +184,7 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         
       }) 
     }
+    t
 
     $scope.dev_submit=function(){
     console.log($scope.dev_name);
@@ -248,7 +249,7 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
   $scope.style={'border':'2px solid #f26234','color':'white'};
   $scope.style1=$scope.style;
 
-  /*authenticate.client()
+  authenticate.client()
   .then(function(data){
     if(data){
       $state.go('clientDashboard.jobPost');
@@ -256,7 +257,7 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
   })
   .catch(function(err){
     // console.log(err);
-  })*/
+  })
 
   $scope.home=function(){
       $state.go('mainpage');
@@ -273,12 +274,21 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
       }
        
     })
-    .then((res)=>{
-      //console.log(res.data.emailId);
-      $state.go('clientDashboard.jobPost');
-      //$rootScope.companyname=res.data.companyName;
-      //console.log($rootScope.dcompanyId);
-      //console.log( $rootScope.dcompanyname);
+    .then((res,err)=>{
+      if(res.status!=200)
+      {
+        $scope.err=err;
+      }
+      else
+      {
+        $state.go('clientDashboard.jobPost');
+      }
+      
+    })
+    .catch((err)=>{
+      $scope.error=1;
+      console.log(err.data);
+      $scope.err=err.data;
     })
   }
 
@@ -369,12 +379,11 @@ app.controller('howItWorksController',function($scope,$rootScope,$state,$http,$w
 
 app.controller('clientDashboardController',function($state,$scope,$rootScope,$http){
   $http({
-    url:'http://localhost:8000/client/clientDetails',
+    url:'http://localhost:8000/client/details',
     method:'GET',
   }).then((res)=>{
       $scope.clientData=res.data;
-      $scope.companyname=$scope.clientData.companyName;
-      $scope.companyemail=$scope.clientData.emailId;
+      $rootScope.companyemail=$scope.clientData.emailId;
       /***********************code for client picture left***********************/
   })
   $scope.signout=function(){
@@ -390,7 +399,7 @@ app.controller('clientDashboardController',function($state,$scope,$rootScope,$ht
 app.controller('jobPostController',function($state,$http,$rootScope,$scope, authenticate){
   
   console.log('jobPostController called');
-  /*authenticate.client()
+  authenticate.client()
   .then(function(check) {
     if(check){
       console.log('Restoring session'+check);
@@ -398,19 +407,67 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
   })
   .catch(function(err) {
     $state.go('signin');
-  });*/
+  });
 
+  $scope.postJob=function(){
+    $http({
+      url:'http://localhost:8000/client/postjob',
+      method:'POST',
+      data:{
+        name:$scope.jobName,
+        profileRequired:$scope.profile,
+        category:$scope.technology,
+        description:$scope.description,
+        timePeriod:$scope.timePeriod,
+        experience:$scope.experienceLevel,
+        /*attachments:to be given */
+        perks:$scope.perks,
+        skills:$scope.selectedSkills,
+      }
+    })
+    .then((response)=>{
+      $scope.selectedSkills=[];
+      $scope.jobName=null;
+      $scope.profile=null;
+      $scope.technology=null;
+      $scope.description=null;
+      $scope.timePeriod=null;
+      $scope.experienceLevel=null;
+      $scope.perks=null;
+       Materialize.toast('Project has been posted successfully',3000,'deep-orange darken-3');
+    })
+  }
+  $scope.checkFields=function(){
+    if($scope.jobName==null || $scope.profile==null || $scope.technology==null ||  $scope.description==null || $scope.timePeriod==null ||  $scope.experienceLevel==null || $scope.perks==null)
+    {
+      return true;
+    }
+    else
+      return false;
+  }
+  
   $scope.giveSubcategory=function(technology){
-    console.log(technology);
- 
-      /******code for displaying checkboxes on dropdown select******/
+    //console.log(technology);
+    $scope.select=1;
+    $scope.skills=[];
+    if(technology=="Web Development")
+    {
+      $scope.skills=['HTML','CSS','Javascript','Bootstrap','AngularJS','ExpressJS'];
+    }
+  }
+
+  $scope.selectedSkills=[];
+  $scope.add=function(skill){
+
+    $scope.selectedSkills.push(skill);
+    console.log($scope.selectedSkills);
   }
 });
 
 
 app.controller('statController',function($state,$rootScope,$http,$scope){
   console.log('statController called');
-  /*authenticate.client()
+  authenticate.client()
   .then(function(check) {
     if(check){
       console.log('Restoring session'+check);
@@ -418,7 +475,7 @@ app.controller('statController',function($state,$rootScope,$http,$scope){
   })
   .catch(function(err) {
     $state.go('signin');
-  });*/
+  }); 
 
   $scope.statoption=1;
   $scope.projcompdiv=function(){
@@ -441,8 +498,8 @@ app.controller('statController',function($state,$rootScope,$http,$scope){
 });
 
 app.controller('clientProfileController',function($state,$rootScope,$scope,$http,authenticate){
- // console.log("clientProfileController called");
-  /*authenticate.client()
+  console.log("clientProfileController called");
+  authenticate.client()
   .then(function(check) {
     if(check){
       $http({
@@ -454,7 +511,11 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
         $scope.company=$scope.clientProfile.companyName;
        
         $scope.username=$scope.clientProfile.emailId;
-         console.log($scope.username); 
+        $scope.companyPhone=$scope.clientProfile.phone;
+        $scope.type=$scope.clientProfile.companyType;
+        $scope.desc=$scope.clientProfile.description;
+        $scope.addr=$scope.clientProfile.address;
+         //console.log($scope.username); 
       }) 
       .catch((err)=>{
 
@@ -464,7 +525,7 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
   })
   .catch(function(err) {
     $state.go('signin');
-  });*/
+  });
 
   $scope.updateAccountDetails=function(){
     $http({
@@ -474,18 +535,34 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
         companyName:$scope.company,
       }
     })
-    .then((res)=>{
-      console.log('data updated');
-      $http({
+    .then((response)=>{
+      Materialize.toast('Account details successfully updated',3000,'deep-orange darken-3');
+      /*$http({
         url:'http://localhost:8000/client/clientDetails',
         method:'GET',
       })
       .then((response)=>{
         $scope.company=response.data.companyName;
-      })
+      })*/
     })
     .catch((err)=>{
       console.log("Details cant be updated");
+    })
+  }
+
+  $scope.updateCompanyDetails=function(){
+    $http({
+      url:'http://localhost:8000/client/update-companyDetails',
+      method:'POST',
+      data:{
+        phone:$scope.companyPhone,
+        companyType:$scope.type,
+        description:$scope.desc,
+        address:$scope.addr,
+      }
+    })
+    .then((response)=>{
+      Materialize.toast('Company details successfully updated',3000,'deep-orange darken-3');
     })
   }
 

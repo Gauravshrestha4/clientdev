@@ -22,16 +22,20 @@
 
 				    <div id="" ng-show="click==1" class="col s12 client-form">
 				    	<div class="row">
+				    		<div class="chip errorMsg" ng-show="error==1">
+							    {{err}}
+							    
+							</div>
 						   <form class="col s12" name="client-signup-form" novalidate ng-submit="client_signin()">
 						      <div class="row">
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">account_circle</i>
-						          <input id="icon_prefix" type="text" class="validate" ng-model="clientUsername" placeholder="Your e-mail" required>
+						          <input maxlength="50" id="icon_prefix" type="text" class="validate" ng-model="clientUsername" placeholder="Your e-mail" required>
 						          <label for="icon_prefix">Client's Username</label>
 						        </div>
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">vpn_key</i>
-						          <input id="icon_pass" type="password" class="validate" ng-model="clientPassword" required>
+						          <input maxlength="8" id="icon_pass" type="password" class="validate" ng-model="clientPassword" required>
 						          <label for="icon_pass">Password</label>
 						        </div>
 						      </div>
@@ -51,12 +55,12 @@
 						      <div class="row">
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">account_circle</i>
-						          <input id="icon_prefix" type="text" class="validate" ng-model="dev_username" placeholder="Your e-mail">
-						          <label for="icon_prefix">Developer's Username</label>
+						          <input maxlength="50" id="dev_name" type="text" class="validate" ng-model="dev_username" placeholder="Your e-mail">
+						          <label for="dev_name">Developer's Username</label>
 						        </div>
 						        <div class="input-field col s12">
 						          <i class="material-icons prefix">vpn_key</i>
-						          <input id="icon_pass" type="password" class="validate" ng-model="dev_password">
+						          <input maxlength="8" id="icon_pass" type="password" class="validate" ng-model="dev_password">
 						          <label for="icon_pass">Password</label>
 						        </div>
 						      </div>
@@ -75,3 +79,9 @@
 		</div>
 	</div>
 </section>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$("input:text:visible:first").focus();
+	});
+</script>

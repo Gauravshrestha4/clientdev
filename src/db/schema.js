@@ -16,7 +16,7 @@ const Schema = {
 
 	// ===== MongoDB Schema's ==== //
 
-	Skills : new mongoose.Schema({
+	Skills : mongoose.model('Skills',new mongoose.Schema({
 		
 		developerID: {
 		
@@ -29,13 +29,13 @@ const Schema = {
 			required: [true, 'Need a list of skills to save']
 		}
 
-	}),
+	})),
 
-	Projects:new mongoose.Schema({
+	Projects:mongoose.model('Projects',new mongoose.Schema({
 
 		projectID:{
 			type:String,
-			required:[true,'Need a project ID to store data']
+			required:[false,'Need a project ID to store data']/*it would be unique*/
 		},
 
 		name:{
@@ -59,7 +59,11 @@ const Schema = {
 			required:true,
 			default:"No description available"
 		},
-
+		experience:{
+			type:String,
+			required:true,
+			default:"Not Alloted"
+		},
 		timePeriod:{
 			type:String,
 			required:true,
@@ -67,7 +71,7 @@ const Schema = {
 		},
 		attachments:{
 			type:[String],
-			required:true,
+			required:false,
 			default:"None"
 		},
 
@@ -79,10 +83,15 @@ const Schema = {
 
 		skills:{
 			type:[String],
-			required:[true,"Need to store the skills required for the project"],
+			required:[false,"Need to store the skills required for the project"],/*to be changed to "true" after implementation of UI*/
 			default:"Not Alloted"
 		},
-	}),
+		status:{
+			type:String,
+			default:"Live",
+			required:false,
+		}
+	})),
 
 	// ==== MariaDB Schema's ==== //
 
@@ -110,7 +119,7 @@ const Schema = {
 
 		phone: {
 			
-			type: Sequelize.INTEGER,
+			type: Sequelize.STRING(512),
 			allowNull: true,
 			/*validate: {
 
@@ -259,6 +268,7 @@ const Schema = {
 Schema.Clients.prototype.authenticate = function(value){
 	return bcrypt.compareSync(value, this.password);
 };
+
 
 // ======= Sync the schemas for MariaDB ======= //
 Schema.Developers.sync();

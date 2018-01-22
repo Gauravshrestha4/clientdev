@@ -1,6 +1,4 @@
 
-
-
 /*--------------------------------------------------Css for navbar-----------------------------------------*/
 
 @import "compass/css3";
@@ -550,6 +548,22 @@ footer
 	margin-bottom: 40px;
 	padding-left: 20px;
 }
+.errorMsg
+{
+	height: 100%;
+	padding-bottom: 10px;
+	padding-top:10px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	background-color: #d32f2f ;
+	color:white;
+	border:2px solid #b71c1c;
+	
+}
+.chip
+{
+	border-radius: 0px;
+}
 /*******************************Client Dashboard *****************************************************/
 .dashboardLogo
 {
@@ -594,7 +608,6 @@ footer
 .jobPostForm p
 {
 	color:#6d7a83;
-	padding-top: 20px;
 	font-weight: bold;
 }
 .postJob
@@ -607,6 +620,7 @@ footer
 	background-color: #f26234;
 	color:white;
 	margin-left: 30px;
+	margin-top: 20px;
 }
 
 .chip
@@ -762,3 +776,19 @@ footer
 {
 	margin-top: 4%;
 }
+.relatedSkills
+{
+	height:100%;
+}
+.skillCard
+{
+	background-color: #f26234;
+	
+}
+.skillName
+{
+	color:white;
+	font-size: 1rem;
+	text-align: center;
+}
+
