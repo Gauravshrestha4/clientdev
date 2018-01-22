@@ -273,12 +273,21 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
       }
        
     })
-    .then((res)=>{
-      //console.log(res.data.emailId);
-      $state.go('clientDashboard.jobPost');
-      //$rootScope.companyname=res.data.companyName;
-      //console.log($rootScope.dcompanyId);
-      //console.log( $rootScope.dcompanyname);
+    .then((res,err)=>{
+      if(res.status!=200)
+      {
+        $scope.err=err;
+      }
+      else
+      {
+        $state.go('clientDashboard.jobPost');
+      }
+      
+    })
+    .catch((err)=>{
+      $scope.error=1;
+      console.log(err.data);
+      $scope.err=err.data;
     })
   }
 
@@ -401,14 +410,56 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
 
   $scope.postJob=function(){
     $http({
-      url:'http://localhost:8000/client/post-job'
+      url:'http://localhost:8000/client/postjob',
+      method:'POST',
+      data:{
+        name:$scope.jobName,
+        profileRequired:$scope.profile,
+        category:$scope.technology,
+        description:$scope.description,
+        timePeriod:$scope.timePeriod,
+        experience:$scope.experienceLevel,
+        /*attachments:to be given */
+        perks:$scope.perks,
+        skills:$scope.selectedSkills,
+      }
+    })
+    .then((response)=>{
+      $scope.selectedSkills=[];
+      $scope.jobName=null;
+      $scope.profile=null;
+      $scope.technology=null;
+      $scope.description=null;
+      $scope.timePeriod=null;
+      $scope.experienceLevel=null;
+      $scope.perks=null;
+       Materialize.toast('Project has been posted successfully',3000,'deep-orange darken-3');
     })
   }
-
+  $scope.checkFields=function(){
+    if($scope.jobName==null || $scope.profile==null || $scope.technology==null ||  $scope.description==null || $scope.timePeriod==null ||  $scope.experienceLevel==null || $scope.perks==null)
+    {
+      return true;
+    }
+    else
+      return false;
+  }
+  
   $scope.giveSubcategory=function(technology){
-    console.log(technology);
- 
-      /******code for displaying checkboxes on dropdown select******/
+    //console.log(technology);
+    $scope.select=1;
+    $scope.skills=[];
+    if(technology=="Web Development")
+    {
+      $scope.skills=['HTML','CSS','Javascript','Bootstrap','AngularJS','ExpressJS'];
+    }
+  }
+
+  $scope.selectedSkills=[];
+  $scope.add=function(skill){
+
+    $scope.selectedSkills.push(skill);
+    console.log($scope.selectedSkills);
   }
 });
 

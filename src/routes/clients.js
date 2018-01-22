@@ -4,7 +4,6 @@
 const router = require('express').Router();
 const connection=require('../db/connections');
 const sequelize=connection.sequelize;
-
 import Schema from '../db/schema';
 import {checkSession} from '../utils/middlewares';
 
@@ -94,7 +93,7 @@ router.post('/client/signin', (req,res) => {
 			}
 		}
 		else{
-			res.status(400).send('Email ID not registered. Please register before logging in');
+			res.status(400).send('Email ID not registered. Please register before signing in');
 		}
 	})
 	.catch((err) => {
@@ -125,10 +124,27 @@ router.get('/client/details',(req,res)=>{
 })
 
 router.post('/client/postjob',(req,res)=>{
-	//const databody=req.body;
-
-
-})
+	const databody=req.body;
+	const newjob=new Projects({
+			name:databody.name,
+			profileRequired:databody.profileRequired,
+			category:databody.category,
+			description:databody.description,
+			experience:databody.experience,
+			timePeriod:databody.timePeriod,
+			/*attachments:to be given */
+			perks:databody.perks,
+			skills:databody.skills,
+	})
+	newjob.save((err,job)=>{
+			if(err){
+				res.status(500).send("Job description cant be saved");
+			}
+			else{
+				res.status(200).send("Job has been posted successfuly");
+			}
+		})
+});
 
 router.get('/client/signout',(req,res)=>{
 	req.session.destroy();

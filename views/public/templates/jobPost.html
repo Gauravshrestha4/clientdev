@@ -2,68 +2,123 @@
       <div class="row">
         <div class="col s12 m12 l8">
           <div class="card">
-              <form name="post-job-form" novalidate>
+              <form name="post-job-form" novalidate ng-submit="postJob()">
                     <div class="card-content ">
                         <span class="card-title">Job Description</span>
                         <div class="divider"></div>
                       <div class="jobPostForm">
-                          <p>Name your Job Posting</p>
-                          <input  placeholder="Example : E-commerce website" id="first_name" type="text" class="validate input" ng-model="jobName" required>
+                          <div class="row">
+                              <div class="col s12 ">
+                                <p>Name your Job Posting</p>
+                                <input maxlength="30"  placeholder="Example : E-commerce website" id="" type="text" class="z-depth-4 validate input " ng-model="jobName" required>
+                              </div>
+                              
+                          </div>
+                         
+                          <div class="row">
+                            <div class="col s12">
+                              <p>Tell us what you want to be done?</p>
+                             <input maxlength="200" placeholder="Example : I need a full statck developer for my website project" id="" type="text" class="validate input" ng-model="profile" required>
+                            </div>
+                            
+                          </div>
+                            
+                          <div class="row">
+                            <div class="col s12">
+                              <p>What kind of Work you want to be done?</p>
+                              <select class="browser-default" ng-model="technology" ng-change="giveSubcategory(technology)" required>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="Web Designing">Web Designing</option>
+                                <option value="Graphic Designing">Graphic Designing</option>
+                              </select>
+                            </div>
+                            
+                          </div>
+                          
 
-                          <p>Tell us what you want to be done?</p>
-                          <input placeholder="Example : I need a full statck developer for my website project" id="first_name" type="text" class="validate input" ng-model="tellUs" required>
+                          <div class="relatedSkills row">
+                            <p style="padding-left:15px" ng-show="select==1">Select the required skills </p>
+                              <div ng-repeat="skill in skills">
+                                <a href=""><div class="col s6 m3 " >
+                                  <div class="card skillCard z-depth-3" ng-click="add(skill);">
+                                    <div class="card-content white-text">
+                                      <span class=" skillName">{{skill}}</span>
+                                    </div>
+                                  </div>
+                                </div></a>
+                              </div>
 
-                          <p>What kind of Work you want to be done?</p>
-                  <select class="browser-default" ng-model="technology" ng-change="giveSubcategory(technology)" required>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="Web Designing">Web Designing</option>
-                    <option value="Graphic Designing">Graphic Designing</option>
-                  </select>
-                  <p>Describe the work to be done</p>
-                  <textarea id="textarea1" placeholder="Example: The E-commerce website is for the sale of clothes online. The freelancer must be able to understand the needs of the platform and must take actions according to it." class="materialize-textarea" ng-model="description" required></textarea>
-
-                  <p>Upload samples and other helpful material</p>
-                  <div class="sampleUpload">
-                    <div class="file-field input-field">
-                      <div class="btn" style="background-color: transparent;border:2px solid #f26234;color:#f26234">
-                        <span>File</span>
-                        <input type="file" multiple>
-                      </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files" ng-model="attachment">
-                      </div>
-                    </div>
-                  </div>
-
-                  <p>What is the expected time period of the job?</p>
-                  <select class="browser-default" ng-model="timePeriod" required>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="0-15 days">0-15 days</option>
-                    <option value="1 month">1 month</option>
-                    <option value="3 months">3 months</option>
-                    <option value="6 months">6 months</option>
-                    <option value="1 year">1 year</option>
-                  </select>
-
-                  <p>What is the level of experience required for a developer for this job?</p>
-                  <select class="browser-default" ng-model="experienceLevel" required>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Expert">Expert</option>
-                    
-                  </select>
-
-                  <p>What is the perk for the freelancer (all in INR) </p>
-                  <input placeholder="Exmaple:5000" id="first_name" type="text" class="validate input" ng-model="perks" required>
+                          </div>
+                          
+                          <div class="row">
+                            <div class="col s12">
+                            
+                             <p >Describe the work to be done</p>
+                            <textarea maxlength="500" id="textarea1" placeholder="Example: The E-commerce website is for the sale of clothes online. The freelancer must be able to understand the needs of the platform and must take actions according to it." class="materialize-textarea" ng-model="description" required></textarea>
+                          
+                            </div>
+                          </div>
+                          
+                         
+                          <div class="row">
+                            <div class="col s12">
+                              <p>Upload samples and other helpful material</p>
+                              <div class="sampleUpload">
+                                <div class="file-field input-field">
+                                  <div class="btn" style="background-color: transparent;border:2px solid #f26234;color:#f26234">
+                                    <span>File</span>
+                                    <input type="file" multiple>
+                                  </div>
+                                  <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Upload one or more files" ng-model="attachment">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="row">
+                            <div class="col s12">
+                              <p>What is the expected time period of the job?</p>
+                              <select class="browser-default" ng-model="timePeriod" required>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="0-15 days">0-15 days</option>
+                                <option value="1 month">1 month</option>
+                                <option value="3 months">3 months</option>
+                                <option value="6 months">6 months</option>
+                                <option value="1 year">1 year</option>
+                              </select>
+                            </div>
+                            
+                          </div>
+                          
+                          <div class="row">
+                            <div class="col s12">
+                              <p>What is the level of experience required for a developer for this job?</p>
+                              <select class="browser-default" ng-model="experienceLevel" required>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Expert">Expert</option>
+                              </select>
+                            </div>
+                          </div>
+                          
+                          <div class="row">
+                            <div class="col s12">
+                              <p>What is the perk for the freelancer (all in INR) </p>
+                              <input maxlength="5" placeholder="Exmaple:5000" id="first_name" type="text" class="validate input" ng-model="perks" required>
+                            </div>
+                          </div>
+                          
                       </div>
                     </div>
                     <div class="card-action postjobButton">
-                      <button type="submit" class="waves-effect waves-light btn" ng-disabled="post-job-form.$invalid">Post Job</button>
+                        <button type="submit" class="waves-effect waves-light btn" ng-disabled="checkFields()">Post Job</button>
                         <button type="reset" class="waves-effect waves-light btn">Cancel</button>
                     </div>
-                </form>
+                  </form>
           </div>
         </div>
         <div class="col s12 m12 l4">
@@ -93,8 +148,9 @@
 
   <script type="text/javascript">
   $(document).ready(function(){
-
+     $("input:text:visible:first").focus();
     $(".button-collapse").sideNav();
      $('.collapsible').collapsible();
+    $('select').material_select();
   })
 </script>

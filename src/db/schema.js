@@ -16,7 +16,7 @@ const Schema = {
 
 	// ===== MongoDB Schema's ==== //
 
-	Skills : new mongoose.Schema({
+	Skills : mongoose.model('Skills',new mongoose.Schema({
 		
 		developerID: {
 		
@@ -29,9 +29,9 @@ const Schema = {
 			required: [true, 'Need a list of skills to save']
 		}
 
-	}),
+	})),
 
-	Projects:new mongoose.Schema({
+	Projects:mongoose.model('Projects',new mongoose.Schema({
 
 		projectID:{
 			type:String,
@@ -59,7 +59,11 @@ const Schema = {
 			required:true,
 			default:"No description available"
 		},
-
+		experience:{
+			type:String,
+			required:true,
+			default:"Not Alloted"
+		},
 		timePeriod:{
 			type:String,
 			required:true,
@@ -79,7 +83,7 @@ const Schema = {
 
 		skills:{
 			type:[String],
-			required:[true,"Need to store the skills required for the project"],
+			required:[false,"Need to store the skills required for the project"],/*to be changed to "true" after implementation of UI*/
 			default:"Not Alloted"
 		},
 		status:{
@@ -87,7 +91,7 @@ const Schema = {
 			default:"Live",
 			required:false,
 		}
-	}),
+	})),
 
 	// ==== MariaDB Schema's ==== //
 
@@ -264,6 +268,7 @@ const Schema = {
 Schema.Clients.prototype.authenticate = function(value){
 	return bcrypt.compareSync(value, this.password);
 };
+
 
 // ======= Sync the schemas for MariaDB ======= //
 Schema.Developers.sync();
