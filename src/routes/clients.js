@@ -10,8 +10,7 @@ import {checkSession} from '../utils/middlewares';
 const Clients = Schema.Clients;
 const Projects=Schema.Projects;
 
-// ====== routes ===== //
-
+// ====== routes ===== /
 router.post('/client/signup', (req,res) => {
 	const data = req.body;
 	// console.log('Received: ',data);

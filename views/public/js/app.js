@@ -190,6 +190,7 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         
       }) 
     }
+    t
 
     $scope.dev_submit=function(){
     console.log($scope.dev_name);
@@ -474,7 +475,7 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
 });
 
 
-app.controller('statController',function($state,$rootScope,$http){
+app.controller('statController',function($state,$rootScope,$http,$scope){
   console.log('statController called');
   authenticate.client()
   .then(function(check) {
@@ -484,7 +485,26 @@ app.controller('statController',function($state,$rootScope,$http){
   })
   .catch(function(err) {
     $state.go('signin');
-  });
+  }); 
+
+  $scope.statoption=1;
+  $scope.projcompdiv=function(){
+    $scope.statoption=2;
+  }
+
+  $scope.backToStat=function()
+  {
+    $scope.statoption=1;
+  }
+
+  $scope.projrundiv=function(){
+    $scope.statoption=3;
+  }
+
+  $scope.invoicesdiv=function()
+  {
+    $scope.statoption=4;
+  }
 });
 
 app.controller('clientProfileController',function($state,$rootScope,$scope,$http,authenticate){
