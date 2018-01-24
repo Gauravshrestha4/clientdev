@@ -184,7 +184,6 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         
       }) 
     }
-    t
 
     $scope.dev_submit=function(){
     console.log($scope.dev_name);
@@ -325,6 +324,7 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
       return false;
     }
   }
+
 })
 
 
@@ -394,6 +394,7 @@ app.controller('clientDashboardController',function($state,$scope,$rootScope,$ht
       $state.go('mainpage');
     })
   }
+
 });
 
 app.controller('jobPostController',function($state,$http,$rootScope,$scope, authenticate){
@@ -465,8 +466,9 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
 });
 
 
-app.controller('statController',function($state,$rootScope,$http,$scope){
+app.controller('statController',function($state,$rootScope,$http,$scope,authenticate){
   console.log('statController called');
+  
   authenticate.client()
   .then(function(check) {
     if(check){
@@ -475,7 +477,7 @@ app.controller('statController',function($state,$rootScope,$http,$scope){
   })
   .catch(function(err) {
     $state.go('signin');
-  }); 
+  });
 
   $scope.statoption=1;
   $scope.projcompdiv=function(){
@@ -494,6 +496,43 @@ app.controller('statController',function($state,$rootScope,$http,$scope){
   $scope.invoicesdiv=function()
   {
     $scope.statoption=4;
+  }
+
+  $scope.getProjCompData=function()
+  {
+    $http({
+      url: 'http://localhost:8000/client/getProjCompData',
+      method: 'GET'
+    }).then(function(res){
+      if(res.status!=200)
+        console.log("bad");
+      else
+      {
+        $scope.data=res.data;
+        $rootScope.count=$scope.data.length;
+      } 
+    });
+  }
+
+  $scope.getProjRunData=function()
+  {
+    $http({
+      url: 'http://localhost:8000/client/getProjRunData',
+      method: 'GET'
+    }).then(function(res){
+      if(res.status!=200)
+        console.log("bad");
+      else
+      {
+        $scope.dataprojrun=res.data;
+        $rootScope.count1=$scope.dataprojrun.length;
+      } 
+    });
+  }
+
+  $scope.arrayToString=function(string)
+  {
+    return string.join(", ");
   }
 });
 

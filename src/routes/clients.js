@@ -10,7 +10,8 @@ import {checkSession} from '../utils/middlewares';
 const Clients = Schema.Clients;
 const Projects=Schema.Projects;
 
-// ====== routes ===== /
+// ====== routes ===== //
+
 router.post('/client/signup', (req,res) => {
 	const data = req.body;
 	// console.log('Received: ',data);
@@ -40,7 +41,8 @@ router.post('/client/signup', (req,res) => {
 			})
 			.then((client) => {
 				req.session.client = {
-					emailId: client.emailId
+					emailId: client.emailId,
+					clientId: client.clientId
 				};
 				
 				res.status(200).send('Signup successful');
@@ -83,7 +85,8 @@ router.post('/client/signin', (req,res) => {
 			if(client.authenticate(data.password)){
 				console.log("my client "+client);
 				req.session.client = {
-					emailid: client.emaliId
+					emailid: client.emaliId,
+					clientId: client.clientId
 				};
 				res.status(200).send('Welcome');
 			}
@@ -134,6 +137,7 @@ router.post('/client/postjob',(req,res)=>{
 			/*attachments:to be given */
 			perks:databody.perks,
 			skills:databody.skills,
+			clientId: req.session.client.clientId
 	})
 	newjob.save((err,job)=>{
 			if(err){
@@ -187,5 +191,24 @@ router.post('/client/update-companyDetails',(req,res)=>{
 		res.send(update);
 	})
 })
+
+
+router.get('/client/getProjCompData', function(req,res){
+	Projects.find({clientId: req.session.client.clientId, status: "Not Live"}, function(err,result){
+		if(err)
+			res.status(500).send("Sorry, We are unable to process your request right now!");
+		else
+			res.status(200).json(result);
+	});
+});
+
+router.get('/client/getProjRunData', function(req,res){
+	Projects.find({clientId: req.session.client.clientId, status: "Live"}, function(err,result){
+		if(err)
+			res.status(500).send("Sorry, We are unable to process your request right now!");
+		else
+			res.status(200).json(result);
+	});
+});
 
 module.exports=router;
