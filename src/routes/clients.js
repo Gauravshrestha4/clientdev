@@ -3,6 +3,8 @@
 
 const router = require('express').Router();
 const connection=require('../db/connections');
+const nodemailer=require('nodemailer');
+const wellknown=require('nodemailer-wellknown')
 const sequelize=connection.sequelize;
 import Schema from '../db/schema';
 import {checkSession} from '../utils/middlewares';
@@ -44,6 +46,31 @@ router.post('/client/signup', (req,res) => {
 				};
 				
 				res.status(200).send('Signup successful');
+
+				var transporter=nodemailer.createTransport({
+					service:'Gmail',
+					auth:{
+						user:'initiators.time@gmail.com',
+						pass:'initiators'
+					}
+				})
+
+				var mailOptions={
+					from:'initiators.time@gmail.com',
+					to:req.session.client.emailId,
+					subject:'Welcome to ClientDev',
+					html:'Hi '+req.session.client.emailId+'welcome to Clientdev.You have successfuly registered with ClientDev'
+				};
+				transporter.sendMail(mailOptions,function(err,info){
+					if(err)
+					{
+						console.log(err);
+					}
+					else
+					{
+						console.log('mail sent');
+					}
+				})
 			})
 			.catch((err) => {
 				// res.status(500).send('Sorry we are unable to process your request right now!');
@@ -110,7 +137,7 @@ router.get('/client/details',(req,res)=>{
 		}
 	})
 	.then((client)=>{
-		res.status(200).json({companyName:client.companyName,emailId:client.emailId,phone:client.phone,description:client.description,picture:client.picture,address:client.address,companyType:client.companyType});
+		res.status(200).json({companyName:client.companyName,emailId:client.emailId,phone:client.phone,description:client.description,picture:client.picture,address:client.address,companyType:client.companyType,state:client.state,city:client.city,zipCode:client.zipCode});
 	})
 	.catch((err)=>{
 		res.status(500).send("Sorry, We are unable to process your request right now!");
@@ -170,6 +197,9 @@ router.post('/client/update-companyDetails',(req,res)=>{
 		companyType:databody.companyType,
 		description:databody.description,
 		address:databody.address,
+		zipCode:databody.zipCode,
+		state:databody.state,
+		city:databody.city,
 	},
 	{
 		where:

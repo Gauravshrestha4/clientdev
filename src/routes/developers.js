@@ -9,7 +9,6 @@ const sequelize=connection.sequelize;
 import Schema from '../db/schema';
 import {checkSession} from '../utils/middlewares';
 
-const Clients=Schema.Clients;
 const Projects=Schema.Projects;
 
 router.post('/dev/checkEmail',(req,res)=>{

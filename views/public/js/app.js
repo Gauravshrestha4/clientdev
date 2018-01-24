@@ -122,7 +122,7 @@ app.controller('mainpageController',function($scope,$rootScope,$state,$http,$win
           }
   });
 
-app.controller('signupController', function($scope,$rootScope,$state,$http,$window){
+app.controller('signupController', function($scope,$rootScope,$state,$http,$window,authenticate){
   $scope.click=1;
   $scope.step=1;
   $scope.style={'border':'2px solid #f26234','color':'white'};
@@ -164,6 +164,12 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
        Materialize.toast(res.data,5000,'deep-orange darken-3');
        $state.go('signin');
      })
+     .catch((err)=>{
+      console.log(err);
+      $scope.show=1;
+      $scope.err=err.data;
+
+      })
   }
     $scope.continue=function(){
       console.log($scope.dev_email);
@@ -189,8 +195,11 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         }
         
       }) 
+      .catch((err)=>{
+        console.log(err);
+      })
     }
-    t
+    
 
     $scope.dev_submit=function(){
     console.log($scope.dev_name);
@@ -475,7 +484,7 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
 });
 
 
-app.controller('statController',function($state,$rootScope,$http,$scope){
+app.controller('statController',function($state,$rootScope,$http,$scope,authenticate){
   console.log('statController called');
   authenticate.client()
   .then(function(check) {
@@ -525,6 +534,9 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
         $scope.type=$scope.clientProfile.companyType;
         $scope.desc=$scope.clientProfile.description;
         $scope.addr=$scope.clientProfile.address;
+        $scope.state=$scope.clientProfile.state;
+        $scope.city=$scope.clientProfile.city;
+        $scope.zip=$scope.clientProfile.zipCode;
          //console.log($scope.username); 
       }) 
       .catch((err)=>{
@@ -561,6 +573,7 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
   }
 
   $scope.updateCompanyDetails=function(){
+    console.log("hrrllo");
     $http({
       url:'http://localhost:8000/client/update-companyDetails',
       method:'POST',
@@ -569,6 +582,9 @@ app.controller('clientProfileController',function($state,$rootScope,$scope,$http
         companyType:$scope.type,
         description:$scope.desc,
         address:$scope.addr,
+        state:$scope.state,
+        city:$scope.city,
+        zipCode:$scope.zip,
       }
     })
     .then((response)=>{
