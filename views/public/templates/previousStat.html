@@ -2,13 +2,13 @@
 	<div class="container container3">
 		<div class="row">
 			<div class="col offset-l1 l5 offset-s1 s11 offset-m1 m5">
-				<div class="card projcompcard" ng-click="projcompdiv()">
+				<div class="card projcompcard" ng-click="projcompdiv();getProjCompData()">
 					<div class="card-content">
 						<div class="row">
 							<div class="col l7"> 
 								<p class="activitycount">5</p>	
 								<p class="activity">Projects Completed</p>
-								<a class="btn btn-flat info_btn1" ng-click="projcompdiv()">INFO</a>
+								<a class="btn btn-flat info_btn1" ng-click="projcompdiv();getProjCompData()">INFO</a>
 							</div>
 							<div class="col l5 center-align">
 								<img src="./img/done.png" style="opacity: 0.2; margin-top: 80%;">
@@ -19,13 +19,13 @@
 			</div>
 
 			<div class="col l5 offset-s1 s11 offset-m1 m5">
-				<div class="card projruncard" ng-click="projrundiv()">
+				<div class="card projruncard" ng-click="projrundiv();getProjRunData()">
 					<div class="card-content">
 						<div class="row">
 							<div class="col l7"> 
 								<p class="activitycount">5</p>	
 								<p class="activity">Projects Running</p>
-								<a class="btn btn-flat info_btn2" ng-click="projrundiv()">INFO</a>
+								<a class="btn btn-flat info_btn2" ng-click="projrundiv();getProjRunData()">INFO</a>
 							</div>
 							<div class="col l5 center-align">
 								<img src="./img/run.png" style="opacity:0.7; margin-top: 80%;">
@@ -80,17 +80,22 @@
 
 	<div class="activitydata">
 		<ul class="collapsible popout" data-collapsible="accordion">
-			<li>
-				<div class="collapsible-header"><i class="material-icons">class</i>First Project Name</div>
+			<li ng-repeat="data in data">
+				<div class="collapsible-header"><i class="material-icons">class</i>{{data.name}}</div>
 				<div class="collapsible-body">
 					<div class="row">
 						<div class="col l9">
-							<p class="projectdata1"><span class="projectdata">Description:  </span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-							<p class="projectdata1"><span class="projectdata">Skills:  </span>HTML, CSS, JavaScript, Angular</p>
-							<p class="projectdata1"><span class="projectdata">Type:  </span>Web Development</p>
-							<p class="projectdata1"><span class="projectdata">Link:  </span><a href="#">abc@heroku.com</a></p>
-							<p class="projectdata1"><i class="fa fa-calendar" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Duration:  </span>3 months</p>
-							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Amount Paid:  </span>$30</p>
+							<p class="projectdata1"><span class="projectdata">Title:  </span>{{data.description}}</p>
+							<p class="projectdata1"><span class="projectdata">Skills:  </span>{{arrayToString(data.skills)}}</p>
+							<p class="projectdata1"><span class="projectdata">Type:  </span>{{data.category}}</p>
+
+							<p class="projectdata1"><i class="fa fa-calendar" style="color: #f26234"></i><span class="projectdata">   Duration:</span>{{data.timePeriod}}</p>
+
+							<p class="projectdata1"><span class="projectdata">Profile:  </span>{{data.profileRequired}}</p>
+							
+							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Perks :</span>{{data.perks}}</p>
+
+							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Status:  </span>{{data.status}}</p>
 						</div>
 						<div class="col l3">
 							<div class="card">
@@ -99,61 +104,7 @@
 								</div>
 								<div class="card-content center-align">
 									<p style="color: #f26234"><b>MR. ABC SINGH</b></p>
-									<p style="color: #f26234"><b>(Expert)</b></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li>
-				<div class="collapsible-header"><i class="material-icons">class</i>Second Project Name</div>
-				<div class="collapsible-body">
-					<div class="row">
-						<div class="col l9">
-							<p class="projectdata1"><span class="projectdata">Description:  </span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-							<p class="projectdata1"><span class="projectdata">Skills:  </span>HTML, CSS, JavaScript, Angular</p>
-							<p class="projectdata1"><span class="projectdata">Type:  </span>Web Development</p>
-							<p class="projectdata1"><span class="projectdata">Link:  </span><a href="#">abc@heroku.com</a></p>
-							<p class="projectdata1"><i class="fa fa-calendar" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Duration:  </span>3 months</p>
-							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Amount Paid:  </span>$30</p>
-						</div>
-						<div class="col l3">
-							<div class="card">
-								<div class="card-image" style="margin: 7%;padding-top: 10%;">
-									<img src="./img/user.png" style="border-radius: 100%;border: 2px solid #f26234">
-								</div>
-								<div class="card-content center-align">
-									<p style="color: #f26234"><b>MR. ABC SINGH</b></p>
-									<p style="color: #f26234"><b>(Intermediate)</b></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li>
-				<div class="collapsible-header"><i class="material-icons">class</i>Third Project Name</div>
-				<div class="collapsible-body">
-					<div class="row">
-						<div class="col l9">
-							<p class="projectdata1"><span class="projectdata">Description:  </span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-							<p class="projectdata1"><span class="projectdata">Skills:  </span>HTML, CSS, JavaScript, Angular</p>
-							<p class="projectdata1"><span class="projectdata">Type:  </span>Web Development</p>
-							<p class="projectdata1"><span class="projectdata">Link:  </span><a href="#">abc@heroku.com</a></p>
-							<p class="projectdata1"><i class="fa fa-calendar" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Duration:  </span>3 months</p>
-							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Amount Paid:  </span>$30</p>
-						</div>
-						<div class="col l3">
-							<div class="card">
-								<div class="card-image" style="margin: 7%;padding-top: 10%;">
-									<img src="./img/user.png" style="border-radius: 100%;border: 2px solid #f26234">
-								</div>
-								<div class="card-content center-align">
-									<p style="color: #f26234"><b>MR. ABC SINGH</b></p>
-									<p style="color: #f26234"><b>(Beginner)</b></p>
+									<p style="color: #f26234"><b>({{data.experience}})</b></p>
 								</div>
 							</div>
 						</div>
@@ -169,21 +120,24 @@
 
 	<div class="activitydata">
 		<ul class="collapsible popout" data-collapsible="accordion">
-			<li>
+			<li ng-repeat="dataprojrun in dataprojrun">
 				<div class="collapsible-header">
-					<i class="material-icons left">class</i>First Project Name
+					<i class="material-icons left">class</i>{{dataprojrun.name}}
 				</div>
 
 				<div class="collapsible-body">
 					<div class="row">
 						<div class="col l9">
-							<p class="projectdata1"><span class="projectdata">Description:  </span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-							<p class="projectdata1"><span class="projectdata">Skills:  </span>HTML, CSS, JavaScript, Angular</p>
-							<p class="projectdata1"><span class="projectdata">Type:  </span>Web Development</p>
-							<p class="projectdata1"><i class="fa fa-calendar" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Duration:  </span>3 months</p>
-							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Amount To Be Paid:  </span>$30</p>
-							<p class="projectdata1"><i class="fa fa-calendar-plus-o" aria-hidden="true"  style="color: #f26234"></i><span class="projectdata">  Started Date:  </span>20-2-18</p>
-							<p class="projectdata1"><i class="fa fa-calendar-check-o" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Due Date:  </span>20-5-18</p>
+							<p class="projectdata1"><i class="fa fa-bookmark" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Title: </span>{{dataprojrun.description}}</p>
+							<p class="projectdata1"> <i class="fa fa-superpowers" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Skills:  </span>{{arrayToString(dataprojrun.skills)}}</p>
+							<p class="projectdata1"><i class="fa fa-info" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Type:  </span>{{dataprojrun.category}}</p>
+							<p class="projectdata1"><i class="fa fa-calendar" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">   Duration:  </span>{{dataprojrun.timePeriod}}</p>
+
+							<p class="projectdata1"><i class="fa fa-user-md" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">   Profile:  </span>{{dataprojrun.profileRequired}}</p>
+							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Perks:  </span>{{dataprojrun.perks}}</p>
+
+							<p class="projectdata1"><i class="fa fa-toggle-on" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Status:  </span>{{dataprojrun.status}}</p>
+							
 							<div class="center-align">
 								<a class="btn btn-flat find_btn">FIND MORE FREELANCERS</a>
 							</div>
@@ -195,75 +149,7 @@
 								</div>
 								<div class="card-content center-align">
 									<p style="color: #f26234"><b>MR. ABC SINGH</b></p>
-									<p style="color: #f26234"><b>(Expert)</b></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li>
-				<div class="collapsible-header">
-					<i class="material-icons left">class</i>Second Project Name
-				</div>
-
-				<div class="collapsible-body">
-					<div class="row">
-						<div class="col l9">
-							<p class="projectdata1"><span class="projectdata">Description:  </span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-							<p class="projectdata1"><span class="projectdata">Skills:  </span>HTML, CSS, JavaScript, Angular</p>
-							<p class="projectdata1"><span class="projectdata">Type:  </span>Web Development</p>
-							<p class="projectdata1"><i class="fa fa-calendar" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Duration:  </span>3 months</p>
-							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Amount To Be Paid:  </span>$30</p>
-							<p class="projectdata1"><i class="fa fa-calendar-plus-o" aria-hidden="true"  style="color: #f26234"></i><span class="projectdata">  Started Date:  </span>20-2-18</p>
-							<p class="projectdata1"><i class="fa fa-calendar-check-o" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Due Date:  </span>20-5-18</p>
-							<div class="center-align">
-								<a class="btn btn-flat find_btn">FIND MORE FREELANCERS</a>
-							</div>
-						</div>
-						<div class="col l3">
-							<div class="card">
-								<div class="card-image" style="margin: 7%;padding-top: 10%;">
-									<img src="./img/user.png" style="border-radius: 100%;border: 2px solid #f26234">
-								</div>
-								<div class="card-content center-align">
-									<p style="color: #f26234"><b>MR. ABC SINGH</b></p>
-									<p style="color: #f26234"><b>(Expert)</b></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li>
-				<div class="collapsible-header">
-					<i class="material-icons left">class</i>Third Project Name
-				</div>
-
-				<div class="collapsible-body">
-					<div class="row">
-						<div class="col l9">
-							<p class="projectdata1"><span class="projectdata">Description:  </span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-							<p class="projectdata1"><span class="projectdata">Skills:  </span>HTML, CSS, JavaScript, Angular</p>
-							<p class="projectdata1"><span class="projectdata">Type:  </span>Web Development</p>
-							<p class="projectdata1"><i class="fa fa-calendar" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">Duration:  </span>3 months</p>
-							<p class="projectdata1"><i class="fa fa-money" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Amount To Be Paid:  </span>$30</p>
-							<p class="projectdata1"><i class="fa fa-calendar-plus-o" aria-hidden="true"  style="color: #f26234"></i><span class="projectdata">  Started Date:  </span>20-2-18</p>
-							<p class="projectdata1"><i class="fa fa-calendar-check-o" aria-hidden="true" style="color: #f26234"></i><span class="projectdata">  Due Date:  </span>20-5-18</p>
-							<div class="center-align">
-								<a class="btn btn-flat find_btn">FIND MORE FREELANCERS</a>
-							</div>
-						</div>
-						<div class="col l3">
-							<div class="card">
-								<div class="card-image" style="margin: 7%;padding-top: 10%;">
-									<img src="./img/user.png" style="border-radius: 100%;border: 2px solid #f26234">
-								</div>
-								<div class="card-content center-align">
-									<p style="color: #f26234"><b>MR. ABC SINGH</b></p>
-									<p style="color: #f26234"><b>(Expert)</b></p>
+									<p style="color: #f26234"><b>({{dataprojrun.experience}})</b></p>
 								</div>
 							</div>
 						</div>

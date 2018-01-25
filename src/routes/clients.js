@@ -12,7 +12,8 @@ import {checkSession} from '../utils/middlewares';
 const Clients = Schema.Clients;
 const Projects=Schema.Projects;
 
-// ====== routes ===== /
+// ====== routes ===== //
+
 router.post('/client/signup', (req,res) => {
 	const data = req.body;
 	// console.log('Received: ',data);
@@ -39,10 +40,14 @@ router.post('/client/signup', (req,res) => {
 				address: data.address,
 				phone: data.phone,
 				password:data.password,
+				state:data.state,
+				city:data.state,
+				zipCode:data.zipCode,
 			})
 			.then((client) => {
 				req.session.client = {
-					emailId: client.emailId
+					emailId: client.emailId,
+					clientId: client.clientId
 				};
 				
 				res.status(200).send('Signup successful');
@@ -106,7 +111,8 @@ router.post('/client/signin', (req,res) => {
 			
 			if(client.authenticate(data.password)){
 				req.session.client = {
-					emailId: client.emailId
+					emailId: client.emailId,
+					clientId: client.clientId
 				};
 				res.status(200).send('Welcome');
 			}
@@ -131,6 +137,7 @@ router.post('/client/signin', (req,res) => {
 
 
 router.get('/client/details',(req,res)=>{
+	console.log("Session email is: "+req.session.client.emailId);
 	Schema.Clients.find({
 		where:{
 			emailId:req.session.client.emailId,
@@ -156,6 +163,7 @@ router.post('/client/postjob',(req,res)=>{
 			/*attachments:to be given */
 			perks:databody.perks,
 			skills:databody.skills,
+			clientId: req.session.client.clientId
 	})
 	newjob.save((err,job)=>{
 			if(err){
@@ -212,5 +220,25 @@ router.post('/client/update-companyDetails',(req,res)=>{
 		res.send(update);
 	})
 })
+
+
+router.get('/client/get-completed-project', function(req,res){
+	Projects.find({clientId: req.session.client.clientId, status: "completed"}, function(err,result){
+		if(err)
+			res.status(500).send("Sorry, We are unable to process your request right now!");
+		else
+			res.status(200).send(result);
+	});
+
+});
+
+router.get('/client/get-running-project', function(req,res){
+	Projects.find({clientId: req.session.client.clientId, status: "Live"}, function(err,result){
+		if(err)
+			res.status(500).send("Sorry, We are unable to process your request right now!");
+		else
+			res.status(200).send(result);
+	});
+});
 
 module.exports=router;

@@ -35,7 +35,12 @@ const Schema = {
 
 		projectID:{
 			type:String,
-			required:[false,'Need a project ID to store data']/*it would be unique*/
+			required:[false,'Need a project ID to store data'],/*it would be unique*/
+		},
+
+		clientId:{
+			type: Number,
+			required:[false,'Need to store the clientID of the client from session object']
 		},
 
 		name:{
@@ -59,16 +64,19 @@ const Schema = {
 			required:true,
 			default:"No description available"
 		},
+
 		experience:{
 			type:String,
 			required:true,
 			default:"Not Alloted"
 		},
+
 		timePeriod:{
 			type:String,
 			required:true,
 			default:"Not Alloted"
 		},
+		
 		attachments:{
 			type:[String],
 			required:false,
@@ -86,6 +94,7 @@ const Schema = {
 			required:[true,"Need to store the skills required for the project"],/*to be changed to "true" after implementation of UI*/
 			default:"Not Alloted"
 		},
+		
 		status:{
 			type:String,
 			default:"Live",
@@ -96,6 +105,13 @@ const Schema = {
 	// ==== MariaDB Schema's ==== //
 
 	Clients: sequelize.define('clients', {
+
+		clientId: {
+			type: Sequelize.INTEGER,
+			autoIncrement: true,
+			unique: 'compositeIndex',
+			allowNull: true
+		},
 
 		companyName: {
 

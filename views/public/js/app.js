@@ -199,7 +199,6 @@ app.controller('signupController', function($scope,$rootScope,$state,$http,$wind
         console.log(err);
       })
     }
-    
 
     $scope.dev_submit=function(){
     console.log($scope.dev_name);
@@ -344,6 +343,7 @@ app.controller('signinController',function($scope,$rootScope,$http,$state, authe
       return false;
     }
   }
+
 })
 
 
@@ -413,6 +413,7 @@ app.controller('clientDashboardController',function($state,$scope,$rootScope,$ht
       $state.go('mainpage');
     })
   }
+
 });
 
 app.controller('jobPostController',function($state,$http,$rootScope,$scope, authenticate){
@@ -464,28 +465,28 @@ app.controller('jobPostController',function($state,$http,$rootScope,$scope, auth
     else
       return false;
   }
-  
+  console.log("counttttt");
   $scope.giveSubcategory=function(technology){
-    //console.log(technology);
+  console.log(technology);
     $scope.select=1;
-    $scope.skills=[];
     if(technology=="Web Development")
     {
-      $scope.skills=['HTML','CSS','Javascript','Bootstrap','AngularJS','ExpressJS'];
+      $scope.skills=['HTML','CSS','Javascript','Bootstrap','AngularJS','ExpressJS','Php','MySQL','MongoDB','Materialize Css','Saas','Software Engineering'];
+      console.log($scope.skills);
     }
   }
 
-  $scope.selectedSkills=[];
-  $scope.add=function(skill){
+  /*$scope.add=function(skill){
 
     $scope.selectedSkills.push(skill);
     console.log($scope.selectedSkills);
-  }
+  }*/
 });
 
 
 app.controller('statController',function($state,$rootScope,$http,$scope,authenticate){
   console.log('statController called');
+  
   authenticate.client()
   .then(function(check) {
     if(check){
@@ -494,7 +495,7 @@ app.controller('statController',function($state,$rootScope,$http,$scope,authenti
   })
   .catch(function(err) {
     $state.go('signin');
-  }); 
+  });
 
   $scope.statoption=1;
   $scope.projcompdiv=function(){
@@ -513,6 +514,42 @@ app.controller('statController',function($state,$rootScope,$http,$scope,authenti
   $scope.invoicesdiv=function()
   {
     $scope.statoption=4;
+  }
+
+  $scope.getProjCompData=function(){
+    $http({
+      url: 'http://localhost:8000/client/get-completed-project',
+      method: 'GET'
+    }).then(function(res){
+      if(res.status!=200)
+        console.log("bad");
+      else
+      {
+        $scope.data=res.data;
+        $rootScope.count=$scope.data.length;
+      } 
+    });
+  }
+
+  $scope.getProjRunData=function()
+  {
+    $http({
+      url: 'http://localhost:8000/client/get-running-project',
+      method: 'GET'
+    }).then(function(res){
+      if(res.status!=200)
+        console.log("bad");
+      else
+      {
+        $scope.dataprojrun=res.data;
+        $rootScope.count1=$scope.dataprojrun.length;
+      } 
+    });
+  }
+
+  $scope.arrayToString=function(string)
+  {
+    return string.join(", ");
   }
 });
 
